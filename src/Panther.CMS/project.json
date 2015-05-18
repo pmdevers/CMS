@@ -4,7 +4,7 @@
   "authors": [ "Patrick Evers" ],
   "tags": [ "CMS", "MVC6" ],
   "projectUrl": "https://github.com/pmdevers/PantherCMS",
-  "licenseUrl": "",
+  "licenseUrl": "https://raw.githubusercontent.com/pmdevers/CMS/master/LICENSE",
 
     "dependencies": {
         "Microsoft.AspNet.Server.IIS": "1.0.0-beta4",

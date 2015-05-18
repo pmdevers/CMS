@@ -1,0 +1,33 @@
+﻿{
+    "userSecretsId": "aspnet5-Panther.CMS.Demo-20150518025621",
+    "webroot": "wwwroot",
+    "version": "1.0.0-*",
+
+    "dependencies": {
+        "Microsoft.AspNet.Server.IIS": "1.0.0-beta4",
+        "Microsoft.AspNet.Server.WebListener": "1.0.0-beta4",
+        "Panther.CMS": "1.0.0-*"
+    },
+
+    "commands": {
+        "web": "Microsoft.AspNet.Hosting --server Microsoft.AspNet.Server.WebListener --server.urls http://localhost:24167"
+    },
+
+    "frameworks": {
+        "dnx451": { },
+        "dnxcore50": { }
+    },
+
+    "publishExclude": [
+        "node_modules",
+        "bower_components",
+        "**.xproj",
+        "**.user",
+        "**.vspscc"
+    ],
+    "exclude": [
+        "wwwroot",
+        "node_modules",
+        "bower_components"
+    ]
+}
