@@ -14,7 +14,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Panther.CMS", "src\Panther.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{F59F4038-EBDA-424C-A618-BDDBC45B7CCB}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Panther.CMS.Demo", "Panther.CMS.Demo\Panther.CMS.Demo.xproj", "{90108BDA-1903-4E53-AF51-544B4CB5FDC9}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Panther.CMS.Demo", "samples\Panther.CMS.Demo\Panther.CMS.Demo.xproj", "{90108BDA-1903-4E53-AF51-544B4CB5FDC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
