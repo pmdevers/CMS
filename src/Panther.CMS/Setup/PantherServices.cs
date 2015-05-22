@@ -1,13 +1,18 @@
-﻿using Microsoft.Framework.DependencyInjection;
+﻿using Microsoft.AspNet.Authorization;
+using Microsoft.AspNet.Http.Authentication;
+using Microsoft.AspNet.Identity;
+using Microsoft.Framework.DependencyInjection;
 
+using Panther.CMS.Entities;
 using Panther.CMS.Interfaces;
 using Panther.CMS.Routing;
 using Panther.CMS.Services.Content;
 using Panther.CMS.Services.Page;
 using Panther.CMS.Services.Site;
+using Panther.CMS.Storage.Role;
+using Panther.CMS.Storage.User;
 using Panther.Mail.Mvc;
 
-using PantherCMS;
 
 namespace Panther.CMS.Setup
 {
@@ -24,9 +29,10 @@ namespace Panther.CMS.Setup
             collection.AddTransient<IPantherFileSystem, PantherFileSystem>();
             collection.AddTransient<IPantherRouter, PantherRouter>();
             collection.AddTransient<IEmailParser, EmailParser>();
-            //Storages
 
-            //yield return describe.Describe(typeof(IService<>), typeof(Service<>), implementationInstance: null, lifecycle: LifecycleKind.Transient);
+            collection.AddScoped<IUserStore<User>, UserStore>();
+            collection.AddScoped<IRoleStore<Role>, RoleStore>();
+            //Storages
         }
     }
 }

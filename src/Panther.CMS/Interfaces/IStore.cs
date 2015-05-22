@@ -9,7 +9,7 @@ namespace Panther.CMS.Interfaces
         void Save();
     }
 
-    public interface IStore<T, TKey> : IStore where T : IEntity<TKey>
+    public interface IStore<T, in TKey> : IStore where T : IEntity<TKey>
     {
         T GetByKey(TKey key);
 

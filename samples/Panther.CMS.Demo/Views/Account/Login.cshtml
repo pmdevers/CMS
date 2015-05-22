@@ -1,0 +1,34 @@
+﻿@model Panther.CMS.Models.LoginModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    // ViewBag.Title = "Home Page";
+}
+
+
+<h3>Login</h3>
+<p>@User.Identity.Name</p>
+
+@using (Html.PantherForm())
+{
+
+    <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl"/>
+    @Html.AntiForgeryToken()
+    
+    @Html.TextBoxFor(x => x.Username)
+    @Html.PasswordFor(x => x.Password)
+
+    <button type="submit">Login</button>
+}
+
+@Html.ActionLink("Logout", "Logoff", "Account")
+
+
+<p>Everything is in User.Identity</p>
+<ul>
+    <li>AuthenticationType: @User.Identity.AuthenticationType</li>
+    <li>IsAuthenticated: @User.Identity.IsAuthenticated</li>
+    <li>Name: @User.Identity.Name</li>
+    <li>IsInRole("admin"): @User.IsInRole("Admin")</li>
+</ul>

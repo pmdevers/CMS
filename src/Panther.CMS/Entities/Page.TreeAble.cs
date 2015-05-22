@@ -13,6 +13,7 @@ namespace Panther.CMS.Entities
         {
             Children = new List<Page>();
             Contents = new List<Content>();
+            AllowAnonymous = true;
         }
 
         [JsonIgnore]

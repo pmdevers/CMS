@@ -3,6 +3,7 @@
 using Microsoft.AspNet.Http;
 
 using Panther.CMS.Entities;
+using Panther.CMS.Filters;
 using Panther.CMS.Interfaces;
 using Panther.CMS.Services.Page;
 using Panther.CMS.Services.Site;
@@ -51,7 +52,7 @@ namespace Panther.CMS
         {
             Current = pageService.GetPage(Root, url);
 
-            if (Current.Path.EndsWith(url))
+            if (Current.Path.ToLower().EndsWith(url.ToLower()))
                 return true;
 
             if (string.IsNullOrEmpty(Current.Route))

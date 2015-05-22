@@ -1,17 +1,25 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using Microsoft.AspNet.Authorization;
+using Microsoft.AspNet.Mvc;
 
+using Panther.CMS.Filters;
 using Panther.CMS.Interfaces;
 using Panther.CMS.Models;
 using Panther.Mail.Mvc;
 
 namespace Panther.CMS.Controllers
 {
+    [SecurityFilter]
     public class PantherController : Controller
     {
-        private IPantherContext context;
+        private readonly IPantherContext context;
         public PantherController(IPantherContext context)
         {
             this.context = context;
+        }
+
+        protected IPantherContext PantherContext
+        {
+            get { return context; }
         }
 
         public IActionResult RedirectToCurrentPage()
@@ -34,7 +42,7 @@ namespace Panther.CMS.Controllers
         {
             return CurrentPage();
         }
-
+#if DEBUG
         public IActionResult Test()
         {
             var mail = new TestMail();
@@ -50,5 +58,6 @@ namespace Panther.CMS.Controllers
 
             public string Test { get; set; }
         }
+#endif
     }
 }

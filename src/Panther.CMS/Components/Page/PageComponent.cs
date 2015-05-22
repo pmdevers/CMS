@@ -55,7 +55,7 @@ namespace Panther.CMS.Components.Page
 
                 foreach (var child in current.Children)
                 {
-                    if (child.Url == urls[depth])
+                    if (child.Url.ToLower() == urls[depth].ToLower())
                     {
                         current = child;
                         depth++;

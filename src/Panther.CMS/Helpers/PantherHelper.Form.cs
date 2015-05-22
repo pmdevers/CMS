@@ -6,7 +6,7 @@ using Microsoft.Framework.DependencyInjection;
 using Panther.CMS.Entities;
 using Panther.CMS.Interfaces;
 
-namespace PantherCMS.Helper
+namespace Microsoft.AspNet.Mvc.Rendering
 
 {
     public static partial class PantherHelper
