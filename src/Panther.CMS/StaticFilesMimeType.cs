@@ -6,7 +6,13 @@ namespace Panther.CMS
     {
         public StaticFilesMimeType() : base()
         {
-            Mappings.Add(".woff2", "application/font-woff2");
+            AddExtension(".woff2", "application/font-woff2");
+        }
+
+        public void AddExtension(string extension, string mime)
+        {
+            if (!Mappings.ContainsKey(extension))
+                Mappings.Add(extension, mime);
         }
     }
 }

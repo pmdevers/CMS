@@ -30,9 +30,8 @@ namespace Microsoft.Framework.DependencyInjection
 
             var pantherConfig = new PantherConfig();
             config(pantherConfig);
-            var staticFileOptions = new StaticFileOptions();
 
-            app.UseStaticFiles(staticFileOptions)
+            app.UseStaticFiles(new StaticFileOptions { ContentTypeProvider = new StaticFilesMimeType() })
             .UseIdentity()
             .UseCookieAuthentication(options =>
             {
@@ -42,8 +41,7 @@ namespace Microsoft.Framework.DependencyInjection
             .UseMiddleware<PantherMiddleware>()
             .UseMvc(routes =>
             {
-                //routes.MapRoute(null, "api/{controller}/{action}", new { controller = "Templates", action = "Handle" });
-                routes.MapRoute(null, "api/{controller}", new { controller = "Templates" });
+                routes.MapRoute(null, "api/{controller}", new { controller = "Site" });
                 routes.MapRoute("default", "{controller}/{action}", new { controller = "Home", action = "Index" }, new { route = new TestConstaint() });
                 routes.MapRoute("defaultCulture", "{culture}/{*url}", new { culture = "nl-nl", controller = "Panther", action = "CurrentPage" }, new { host = new HostConstraint() });
                 routes.MapRoute("cmsroute", "{*url}", new { culture = "nl-nl", controller = "Panther", action = "CurrentPage" }, new { host = new HostConstraint() });
