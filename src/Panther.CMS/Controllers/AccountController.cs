@@ -22,16 +22,6 @@ namespace Panther.CMS.Controllers
         {
             UserManager = userManager;
             SignInManager = signInManager;
-
-            if (!userManager.GetUsersInRoleAsync("Admin").Result.Any())
-            {
-                var user = new User();
-
-                user.Email = "pmdevers@gmail.com";
-                user.Username = "pmdevers";
-                user.Roles.Add("Admin");
-                var result = userManager.CreateAsync(user, "Eas6w32d!").Result;
-            }
         }
 
         public UserManager<User> UserManager { get; private set; }
