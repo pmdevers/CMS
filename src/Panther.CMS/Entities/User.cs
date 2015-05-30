@@ -27,7 +27,7 @@ namespace Panther.CMS.Entities
         public DateTimeOffset? LockoutEnd { get; set; }
         public int AccessFailedCount { get; set; }
         public bool LockoutEnabled{ get; set; }
-
+        public string SecurityToken { get; set; }
         public List<UserClaim> Claims { get; set; }
         public bool TwoFactorEnabled { get; set; }
     }

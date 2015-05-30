@@ -4,13 +4,15 @@
     "PasswordHash": "AQAAAAEAACcQAAAAEKhv8auduU9OEf0wCmn0hI6rKj0BHMdRVU4e5tFMxpLdY8LtmHB4k5wi/JTlJGpqWg==",
     "Id": "0a9b186a-d385-4af5-b88a-12730e307adf",
     "Roles": [
-      "Admin"
+        "Admin",
+        "ApiUser"
     ],
     "Email": "pmdevers@gmail.com",
     "EmailConfirmed": false,
     "LockoutEnd": null,
     "AccessFailedCount": 0,
     "LockoutEnabled": false,
+    "SecurityToken":  "",
     "Claims": []
   }
 ]

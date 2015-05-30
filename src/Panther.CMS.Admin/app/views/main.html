@@ -1,0 +1,64 @@
+<h1>{{site.Name}}</h1>
+<div class="row marketing">
+  <div class="col-lg-2">
+    <ul style="list-style: none;">
+      <li ng-repeat="item in pages">
+          <a href="" ng-click="editPage(item)"> {{item.Name}} </a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-lg-4">
+    <input type="text" ng-model="currentPage.Name" />
+
+
+    <form>
+       <plugin plugin='{{content.Type}}' content="content" ng-repeat="content in contents"></plugin>
+    </form>
+    <button ng-click="saveContent()">Save</button>
+  </div>
+  <div class="col-lg-6">
+    <div>
+        <button onclick="resize(1600, 1080, 0.8);">Reset</button>
+        <button onclick="resize(800, 1280, 0.8)">Nexus 10</button>
+        <button onclick="resize(1024, 768, 0.9)">IPad</button>
+        <button onclick="resize(375, 667, 1)">IPhone 6 plus</button>
+        <button onclick="resize(320, 480, 1)">IPhone</button>
+    </div>
+    <div class="desktop">
+      <iframe ng-src="{{currentUrl}}" class="preview" onload="resize(1600, 1080, 0.8)" style="width: 100%" border="0" ></iframe>
+    </div>
+    <!--<iframe id="testframe" ng-src="{{currentUrl}}" set-dimentions-onload style="display: block" scrolling="no" frameborder="0"></iframe>-->
+  </div>
+</div>
+<script type="text/javascript">
+    function resize(width,height,scale)
+    {
+        var calcWidth = width * scale;
+        var calcHeight = height * scale;
+        $(".preview").css("width", calcWidth + "px");
+        $(".preview").css("height", calcHeight + "px");
+        $(".preview").css("zoom", scale);
+        $(".preview").css("-moz-transform", 'scale(' + scale + ')');
+        $(".preview").css("-moz-transform-origin", '0 0');
+
+        $(".preview").css("-ms-transform", 'scale(' + scale + ')');
+        $(".preview").css("-moz-transform", 'scale(' + scale + ')');
+        $(".preview").css("-o-transform", 'scale(' + scale + ')');
+        $(".preview").css("-webkit-transform", 'scale(' + scale + ')');
+        $(".preview").css("transform", 'scale(' + scale + ')');
+    
+        $(".preview").css("-ms-transform-origin", '0 0');
+        $(".preview").css("-moz-transform-origin", '0 0');
+        $(".preview").css("-o-transform-origin", '0 0');
+        $(".preview").css("-webkit-transform-origin", '0 0');
+        $(".preview").css("transform-origin", '0 0');
+
+    }
+
+
+
+    function reset()
+    {
+        $(".preview").css("width","100%");
+    }
+</script>

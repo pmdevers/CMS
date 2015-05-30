@@ -61,5 +61,21 @@ namespace Panther.CMS.Controllers
                 ? Redirect(returnUrl)
                 : Redirect("/");
         }
+#if DEBUG
+        public async Task<IActionResult> GetToken()
+        {
+            var user = await UserManager.FindByEmailAsync("pmdevers@gmail.com");
+            var token = await UserManager.GenerateUserTokenAsync(user, "Email", "test");
+
+            return Content(token);
+        }
+
+        public async Task<IActionResult> SetToken(string token)
+        {
+            var user = await UserManager.FindByEmailAsync("pmdevers@gmail.com");
+            var valid = await UserManager.VerifyUserTokenAsync(user, "Email", "test", token);
+            return Content(valid.ToString());
+        }
+#endif
     }
 }

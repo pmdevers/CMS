@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 
 using Panther.CMS.Entities;
@@ -10,10 +11,9 @@ using Panther.CMS.Services.Page;
 
 namespace Panther.CMS.Controllers.Api
 {
-    [Route("api/[controller]")]
-    public class PageController : Controller
+    public class PageController : BaseController
     {
-        private IPageService pageService;
+        private readonly IPageService pageService;
 
         public PageController(IPageService pageService)
         {

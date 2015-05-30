@@ -18,7 +18,8 @@ namespace Microsoft.Framework.DependencyInjection
     {
         public static IServiceCollection AddPanther(this IServiceCollection services)
         {
-            services.AddIdentity<User, Role>();
+            services.AddIdentity<User, Role>()
+                .AddDefaultTokenProviders();
             services.AddMvc();
             services.ConfigureMvc(options =>
             {

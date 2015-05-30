@@ -20,7 +20,8 @@ namespace Panther.CMS.Storage.User
         IUserEmailStore<Entities.User>,
         IUserLockoutStore<Entities.User>,
         IUserClaimStore<Entities.User>,
-        IUserTwoFactorStore<Entities.User>
+        IUserTwoFactorStore<Entities.User>,
+        IUserSecurityStampStore<Entities.User>
     {
         public UserStore(IPantherFileSystem fileSystem) :base(fileSystem)
         {
@@ -516,6 +517,29 @@ namespace Panther.CMS.Storage.User
                 throw new ArgumentNullException(nameof(user));
             }
             return Task.FromResult(user.TwoFactorEnabled);
+        }
+
+        public Task SetSecurityStampAsync(Entities.User user, string stamp, CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            ThrowIfDisposed();
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+            user.SecurityToken = stamp;
+            return Task.FromResult(0);
+        }
+
+        public Task<string> GetSecurityStampAsync(Entities.User user, CancellationToken cancellationToken)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            ThrowIfDisposed();
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+            return Task.FromResult(user.SecurityToken);
         }
     }
 }
