@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -8,6 +9,7 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.DependencyInjection;
 
 using Panther.CMS.Entities;
+using Panther.CMS.Extensions;
 using Panther.CMS.Interfaces;
 
 namespace Panther.CMS.Filters
@@ -25,9 +27,7 @@ namespace Panther.CMS.Filters
                 var user = context.HttpContext.User;
 
                 var userIsAnonymous =
-                    user == null ||
-                    user.Identity == null ||
-                    !user.Identity.IsAuthenticated;
+                    user?.Identity == null || !user.Identity.IsAuthenticated;
 
                 if (userIsAnonymous && !UserIsAuthorized(page, user))
                 {
@@ -35,6 +35,8 @@ namespace Panther.CMS.Filters
                 }
             }
         }
+
+
 
         private bool UserIsAuthorized(Page page, ClaimsPrincipal user)
         {

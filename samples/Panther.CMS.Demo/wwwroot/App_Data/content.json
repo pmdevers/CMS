@@ -1,38 +1,191 @@
 [
-    {
-        "Id": "46d65681-dd79-462c-b433-ad522376e609",
-        "ParentId": null,
-        "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
-        "SiteId": null,
-        "Name": "Title",
-        "Type": "string",
-        "Data": "Home"
-    },
-    {
-        "Id": "27842489-6781-4c0f-9f9b-12e131088a82",
-        "ParentId": null,
-        "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
-        "SiteId": null,
-        "Name": "Description",
-        "Type": "string",
-        "Data": "A MVC6 Content Management System"
-    },
-    {
-        "Id": "5ce227bc-fb54-4a8d-a66f-054a6a7c119a",
-        "ParentId": null,
-        "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
-        "SiteId": null,
-        "Name": "Keywords",
-        "Type": "string",
-        "Data": "ASP.net, MVC6, Content Management System, PantherCMS"
-    },
-    {
-        "Id": "5ce227bc-fb54-4a8d-a66f-054a6a7c119f",
-        "ParentId": null,
-        "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
-        "SiteId": null,
-        "Name": "Show",
-        "Type": "boolean",
-        "Data": "True"
-    }
+  {
+    "Id": "3b41ca4c-9e47-450f-b746-44ae7f93869a",
+    "ParentId": null,
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Title",
+    "Type": "string",
+    "Data": "Home"
+  },
+  {
+    "Id": "e94d3f94-a090-4971-a3af-03c1d15622c1",
+    "ParentId": null,
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Container",
+    "Type": "container",
+    "Data": ""
+  },
+  {
+    "Id": "7f137b76-1f93-46f0-8188-bd23016b9942",
+    "ParentId": "e94d3f94-a090-4971-a3af-03c1d15622c1",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Row-1",
+    "Type": "row",
+    "Data": ""
+  },
+  {
+    "Id": "0d3dd266-d13d-4ede-9dfd-2a7900470168",
+    "ParentId": "7f137b76-1f93-46f0-8188-bd23016b9942",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Column-1",
+    "Type": "column",
+    "Data": "12"
+  },
+  {
+    "Id": "c7650005-043a-4770-8c5d-0258354e7225",
+    "ParentId": "0d3dd266-d13d-4ede-9dfd-2a7900470168",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "JumboTron",
+    "Type": "jumbotron",
+    "Data": ""
+  },
+  {
+    "Id": "a8f4346d-0a46-41d2-a4ea-50ff76d47bfa",
+    "ParentId": "c7650005-043a-4770-8c5d-0258354e7225",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Content",
+    "Type": "ritchtext",
+    "Data": "<h2>Welcome To Panther</h2>\n<p>A MVC 6 Content Management System.</p>"
+  },
+  {
+    "Id": "05c1a719-6d02-4330-a656-52d2d8824d0b",
+    "ParentId": "e94d3f94-a090-4971-a3af-03c1d15622c1",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Row-2",
+    "Type": "row",
+    "Data": ""
+  },
+  {
+    "Id": "a1238902-7ae7-4bf8-ab1b-f90c635b6037",
+    "ParentId": "05c1a719-6d02-4330-a656-52d2d8824d0b",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Column-1",
+    "Type": "column",
+    "Data": "4"
+  },
+  {
+    "Id": "69ea6610-f892-49c0-87c6-b66df9523e59",
+    "ParentId": "a1238902-7ae7-4bf8-ab1b-f90c635b6037",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Header",
+    "Type": "string",
+    "Data": "<h2>Header</h2>"
+  },
+  {
+    "Id": "7fbea420-6376-449c-9121-01ab0a8cbe0d",
+    "ParentId": "a1238902-7ae7-4bf8-ab1b-f90c635b6037",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Body",
+    "Type": "ritchtext",
+    "Data": "<p><span style=\"color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px;\">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</span></p>"
+  },
+  {
+    "Id": "46b2d9d4-94b0-4b05-8780-4c064ad6e987",
+    "ParentId": "a1238902-7ae7-4bf8-ab1b-f90c635b6037",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Link",
+    "Type": "string",
+    "Data": "View Detail"
+  },
+  {
+    "Id": "88be1b80-aaf0-4e0f-b556-96af4fdc5f9b",
+    "ParentId": "05c1a719-6d02-4330-a656-52d2d8824d0b",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Column-2",
+    "Type": "column",
+    "Data": "4"
+  },
+  {
+    "Id": "468fd157-c016-4912-8c2b-254f87efbb0c",
+    "ParentId": "88be1b80-aaf0-4e0f-b556-96af4fdc5f9b",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Header",
+    "Type": "string",
+    "Data": "<h2>Header</h2>"
+  },
+  {
+    "Id": "6c4515e8-d854-47bb-9d6d-60cfba812278",
+    "ParentId": "88be1b80-aaf0-4e0f-b556-96af4fdc5f9b",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Body",
+    "Type": "ritchtext",
+    "Data": "<p><span style=\"color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px;\">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</span></p>"
+  },
+  {
+    "Id": "ead9bd76-193a-443c-b12f-ffcc2ca3300a",
+    "ParentId": "88be1b80-aaf0-4e0f-b556-96af4fdc5f9b",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Link",
+    "Type": "string",
+    "Data": "View Detail"
+  },
+  {
+    "Id": "b6467fb6-71cd-4a90-b831-cbbfbabeef99",
+    "ParentId": "05c1a719-6d02-4330-a656-52d2d8824d0b",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Column-3",
+    "Type": "column",
+    "Data": "4"
+  },
+  {
+    "Id": "3a0afe9f-aa01-491c-86f9-3574d8f7cf86",
+    "ParentId": "b6467fb6-71cd-4a90-b831-cbbfbabeef99",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Header",
+    "Type": "string",
+    "Data": "<h2>Header</h2>"
+  },
+  {
+    "Id": "b40d94be-1cce-4377-afc4-5530936deccb",
+    "ParentId": "b6467fb6-71cd-4a90-b831-cbbfbabeef99",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Body",
+    "Type": "ritchtext",
+    "Data": "<p><span style=\"color: #333333; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px;\">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</span></p>"
+  },
+  {
+    "Id": "cfe93ff9-04de-4571-a82c-3d2cea2d4380",
+    "ParentId": "b6467fb6-71cd-4a90-b831-cbbfbabeef99",
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Link",
+    "Type": "string",
+    "Data": "View Detail"
+  },
+  {
+    "Id": "3da71772-6155-420f-88da-b3a734c64253",
+    "ParentId": null,
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Description",
+    "Type": "string",
+    "Data": "AMVC6ContentManagementSystem"
+  },
+  {
+    "Id": "959149a3-ee65-4fb4-88c3-02a49e596652",
+    "ParentId": null,
+    "PageId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+    "SiteId": null,
+    "Name": "Keywords",
+    "Type": "string",
+    "Data": "ASP.net, MVC6, ContentManagementSystem, PantherCMS"
+  }
 ]

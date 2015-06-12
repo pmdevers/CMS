@@ -18,6 +18,9 @@ angular.module('adminApp')
     	})
     	.success(function(data, status, header, config){
             callback(data);
-		});
+    	})
+        .error(function () {
+            $location.path('/login.html');
+	        });
     }
 }]);

@@ -1,18 +1,23 @@
 [
   {
-    "Username": "pmdevers",
-    "PasswordHash": "AQAAAAEAACcQAAAAEKhv8auduU9OEf0wCmn0hI6rKj0BHMdRVU4e5tFMxpLdY8LtmHB4k5wi/JTlJGpqWg==",
-    "Id": "0a9b186a-d385-4af5-b88a-12730e307adf",
+    "Username": "admin@panther.com",
+    "PasswordHash": "AQAAAAEAACcQAAAAEB7hOR6BYF0XPFPk/Aiyc8E2gdu/Jo8UvT/a19uWiSPbOGgCGHjl/grJqMfM9fUDDw==",
+    "Id": "836ab887-1490-4fd3-9388-e11be20896e0",
     "Roles": [
-        "Admin",
-        "ApiUser"
+      "Admin"
     ],
-    "Email": "pmdevers@gmail.com",
+    "Email": null,
     "EmailConfirmed": false,
     "LockoutEnd": null,
     "AccessFailedCount": 0,
     "LockoutEnabled": false,
-    "SecurityToken":  "",
-    "Claims": []
+    "SecurityToken": "01fd8ec0-6338-4ef7-abbf-000dc32a310a",
+    "Claims": [
+      {
+        "Type": "Administration",
+        "Value": "Allowed"
+      }
+    ],
+    "TwoFactorEnabled": false
   }
 ]

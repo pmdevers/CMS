@@ -7,6 +7,7 @@ using Panther.CMS.Filters;
 using Panther.CMS.Interfaces;
 using Panther.CMS.Services.Page;
 using Panther.CMS.Services.Site;
+using Microsoft.AspNet.Identity;
 
 namespace Panther.CMS
 {

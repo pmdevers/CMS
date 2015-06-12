@@ -3,7 +3,7 @@ using Microsoft.AspNet.Mvc;
 
 namespace Panther.CMS.Controllers.Api
 {
-    [Authorize(Roles = "ApiUser")]
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     public class BaseController : Controller
     {

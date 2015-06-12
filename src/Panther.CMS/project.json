@@ -1,10 +1,10 @@
 ﻿{
-   "version": "1.0.0-*",
-  "description": "A MVC 6 content management system.",
-  "authors": [ "Patrick Evers" ],
-  "tags": [ "CMS", "MVC6" ],
-  "projectUrl": "https://github.com/pmdevers/PantherCMS",
-  "licenseUrl": "https://raw.githubusercontent.com/pmdevers/CMS/master/LICENSE",
+    "version": "1.0.0-*",
+    "description": "A MVC 6 content management system.",
+    "authors": [ "Patrick Evers" ],
+    "tags": [ "CMS", "MVC6" ],
+    "projectUrl": "https://github.com/pmdevers/PantherCMS",
+    "licenseUrl": "https://raw.githubusercontent.com/pmdevers/CMS/master/LICENSE",
 
     "dependencies": {
         "Microsoft.AspNet.Server.IIS": "1.0.0-beta4",
@@ -13,6 +13,7 @@
         "Microsoft.AspNet.StaticFiles": "1.0.0-beta4",
         "Microsoft.AspNet.Authentication.Cookies": "1.0.0-beta4",
         "Microsoft.AspNet.Identity": "3.0.0-beta4",
+        "Microsoft.Framework.ConfigurationModel.Json": "1.0.0-beta4",
         "Panther.Mail.Mvc": "1.0.0-*"
     },
 

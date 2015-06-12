@@ -1,1 +1,8 @@
-[]
+[
+  {
+    "Id": "1d469e98-8fe5-4ebb-a5c7-fa00547272b2",
+    "Name": "Admin",
+    "ConcurrencyStamp": null,
+    "Claims": []
+  }
+]

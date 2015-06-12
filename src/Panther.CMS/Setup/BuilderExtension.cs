@@ -1,11 +1,17 @@
 ﻿using System;
+using System.Net;
 
+using Microsoft.AspNet.Authentication.Cookies;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.StaticFiles;
 
+using Newtonsoft.Json;
+
 using Panther.CMS;
 using Panther.CMS.Constraints;
+using Panther.CMS.Extensions;
+using Panther.CMS.Setup;
 
 namespace Microsoft.Framework.DependencyInjection
 {
@@ -37,6 +43,29 @@ namespace Microsoft.Framework.DependencyInjection
             {
                 options.LoginPath = new PathString(pantherConfig.LoginPath);
                 options.AutomaticAuthentication = true;
+                options.Notifications = new CookieAuthenticationNotifications()
+                {
+                    OnApplyRedirect = (context) =>
+                    {
+                        if (context.Request.IsApiRequest())
+                        {
+                            var jsonResponse = JsonConvert.SerializeObject(new
+                            {
+                                status = context.Response.StatusCode,
+                                headers = new
+                                {
+                                    location = context.RedirectUri
+                                }
+                            }, Formatting.None);
+                            context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+                            context.Response.Headers.Append("X-Responded-JSON", jsonResponse);
+                        }
+                        else
+                        {
+                            context.Response.Redirect(context.RedirectUri);
+                        }
+                    }
+                };
             })
             .UseMiddleware<PantherMiddleware>()
             .UseMvc(routes =>
@@ -46,6 +75,9 @@ namespace Microsoft.Framework.DependencyInjection
                 routes.MapRoute("defaultCulture", "{culture}/{*url}", new { culture = "nl-nl", controller = "Panther", action = "CurrentPage" }, new { host = new HostConstraint() });
                 routes.MapRoute("cmsroute", "{*url}", new { culture = "nl-nl", controller = "Panther", action = "CurrentPage" }, new { host = new HostConstraint() });
             });
+
+            Initializer.Initialize(app.ApplicationServices).Wait();
+
             return app;
         }
     }
