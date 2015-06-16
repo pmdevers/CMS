@@ -1,6 +1,10 @@
 @echo off
 cd %~dp0
 
+echo %PATH%
+
+set PATH=%USERPROFILE%/.dnx/bin;%PATH%
+
 SETLOCAL
 SET CACHED_NUGET=%LocalAppData%\NuGet\NuGet.exe
 
