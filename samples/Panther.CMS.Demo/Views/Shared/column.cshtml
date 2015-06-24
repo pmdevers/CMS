@@ -1,0 +1,7 @@
+﻿@model Panther.CMS.Entities.Content
+<div class="col-md-@Model.Data column">
+    @foreach (var column in Model.Children)
+    {
+        @Html.Render(column.Name)
+    }
+</div>

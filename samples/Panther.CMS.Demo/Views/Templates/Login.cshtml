@@ -1,0 +1,48 @@
+﻿@model Panther.CMS.Models.LoginModel
+@{
+    Layout = "layout";
+}
+
+
+
+<div class="login-card">
+    <h1>Log-in</h1><br>
+    @using (Html.PantherForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.TextBoxFor(x => x.Username, new { placeholder = "Username" })
+        @Html.PasswordFor(x => x.Password, new { placeholder = "Password" })
+        <input type="submit" name="login" class="login login-submit" value="login">
+    }
+
+    <div class="login-help">
+        <a href="#">Register</a> • <a href="#">Forgot Password</a>
+    </div>
+</div>
+
+
+    @*<h3>Login</h3>
+    <p>@User.Identity.Name</p>
+
+    @using (Html.PantherForm())
+    {
+
+        <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+        
+
+        @Html.TextBoxFor(x => x.Username)
+        @Html.PasswordFor(x => x.Password)
+
+        <button type="submit">Login</button>
+    }
+
+    @Html.ActionLink("Logout", "Logoff", "Account")
+
+
+    <p>Everything is in User.Identity</p>
+    <ul>
+        <li>AuthenticationType: @User.Identity.AuthenticationType</li>
+        <li>IsAuthenticated: @User.Identity.IsAuthenticated</li>
+        <li>Name: @User.Identity.Name</li>
+        <li>IsInRole("admin"): @User.IsInRole("Admin")</li>
+    </ul>*@

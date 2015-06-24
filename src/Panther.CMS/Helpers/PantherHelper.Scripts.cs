@@ -3,7 +3,7 @@ using System.Text;
 
 using Microsoft.AspNet.Mvc.Rendering;
 
-namespace PantherCMS.Helper
+namespace Microsoft.AspNet.Mvc.Rendering
 {
     public static partial class PantherHelper
     {

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
+using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 
 using Panther.CMS.Services.Content;
@@ -9,10 +11,10 @@ using Panther.CMS.Services.Models;
 
 namespace Panther.CMS.Controllers.Api
 {
-    [Route("api/[controller]")]
-    public class ContentController : Controller
+    
+    public class ContentController : BaseController
     {
-        private IContentService contentSerivce;
+        private readonly IContentService contentSerivce;
 
         public ContentController(IContentService contentSerivce)
         {

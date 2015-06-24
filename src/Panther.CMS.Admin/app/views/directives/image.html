@@ -1,0 +1,6 @@
+<div class="well">
+	<h4>{{content.Name}}</h4>
+	<div class="form-group" ng-repeat="item in content.Children">
+	    <plugin plugin='{{item.Type}}' content="item"></plugin>
+	</div>
+<div>

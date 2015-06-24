@@ -1,0 +1,23 @@
+[
+  {
+    "Username": "admin@panther.com",
+    "PasswordHash": "AQAAAAEAACcQAAAAEB7hOR6BYF0XPFPk/Aiyc8E2gdu/Jo8UvT/a19uWiSPbOGgCGHjl/grJqMfM9fUDDw==",
+    "Id": "836ab887-1490-4fd3-9388-e11be20896e0",
+    "Roles": [
+      "Admin"
+    ],
+    "Email": null,
+    "EmailConfirmed": false,
+    "LockoutEnd": null,
+    "AccessFailedCount": 0,
+    "LockoutEnabled": false,
+    "SecurityToken": "01fd8ec0-6338-4ef7-abbf-000dc32a310a",
+    "Claims": [
+      {
+        "Type": "Administration",
+        "Value": "Allowed"
+      }
+    ],
+    "TwoFactorEnabled": false
+  }
+]

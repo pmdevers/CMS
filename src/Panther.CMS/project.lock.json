@@ -9,6 +9,7 @@
       "Microsoft.AspNet.StaticFiles >= 1.0.0-beta4",
       "Microsoft.AspNet.Authentication.Cookies >= 1.0.0-beta4",
       "Microsoft.AspNet.Identity >= 3.0.0-beta4",
+      "Microsoft.Framework.ConfigurationModel.Json >= 1.0.0-beta4",
       "Panther.Mail.Mvc >= 1.0.0-*"
     ],
     "DNX,Version=v4.5.1": [],
@@ -2277,6 +2278,54 @@
         "lib/portable-net451+win81+wpa81/Microsoft.Framework.ConfigurationModel.Interfaces.xml"
       ]
     },
+    "Microsoft.Framework.ConfigurationModel.Json/1.0.0-beta4": {
+      "serviceable": true,
+      "sha": "ygdShf5lzRsqe7/pMNSaiq6AcAy0eIhp8WFUtYfqQnsxhMJFcw/VlIFvie8+DkYhacdmGkXTF4OGopjjwfg02A==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "Newtonsoft.Json": "6.0.6",
+            "Microsoft.Framework.ConfigurationModel": "1.0.0-beta4"
+          },
+          "frameworkAssemblies": [
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Microsoft.CSharp"
+          ],
+          "runtimeAssemblies": [
+            "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll"
+          ]
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {
+            "Newtonsoft.Json": "6.0.6",
+            "Microsoft.Framework.ConfigurationModel": "1.0.0-beta4"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Json.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Json.dll"
+          ]
+        }
+      },
+      "files": [
+        "Microsoft.Framework.ConfigurationModel.Json.1.0.0-beta4.nupkg",
+        "Microsoft.Framework.ConfigurationModel.Json.1.0.0-beta4.nupkg.sha512",
+        "Microsoft.Framework.ConfigurationModel.Json.nuspec",
+        "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.dll",
+        "lib/dnx451/Microsoft.Framework.ConfigurationModel.Json.xml",
+        "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Json.dll",
+        "lib/dnxcore50/Microsoft.Framework.ConfigurationModel.Json.xml",
+        "lib/net45/Microsoft.Framework.ConfigurationModel.Json.dll",
+        "lib/net45/Microsoft.Framework.ConfigurationModel.Json.xml"
+      ]
+    },
     "Microsoft.Framework.DependencyInjection/1.0.0-beta4": {
       "serviceable": true,
       "sha": "PVzGSHq2lgQE4/Bje+lL7UNcj/ADVimsuAA10ACtA3qcLk0DkhgrXJsSMRyFBAv2vqvDXFTE2cLKHcsckWbSQw==",
@@ -3120,6 +3169,62 @@
         "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.dll",
         "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.xml",
         "tools/install.ps1"
+      ]
+    },
+    "Panther.CMS/1.0.0": {
+      "serviceable": false,
+      "sha": "kMlkr55e5mWvarx79CZVr0L4ArK3Lcin0pXz0UHf0SZIqgMGmldLS1ZxQbARCc7aDMZ4tC9Ln0W6i8YyJ/tdhQ==",
+      "frameworks": {
+        "DNX,Version=v4.5.1": {
+          "dependencies": {
+            "Microsoft.AspNet.Server.IIS": "1.0.0-beta4",
+            "Microsoft.AspNet.Server.WebListener": "1.0.0-beta4",
+            "Microsoft.AspNet.Mvc": "6.0.0-beta4",
+            "Microsoft.AspNet.StaticFiles": "1.0.0-beta4",
+            "Microsoft.AspNet.Authentication.Cookies": "1.0.0-beta4",
+            "Microsoft.AspNet.Identity": "3.0.0-beta4",
+            "Panther.Mail.Mvc": "1.0.0"
+          },
+          "frameworkAssemblies": [
+            "mscorlib",
+            "System",
+            "System.Core",
+            "Microsoft.CSharp"
+          ],
+          "runtimeAssemblies": [
+            "lib/dnx451/Panther.CMS.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnx451/Panther.CMS.dll"
+          ]
+        },
+        "DNXCore,Version=v5.0": {
+          "dependencies": {
+            "Microsoft.AspNet.Server.IIS": "1.0.0-beta4",
+            "Microsoft.AspNet.Server.WebListener": "1.0.0-beta4",
+            "Microsoft.AspNet.Mvc": "6.0.0-beta4",
+            "Microsoft.AspNet.StaticFiles": "1.0.0-beta4",
+            "Microsoft.AspNet.Authentication.Cookies": "1.0.0-beta4",
+            "Microsoft.AspNet.Identity": "3.0.0-beta4",
+            "Panther.Mail.Mvc": "1.0.0"
+          },
+          "frameworkAssemblies": [],
+          "runtimeAssemblies": [
+            "lib/dnxcore50/Panther.CMS.dll"
+          ],
+          "compileAssemblies": [
+            "lib/dnxcore50/Panther.CMS.dll"
+          ]
+        }
+      },
+      "files": [
+        "Panther.CMS.1.0.0.nupkg",
+        "Panther.CMS.1.0.0.nupkg.sha512",
+        "Panther.CMS.nuspec",
+        "lib/dnx451/Panther.CMS.dll",
+        "lib/dnx451/Panther.CMS.xml",
+        "lib/dnxcore50/Panther.CMS.dll",
+        "lib/dnxcore50/Panther.CMS.xml"
       ]
     },
     "Panther.Mail/1.0.0": {

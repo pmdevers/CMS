@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using Microsoft.AspNet.Authorization;
+using Microsoft.AspNet.Mvc;
 
 using Panther.CMS.Entities;
 using Panther.CMS.Services.Site;
@@ -7,11 +8,10 @@ using Panther.CMS.Services.Site;
 
 namespace Panther.CMS.Controllers.Api
 {
-    [Route("api/[controller]")]
-    public class SiteController : Controller
+    public class SiteController : BaseController
     {
 
-        private ISiteService siteService;
+        private readonly ISiteService siteService;
 
         public SiteController(ISiteService siteService)
         {

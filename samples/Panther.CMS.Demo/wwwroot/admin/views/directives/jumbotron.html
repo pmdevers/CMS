@@ -1,0 +1,6 @@
+﻿<div class="input-group">
+    <label for="intput{{content.Name}}">{{content.Name}}</label>
+    <div ng-repeat="child in content.Children">
+        <plugin plugin='{{child.Type}}' content="child"></plugin>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -10,6 +11,7 @@ namespace Panther.CMS.Storage
     public class Store<T, TKey>
         : IStore<T, TKey> where T : IEntity<TKey>
     {
+        private bool _disposed;
         private string _filename;
         private string _content;
 
@@ -105,6 +107,40 @@ namespace Panther.CMS.Storage
         {
             var items = Items.Where(selector.Compile()).ToList();
             items.ForEach(Delete);
+        }
+
+        public virtual TKey ConvertIdFromString(string id)
+        {
+            if (id == null)
+            {
+                return default(TKey);
+            }
+            return (TKey)TypeDescriptor.GetConverter(typeof(TKey)).ConvertFromInvariantString(id);
+        }
+
+        public virtual string ConvertIdToString(TKey id)
+        {
+            if (id.Equals(default(TKey)))
+            {
+                return null;
+            }
+            return id.ToString();
+        }
+
+        protected void ThrowIfDisposed()
+        {
+            if (_disposed)
+            {
+                throw new ObjectDisposedException(GetType().Name);
+            }
+        }
+
+        /// <summary>
+        ///     Dispose the store
+        /// </summary>
+        public void Dispose()
+        {
+            _disposed = true;
         }
     }
 }

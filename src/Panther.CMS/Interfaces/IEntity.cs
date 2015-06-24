@@ -1,4 +1,6 @@
-﻿namespace Panther.CMS.Interfaces
+﻿using System;
+
+namespace Panther.CMS.Interfaces
 {
     public interface IEntity<TKey>
     {

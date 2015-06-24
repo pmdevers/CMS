@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using Panther.CMS.Interfaces;
 
@@ -23,5 +24,8 @@ namespace Panther.CMS.Entities
         public string Action { get; set; }
 
         public string Route { get; set; }
+        public bool AllowAnonymous { get; set; }
+
+        public List<string> RequiredRoles { get; set; } 
     }
 }

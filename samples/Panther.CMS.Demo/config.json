@@ -1,0 +1,6 @@
+﻿{
+    "LoginPageUrl": "/Login",
+    "DefaultAdminUsername": "admin@panther.com",
+    "DefaultAdminPassword": "P@nth3r!",
+    "DefaultAdminRole":  "Admin"
+}
