@@ -1,5 +1,5 @@
 init:
-  - git config --global core.autocrlf true 
+  - git config --global core.autocrlf true  
 build_script:
   - build.cmd --quiet --parallel verify
 clone_depth: 1
