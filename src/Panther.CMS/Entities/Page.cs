@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Reflection;
 
+using Panther.CMS.Helpers;
 using Panther.CMS.Interfaces;
 
 namespace Panther.CMS.Entities
@@ -27,5 +31,17 @@ namespace Panther.CMS.Entities
         public bool AllowAnonymous { get; set; }
 
         public List<string> RequiredRoles { get; set; } 
+
+        public Dictionary<string, string> Properties { get; set; }
+
+        public T GetProperties<T>()
+        {
+            return ObjectHydrator.Build<T>(Properties);
+        }
+
+        public void AddProperties<T>(T obj)
+        {
+            ObjectHydrator.Into(obj, Properties);
+        }
     }
 }

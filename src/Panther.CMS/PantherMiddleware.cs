@@ -28,9 +28,8 @@ namespace Panther.CMS
         {
             var currentApplicationService = httpContext.ApplicationServices;
             var currentRequestServices = httpContext.RequestServices;
-
+            
             _context.Initialize(httpContext);
-
             await _next.Invoke(httpContext);
         }
     }

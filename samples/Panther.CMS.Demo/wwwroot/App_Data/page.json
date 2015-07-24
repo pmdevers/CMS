@@ -1,16 +1,21 @@
 [
-  {
-    "Id": "ba32151c-261c-4ef0-87bc-b0452863ec60",
-    "ParentId": null,
-    "SiteId": "0f226f72-5ad9-4755-aa2a-acc511826f83",
-    "Name": "Home",
-    "Url": "",
-    "Template": "Index",
-    "Controller": null,
-    "Action": null,
-    "Route": null,
-    "AllowAnonymous": true
-  },
+    {
+        "Id": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+        "ParentId": null,
+        "SiteId": "0f226f72-5ad9-4755-aa2a-acc511826f83",
+        "Name": "Home",
+        "Url": "",
+        "Template": "Index",
+        "Controller": null,
+        "Action": null,
+        "Route": null,
+        "AllowAnonymous": true,
+        "Properties": {
+            "GoogleSitemapProperties.ChangeFrequency": "weekly",
+            "GoogleSitemapProperties.Priority": "0.1",
+            "GoogleSitemapProperties.LastModified" : "2014-07-10T10:00:00"
+        }
+    },
     {
         "Id": "1dbe1fd3-5b39-457f-9bde-4a350c9cd163",
         "ParentId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
@@ -21,20 +26,29 @@
         "Controller": "Account",
         "Action": "Index",
         "Route": null,
-        "AllowAnonymous": true
+        "AllowAnonymous": true,
+        "Properties": {
+            "GoogleSitemapProperties.ChangeFrequency": "weekly",
+            "GoogleSitemapProperties.Priority": "0.1",
+            "GoogleSitemapProperties.LastModified" : "2014-07-10T10:00:00"
+        }
     },
     {
-    "Id": "1dbe1fd3-5b39-457f-9bde-4a350c9cd164",
-    "ParentId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
-    "SiteId": "0f226f72-5ad9-4755-aa2a-acc511826f83",
-    "Name": "Securred",
-    "Url": "sec",
-    "Template": "Index",
-    "Controller": null,
-    "Action": null,
-    "Route": null,
+        "Id": "1dbe1fd3-5b39-457f-9bde-4a350c9cd164",
+        "ParentId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+        "SiteId": "0f226f72-5ad9-4755-aa2a-acc511826f83",
+        "Name": "Securred",
+        "Url": "sec",
+        "Template": "Index",
+        "Controller": null,
+        "Action": null,
+        "Route": null,
         "AllowAnonymous": false,
-        "RequiredRoles": ["Admin", "Test"]
-  }
-
+        "RequiredRoles": [ "Admin", "Test" ],
+        "Properties": {
+            "GoogleSitemapProperties.ChangeFrequency": "Monthly",
+            "GoogleSitemapProperties.Priority": "0.1",
+            "GoogleSitemapProperties.LastModified": "2014-07-10T10:00:00"
+        }
+    }
 ]
