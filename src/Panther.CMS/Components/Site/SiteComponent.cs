@@ -12,7 +12,7 @@ namespace Panther.CMS.Components.Site
         public Entities.Site GetSite()
         {
             var store = new SiteStore(Context.FileSystem);
-            var site = store.GetSite(Context.HostString);
+            var site = store.GetSite(Context.Url);
             return site;
         }
     }

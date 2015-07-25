@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Panther.CMS.Interfaces;
 
@@ -8,7 +9,9 @@ namespace Panther.CMS.Storage.Content
     public class ContentStore : Store<Entities.Content, Guid>, IContentStore
     {
         public ContentStore(IPantherFileSystem fileSystem) : base(fileSystem)
-        { }
+        {
+            
+        }
 
         public override Guid GenerateKey()
         {

@@ -81,10 +81,11 @@ namespace Microsoft.Framework.DependencyInjection
                 routes.MapRoute("ErrorRoute", "error/{statusCode}/{status}", new { controller = "Error", action = "Error" });
                 routes.MapRoute(null, "api/{controller}", new { controller = "Site" });
                 routes.MapRoute("default", "{controller}/{action}", new { controller = "Home", action = "Index" }, new { route = new TestConstaint() });
-                routes.MapRoute("defaultCulture", "{culture}/{*url}", new { culture = "nl-nl", controller = "Panther", action = "CurrentPage" }, new { host = new HostConstraint() });
-                routes.MapRoute("cmsroute", "{*url}", new { culture = "nl-nl", controller = "Panther", action = "CurrentPage" }, new { host = new HostConstraint() });
+                //routes.MapRoute("defaultCulture", "{culture}/{*url}", new { culture = "nl-nl", controller = "Panther", action = "CurrentPage" }, new { host = new HostConstraint() });
+                routes.MapRoute("cmsroute", "{*url}", new { controller = "Panther", action = "CurrentPage" }, new { host = new HostConstraint() });
             });
 
+            
             Initializer.Initialize(app.ApplicationServices).Wait();
 
             return app;

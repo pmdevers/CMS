@@ -1,7 +1,14 @@
 [
-  {
-    "Id": "0f226f72-5ad9-4755-aa2a-acc511826f83",
+    {
+        "Id": "0f226f72-5ad9-4755-aa2a-acc511826f83",
+        "Name": "PantherCMS",
+        "Url": "localhost:24167",
+        "Culture": "en-US"
+    },
+    {
+    "Id": "0f226f72-5ad9-4755-aa2a-acc511826f84",
     "Name": "PantherCMS",
-    "Url": "localhost:24167"
+    "Url": "localhost:24167/nl",
+    "Culture":  "nl-nl"
   }
 ]
