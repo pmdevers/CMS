@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
+using System.Threading;
 
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Routing;
@@ -23,12 +24,12 @@ namespace Panther.CMS.Constraints
             if (context == null)
                 return false;
 
-            if (values.ContainsKey("culture") && !CheckCulture(values["culture"].ToString()))
-                return false;
-            if(values.ContainsKey("url") && values["url"] != null)
+            //if (values.ContainsKey("culture") && !CheckCulture(values["culture"].ToString()))
+            //    return false;
+           if(values.ContainsKey("url") && values["url"] != null)
                 url = values["url"].ToString();
 
-            var canHandle = context.CanHandleUrl(url);
+            var canHandle = context.CanHandleUrl(context.Path);
 
             if (!canHandle)
                 return false;
@@ -51,7 +52,7 @@ namespace Panther.CMS.Constraints
         {
             try
             {
-                var cul = new CultureInfo(culture);
+
             }
             catch
             {

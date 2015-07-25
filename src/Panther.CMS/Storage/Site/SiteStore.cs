@@ -16,9 +16,9 @@ namespace Panther.CMS.Storage.Site
             return Guid.NewGuid();
         }
 
-        public Entities.Site GetSite(string hostString)
+        public Entities.Site GetSite(string url)
         {
-            Entities.Site site = FindAll(x => x.Url == hostString).FirstOrDefault() ?? CreateNewSite(hostString);
+            Entities.Site site = FindAll(x => url.StartsWith(x.Url)).OrderByDescending(x=>x.Url.Length).FirstOrDefault() ?? CreateNewSite(url);
 
             return site;
         }

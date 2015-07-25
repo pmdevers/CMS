@@ -1,0 +1,22 @@
+{
+    "name": "Panther.CMS.AdminV2",
+    "version": "1.0.0",
+    "authors": [
+        "Patrick Evers <pmdevers@gmail.com>"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "bootstrap-sass-official": "~3.3.5",
+        "angular": "~1.4.2",
+        "jquery": "~2.1.4",
+        "enquire": "~2.1.2",
+        "jquery-ui": "~1.11.4"
+    }
+}

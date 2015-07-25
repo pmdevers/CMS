@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+using System.Threading;
 
 using Microsoft.AspNet.Http;
 
@@ -47,6 +49,20 @@ namespace Panther.CMS
             Site = siteService.GetSite();
             Root = pageService.GetRoot();
             Refferral = pageService.GetPage(Root, RefferralString);
+            SetCulture();
+        }
+
+        private void SetCulture()
+        {
+            var cul = new CultureInfo(Site.Culture);
+
+#if DNXCORE50
+            CultureInfo.CurrentCulture = cul;
+            CultureInfo.CurrentUICulture = cul;
+#else
+            Thread.CurrentThread.CurrentCulture = cul;
+            Thread.CurrentThread.CurrentUICulture = cul;
+#endif
         }
 
         public bool CanHandleUrl(string url)
@@ -82,8 +98,15 @@ namespace Panther.CMS
         {
             get
             {
-                return context.Request.Path.Value.ToLower();
+                var path =  context.Request.Path.Value.ToLower();
+                var sitePath = Site.Url.Replace(HostString, string.Empty);
+                return path.Substring(sitePath.Length, path.Length - sitePath.Length);
             }
+        }
+
+        public string Url
+        {
+            get { return HostString + context.Request.Path.Value.ToLower(); }
         }
 
         public string VirtualPath

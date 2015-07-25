@@ -13,6 +13,7 @@ namespace Panther.CMS.Entities
         {
             Children = new List<Page>();
             Contents = new List<Content>();
+            Properties = new Dictionary<string, string>();
             AllowAnonymous = true;
         }
 

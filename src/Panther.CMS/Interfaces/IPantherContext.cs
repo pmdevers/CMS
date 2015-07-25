@@ -23,6 +23,7 @@ namespace Panther.CMS.Interfaces
         Page Root { get; }
 
         Site Site { get; }
+        string Url { get; }
 
         void Initialize(HttpContext context);
         bool CanHandleUrl(string url);

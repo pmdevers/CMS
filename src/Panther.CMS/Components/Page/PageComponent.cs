@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using Panther.CMS.Components.Content;
+using Panther.CMS.Entities;
 using Panther.CMS.Extensions;
 using Panther.CMS.Interfaces;
+using Panther.CMS.Storage.Content;
 using Panther.CMS.Storage.Page;
 using Panther.CMS.Storage.PageDefinition;
 using Panther.CMS.Storage.Site;
@@ -23,19 +26,55 @@ namespace Panther.CMS.Components.Page
 
         public IEnumerable<Entities.Page> GetAll()
         {
-            var pageDefinitionStore = new PageDefinitionStore(Context.FileSystem);
-            var siteStore = new SiteStore(Context.FileSystem);
+            
+            //var siteStore = new SiteStore(Context.FileSystem);
             var pageStore = new PageStore(Context.FileSystem);
-            var site = siteStore.GetSite(Context.HostString);
-            var pages = pageStore.GetForSite(site);
+            //var site = siteStore.GetSite(Context.HostString);
+            var pages = pageStore.GetForSite(Context.Site);
 
             if (!pages.Any())
             {
-                var page = new Entities.Page {Name = "Home", Url = "", SiteId = site.Id, Template = "Index"};
+                var page = new Entities.Page {Name = "Home", Url = "", SiteId = Context.Site.Id, Template = "Index"};
                 pageStore.Add(page);
+
+                AddDefaultContent(page);
                 pages = new List<Entities.Page> {page};
             }
             return pages;
+        }
+
+        private void AddDefaultContent(Entities.Page page)
+        {
+            var pageDefinitionStore = new PageDefinitionStore(Context.FileSystem);
+            var contentComponent = new ContentComponent(Context);
+            var definition = pageDefinitionStore.FindAll(x => x.Name == page.Template).FirstOrDefault();
+
+            if (definition == null)
+                definition = CreateDefinition(pageDefinitionStore, page.Template);
+
+            foreach (var content in definition.Items)
+            {
+                contentComponent.SaveContentTree(page, content, null);
+            }
+
+        }
+
+        private PageDefinition CreateDefinition(PageDefinitionStore pageDefinitionStore, string name)
+        {
+            var def = new PageDefinition();
+            def.Name = name;
+            
+            var container = new ContentItem { Name = "container", Type = "container"};
+            var row = new ContentItem { Name = "row1", Type = "row" };
+            var column = new ContentItem { Name = "col-1", Type = "column" };
+
+            row.Items.Add(column);
+            container.Items.Add(row);
+            def.Items.Add(container);
+
+            pageDefinitionStore.Add(def);
+
+            return def;
         }
 
         public Entities.Page GetPage(Entities.Page root, string url)

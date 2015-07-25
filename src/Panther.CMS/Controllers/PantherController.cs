@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Authorization;
+﻿using System.IO;
+
+using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 
 using Panther.CMS.Filters;
@@ -46,6 +48,9 @@ namespace Panther.CMS.Controllers
         public IActionResult Test()
         {
             var mail = new TestMail();
+
+            throw new System.Exception("Error");
+            
 
             mail.Test = "test test";
 

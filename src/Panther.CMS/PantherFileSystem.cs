@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 
 using Microsoft.AspNet.FileProviders;
@@ -13,13 +14,13 @@ namespace Panther.CMS
 {
     public class PantherFileSystem : IPantherFileSystem
     {
-        private IServiceProvider _services;
+        private readonly IServiceProvider services;
         private IHostingEnvironment hostingEnvironment;
         private const int DefaultBufferSize = 0x1000;
 
         public PantherFileSystem(IServiceProvider services)
         {
-            _services = services;
+            this.services = services;
 
             FileProvider = GetFileSystem(services);
         }
@@ -192,7 +193,7 @@ namespace Panther.CMS
 
         public string ReadFile(string filename)
         {
-            FileProvider = GetFileSystem(_services);
+            FileProvider = GetFileSystem(services);
             var path = NormalizePath(filename);
             IFileInfo fileInfo = FileProvider.GetFileInfo(path);
             var content = fileInfo.CreateReadStream();
