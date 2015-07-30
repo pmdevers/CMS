@@ -11,7 +11,6 @@ using Panther.CMS.Services.Page;
 using Panther.CMS.Services.Site;
 using Panther.CMS.Storage.Role;
 using Panther.CMS.Storage.User;
-using Panther.Mail.Mvc;
 
 
 namespace Panther.CMS.Setup
@@ -28,7 +27,7 @@ namespace Panther.CMS.Setup
             collection.AddSingleton<IPantherContext, PantherContext>();
             collection.AddTransient<IPantherFileSystem, PantherFileSystem>();
             collection.AddTransient<IPantherRouter, PantherRouter>();
-            collection.AddTransient<IEmailParser, EmailParser>();
+            //collection.AddTransient<IEmailParser, EmailParser>();
 
             collection.AddScoped<IUserStore<User>, UserStore>();
             collection.AddScoped<IRoleStore<Role>, RoleStore>();

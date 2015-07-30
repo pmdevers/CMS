@@ -111,7 +111,7 @@ namespace Panther.CMS
 
             
 
-            if (fileInfo is NotFoundFileInfo)
+            if (!fileInfo.Exists)
             {
 
                 CreateFile(hostingEnvironment.WebRootPath + path);

@@ -3,12 +3,16 @@
         "Id": "0f226f72-5ad9-4755-aa2a-acc511826f83",
         "Name": "PantherCMS",
         "Url": "localhost:24167",
-        "Culture": "en-US"
-    },
-    {
-    "Id": "0f226f72-5ad9-4755-aa2a-acc511826f84",
-    "Name": "PantherCMS",
-    "Url": "localhost:24167/nl",
-    "Culture":  "nl-nl"
-  }
+        "Culture": "nl-NL",
+        "Properties": {
+            "MetaTags.Keywords": "DNX Core, MVC6, ASP.net",
+            "MetaTags.Viewport": "width=device-width, initial-scale=1",
+            "MetaTags.Description": "PantherCMS Content Site DEMO",
+            "MetaTags.Robots": "noindex,nofollow",
+            "GoogleAnalytics.Id": "UA-XXXXX-X",
+            "GoogleAnalytics.Enabled": "true"
+        },
+        "Stylesheets": [ "/content/css/main.min.css", "/content/js/bootstrap/css/bootstrap.min.css" ],
+        "Scripts": [ "/content/js/bootstrap/js/bootstrap.js", "/content/js/jquery/js/jquery.js" ]
+    }
 ]

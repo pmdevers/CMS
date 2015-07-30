@@ -11,9 +11,11 @@ using Microsoft.Framework.DependencyInjection;
 
 using Panther.CMS.Attributes;
 using Panther.CMS.Controllers;
+using Panther.CMS.Entities;
 using Panther.CMS.Extensions;
 using Panther.CMS.Interfaces;
 using Panther.CMS.Models;
+using Panther.CMS.PageProperties;
 using Panther.CMS.Services.Page;
 
 namespace Panther.CMS
@@ -69,17 +71,25 @@ namespace Panther.CMS
         {
             var url =  (context.Site.Url + "/" + page.Url).TrimEnd(new[] { '/' });
             var properties = page.GetProperties<GoogleSitemapProperties>();
-            sitemap.Create(url, properties.LastModified, properties.Priority, properties.ChangeFrequency);
+            var links = GetLnks(page);
+            sitemap.Create(url, properties.LastModified, properties.Priority, properties.ChangeFrequency, links);
         }
 
-        public class GoogleSitemapProperties
+        private IEnumerable<GoogleSiteMap.MapNodeLink> GetLnks(Page page)
         {
-            [DefaultValue(typeof(ChangeFrequency), "Daily")]
-            public ChangeFrequency ChangeFrequency { get; set; }
-            [DefaultDate("")]
-            public DateTime LastModified { get; set; }
-            [DefaultValue("1.0")]
-            public string Priority { get; set; }
+            var links = new List<GoogleSiteMap.MapNodeLink>();
+            foreach (var pageId in page.Canonicals)
+            {
+                var linkedPage = pageService.Get(pageId);
+                var nodeLink = new GoogleSiteMap.MapNodeLink
+                {
+                    Href = (context.Site.Url + "/" + linkedPage.Url).TrimEnd(new[] { '/' }),
+                    HrefLang = linkedPage.Culture,
+                    Rel = "alternate"
+                };
+                links.Add(nodeLink);
+            }
+            return links;
         }
     }
 }

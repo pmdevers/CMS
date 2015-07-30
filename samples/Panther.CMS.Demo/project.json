@@ -1,12 +1,12 @@
 ﻿{
     "userSecretsId": "aspnet5-Panther.CMS.Demo-20150518025621",
     "webroot": "wwwroot",
-    "version": "1.0.0-*",
-
+    "version": "1.0.0-beta5",
+     
     "dependencies": {
-        "Microsoft.AspNet.Server.IIS": "1.0.0-beta4",
-        "Microsoft.AspNet.Server.WebListener": "1.0.0-beta4",
-        "Panther.CMS": "1.0.0-*"
+        "Microsoft.AspNet.Server.IIS": "1.0.0-*",
+        "Microsoft.AspNet.Server.WebListener": "1.0.0-*",
+        "Panther.CMS": "1.3.0-*"
     },
 
     "commands": {

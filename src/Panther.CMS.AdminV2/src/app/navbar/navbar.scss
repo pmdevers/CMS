@@ -1,0 +1,156 @@
+﻿nav.navbar.navbar-panther {
+    z-index: 1000;
+}
+
+.navbar.navbar-panther{
+        margin-bottom: 0;
+        color:white;
+        background: $navbar-color1;
+        border-radius: 0px;
+        border: none;
+        border-bottom: 2px solid $navbar-color2;
+        margin-left: 50px;
+        z-index: 4;
+        height: 50px;
+
+        .l90 {
+            transform: rotate(270deg);
+            -webkit-transform: rotate(270deg);
+            -moz-transform: rotate(270deg);
+            o-transform: rotate(270deg);
+        }
+
+        .btn{
+              -webkit-border-radius: 2px;
+              -moz-border-radius: 2px;
+              border-radius: 2px;
+              font-size: 15px;
+              height: 37px;
+        }
+        .btn.btn-default{
+            background: $navbar-button-color1;
+            border-color: $navbar-button-color2;
+            text-shadow: 0px 1px 0px $navbar-button-color2;
+        }
+
+        .btn.active{
+            background: $navbar-button-color2 !important;
+            border: 1px solid $navbar-button-color3 !important;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+        
+
+        ul.navbar-nav {
+            li {
+                margin: 1px 0px 5px 0px;
+                padding: 5px 7px;
+            }
+
+            li:last-child {
+                padding: 3px 7px 5px 7px;
+            }
+
+            li a {
+                  color: white;
+                  padding: 6px 10px;
+                  -webkit-border-radius: 2px;
+                  -moz-border-radius: 2px;
+                  border-radius: 2px;
+                  min-width: 40px;
+                  text-align: center;
+                  font-weight: 400;
+            }
+            
+        }
+
+        ul.navbar-nav li button{
+            color: white;
+        }
+
+        #navbar-main-area {
+            width: 250px;
+            height: 50px;
+            background: $navbar-color2;
+            border-bottom: 2px solid $navbar-color3;
+            float: left;
+            
+            li {
+                margin: 1px 0px 5px 0px;
+                padding: 5px 7px;
+            }
+
+            .btn{
+                width: 40px;
+            }
+
+            button {
+                background: $navbar-button-color1;
+                border-color: $navbar-button-color2;
+                text-shadow: 0px 1px 0px $navbar-button-color2;
+            }
+        }
+    }
+
+/*@media (max-width: 1439px){
+    .navbar.navbar-panther{
+            margin-left: 40px ;
+            min-height: 0px !important;
+            height: 40px !important;
+
+            ul.navbar-nav {
+                li {
+                    margin: 1px 0px 5px 0px;
+                    padding: 3px 3px;
+                }
+                li:last-child {
+                    padding: 3px 7px 3px 7px;
+                }
+            }
+
+            .btn{
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                border-radius: 2px;
+                font-size: 12px;
+                height: 30px;
+            }
+            .btn.btn-default{
+                background: $navbar-button-color1;
+                border-color: $navbar-button-color2;
+                text-shadow: 0px 1px 0px $navbar-button-color2;
+            }
+            .btn.active{
+                background: $navbar-button-color2 !important;
+                border: 1px solid $navbar-button-color3 !important;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+            }
+            
+
+            #navbar-main-area {
+                width: 200px;
+                height: 40px;
+                background: $navbar-color2;
+                border-bottom: 2px solid $navbar-color3;
+                float: left;
+                
+                li {
+                    margin: 1px 0px 5px 0px;
+                    padding: 3px 3px;
+                }
+
+                .btn{
+                    width: 33px;
+                }
+
+                button {
+                    background: $navbar-button-color1;
+                    border-color: $navbar-button-color2;
+                    text-shadow: 0px 1px 0px $navbar-button-color2;
+                }
+            }
+        }
+    }*/

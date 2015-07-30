@@ -44,10 +44,6 @@ namespace Panther.CMS.Extensions
                     {
                         await context.Next(context.HttpContext);
                     }
-                    catch(Exception ex)
-                    {
-
-                    }
                     finally
                     {
                         context.HttpContext.Request.Path = originalPath;

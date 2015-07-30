@@ -33,15 +33,17 @@ namespace Panther.CMS.Entities
         public List<string> RequiredRoles { get; set; } 
 
         public Dictionary<string, string> Properties { get; set; }
-
-        public T GetProperties<T>()
+        public string Culture { get; set; }
+        public List<Guid> Canonicals { get; set; }
+        public T GetProperties<T>() where T : IPageProperty
         {
-            return ObjectHydrator.Build<T>(Properties);
+            return ObjectHydrator.Build<T>(Properties, "Properties");
         }
+    
 
-        public void AddProperties<T>(T obj)
+        public void AddProperties(DictionaryObject obj)
         {
-            ObjectHydrator.Into(obj, Properties);
+            ObjectHydrator.Into(obj, Properties, "Properties");
         }
     }
 }

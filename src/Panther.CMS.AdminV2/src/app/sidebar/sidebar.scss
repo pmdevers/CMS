@@ -1,0 +1,368 @@
+﻿#sidebar {
+    width: 300px;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+
+    #sidebar-menu {
+        background: $sidebar-background;
+        width: 50px;
+        height: 100%;
+        z-index: 4;
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            color: white;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-bottom: 1px solid $sidebar-border;
+            position: relative;
+        }
+
+        ul li a {
+            color: white;
+            position: relative;
+            font-size: 18px;
+            width: 50px;
+            display: block;
+        }
+
+        ul li:first-child {
+            background: $sidebar-first-item;
+            border-bottom: 2px solid $sidebar-first-item-border;
+        }
+
+        ul li a i.option {
+            position: absolute;
+            font-size: 8px;
+            background: $sidebar-option-background;
+            border: 1px solid $sidebar-option-background;
+            top: 13px;
+            right: 14px;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+        }
+
+        #logo {
+            margin: 0 10px;
+            width: 30px;
+            position: absolute;
+            bottom: 15px;
+        }
+    }
+
+    #submenu {
+        width: 270px;
+        position: absolute;
+        left: 50px;
+        top: 0;
+        padding-top: 50px;
+        overflow-y: scroll;
+        height: 100%;
+        color: $sidemenu-color;
+        background: $sidemenu-background;
+
+        
+        #newPage {
+            display: none;
+            width: 250px;
+
+            .form-group {
+                height: 50px;
+                //background: $sidemenu-background;
+                border-bottom: 1px solid $sidemenu-border-bottom;
+                padding: 7px;
+                margin-bottom: 0px;
+                position: fixed;
+                top: 50px;
+                left: 50px;
+                width: 250px;
+                z-index: 5;
+             
+                .cancel{
+                    position: absolute;
+                    right: 15px;
+                    top: 17px;
+                    color: $sidemenu-cancel-color;
+                    cursor: pointer;
+                }
+                .form-control {
+                    -moz-border-radius: 2px;
+                    -webkit-border-radius: 2px;
+                    border-radius: 2px;
+                    background: transparent;
+                    border: 0;
+                    color: white;
+                    -moz-box-shadow: none;
+                    -webkit-box-shadow: none;
+                    box-shadow: none;
+                }
+
+                ::-webkit-input-placeholder {
+                   color:  $sidemenu-cancel-color;
+                }
+
+                :-moz-placeholder { /* Firefox 18- */
+                   color:  $sidemenu-cancel-color;  
+                }
+
+                ::-moz-placeholder {  /* Firefox 19+ */
+                   color:  $sidemenu-cancel-color;  
+                }
+
+                :-ms-input-placeholder {  
+                   color:  $sidemenu-cancel-color;  
+                }
+            }
+        }
+                
+        ul.tools {
+            list-style: none;
+            margin: 50px 0 0 0;
+            padding: 0;
+            background: $sidemenu-background;
+
+            li {
+                width: 100%;
+                display: block;
+                float: none;
+
+                .tools-category {
+                    width: 100%;
+                    height: 30px;
+                    padding: 4px 30px 4px 0;
+                    background: $sidemenu-title-background;
+                    color: $sidemenu-title-color;
+                    text-align: center;
+                    border-bottom: 1px solid $sidemenu-border-bottom;
+                    position: relative;
+
+                    i {
+                        background: $sidemenu-title-background;
+                        border-left: 1px solid $sidemenu-border-bottom;
+                        position: absolute;
+                        top:0;
+                        right:0;
+                        cursor:pointer;
+                        line-height:29px;
+                        height:29px;
+                        width:29px;
+                    }
+                }
+
+                div {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    -ms-text-overflow: ellipsis;
+                    -o-text-overflow: ellipsis;
+                    text-overflow: ellipsis;
+                }
+
+                ul{
+                    list-style: none;
+                    margin:0;
+                    padding:0;
+
+                    li {
+                        width: 83px;
+                        padding: 20px 5px 0 5px;
+                        border-bottom: 1px solid $sidemenu-border-bottom;
+                        border-right: 1px solid $sidemenu-border-bottom;
+                        float:left;
+                        height: 100px;
+                        color: white;
+                        text-align: center;
+                        position: relative;
+                        font-size: 12px;
+                        cursor: pointer;
+                        display:block;
+
+                        .toolbar{
+                            position: absolute;
+                            top:0px;
+                            right: 2px;
+                            //display:none;
+                        }
+
+                        img{
+                            margin-top: -5px;;
+                            opacity: .75;
+                        }
+
+                        span{
+                            position:absolute;
+                            bottom:5px;
+                            left:0;
+                            width: 100%;
+                            opacity: .3;
+                            font-size: 11px;
+                            font-weight:500;
+                            -webkit-font-smoothing:antialiased;
+                        }
+                    }
+                }
+            }
+
+            li:after {
+                clear: both;
+            }
+
+            li:before, li:after {
+                display: table;
+                content: "";
+                line-height: 0;
+            }
+        }
+
+        .btn.btn-success {
+          -webkit-border-radius: 2px;
+          -moz-border-radius: 2px;
+          border-radius: 2px;
+          background: #68d770;
+          border: 1px solid #40cc4a;
+          text-shadow: 0px 1px 0px #40cc4a;
+          width: 100%;
+        } 
+    }
+
+    #site  {
+        width: 250px;
+        padding: 15px;
+        .form-group {
+            margin: 7px 0;
+            background: $sidemenu-background;
+            border-bottom: 1px solid $sidemenu-border-bottom;
+            margin-bottom: 0px;
+
+            label {
+              font-size: 8px;
+              padding: 2px 5px;
+              font-weight: 400;
+              background: #4a536b;
+              -webkit-border-radius: 2px 2px 0 0;
+              -moz-border-radius: 2px 2px 0 0;
+              border-radius: 2px 2px 0 0;
+            }
+            .form-control
+             {
+              -webkit-border-radius: 0 2px 2px 2px;
+              -moz-border-radius: 0 2px 2px 2px;
+              border-radius: 0 2px 2px 2px;
+              border: 1px solid #4a536b;
+              color: rgba(255, 255, 255, 0.9);
+              background: #2b303e;
+              -webkit-box-shadow: none;
+              -moz-box-shadow: none;
+              box-shadow: none;
+              font-size: 12px;
+              margin-top: -5px;
+              height: 28px;
+              padding-left: 8px;
+              padding-right: 8px;
+            }
+
+            .divider {
+              border: 0;
+              background: none;
+              min-width: 166px;
+              height: 43px;
+              color: #606060;
+              border-radius: 0;
+              -background-color: #e7e7e7;
+              border-radius: 2px;
+              line-height: 23px;
+              padding: 0px 3px 0px 3px;
+              overflow: scroll;
+              overflow-y: hidden;
+              white-space: nowrap;
+            }
+        }
+        ul.tools {
+            margin: -15px -15px 15px -15px;
+        }
+    }
+}
+
+/*@media (max-width: 1439px){
+    #sidebar{
+        #sidebar-menu{
+            width: 40px;
+
+            ul li {
+                height: 40px;
+                line-height: 40px;
+            }
+
+            ul li a {
+                font-size: 16px;
+                width: 40px;
+            }
+
+            ul li a i.option {
+                font-size: 6px;
+                top: 11px;
+                right: 10px;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                border-radius: 2px;
+            }
+        }
+        #submenu{
+            width: 220px;
+            left: 40px;
+            top:0;
+            padding-top: 40px;
+
+            #newPage{
+                display: none;
+                width: 200px;
+
+                .form-group{
+                    height: 40px;
+                    background: $sidemenu-background;
+                    padding: 3px;
+                    top: 40px;
+                    left: 40px;
+                    width: 200px;
+                    z-index: 5;
+                }
+
+            }
+
+            ul .tools{
+                list-style: none;
+                margin: 40px 0 0 0;
+                padding: 0;
+                background: $sidemenu-background;
+            }
+        }
+    }
+}
+
+@media (-webkit-min-device-pixel-ratio: 0)
+{
+    #sidebar{
+        #submenu{
+            position: fixed;
+        }
+    }
+}
+
+@media (-webkit-min-device-pixel-ratio: 0) and (resolution: 0.001dpcm)
+{
+    #sidebar{
+        #submenu{
+            position: absolute;
+        }
+    }
+}*/

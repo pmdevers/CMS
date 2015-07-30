@@ -6,7 +6,6 @@ using Microsoft.AspNet.Mvc;
 using Panther.CMS.Filters;
 using Panther.CMS.Interfaces;
 using Panther.CMS.Models;
-using Panther.Mail.Mvc;
 
 namespace Panther.CMS.Controllers
 {
@@ -31,12 +30,16 @@ namespace Panther.CMS.Controllers
 
         public IActionResult CurrentPage()
         {
-            return View(context.Current.Template);  
+            var view = View(context.Current.Template);
+            view.ViewData["Layout"] = "Layout";
+            return view;
         }
 
         protected IActionResult CurrentPage(object model)
         {
-            return View(context.Current.Template, model);
+            var view = View(context.Current.Template, model);
+            view.ViewData["Layout"] = "Layout";
+            return view;
         }
 
         [HttpPost]
@@ -44,25 +47,5 @@ namespace Panther.CMS.Controllers
         {
             return CurrentPage();
         }
-#if DEBUG
-        public IActionResult Test()
-        {
-            var mail = new TestMail();
-
-            throw new System.Exception("Error");
-            
-
-            mail.Test = "test test";
-
-            return new EmailResult(mail);
-        }
-
-        public class TestMail : Email
-        {
-            public TestMail (): base("Test") { }
-
-            public string Test { get; set; }
-        }
-#endif
     }
 }

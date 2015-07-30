@@ -15,6 +15,7 @@ namespace Panther.CMS.Entities
             Contents = new List<Content>();
             Properties = new Dictionary<string, string>();
             AllowAnonymous = true;
+            Canonicals = new List<Guid>();
         }
 
         [JsonIgnore]

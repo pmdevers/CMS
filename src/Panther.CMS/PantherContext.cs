@@ -10,6 +10,7 @@ using Panther.CMS.Interfaces;
 using Panther.CMS.Services.Page;
 using Panther.CMS.Services.Site;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Loader.IIS;
 
 namespace Panther.CMS
 {
@@ -49,12 +50,12 @@ namespace Panther.CMS
             Site = siteService.GetSite();
             Root = pageService.GetRoot();
             Refferral = pageService.GetPage(Root, RefferralString);
-            SetCulture();
+            //SetCulture();
         }
 
         private void SetCulture()
         {
-            var cul = new CultureInfo(Site.Culture);
+            var cul = new CultureInfo(Current.Culture);
 
 #if DNXCORE50
             CultureInfo.CurrentCulture = cul;
@@ -65,13 +66,17 @@ namespace Panther.CMS
 #endif
         }
 
+        public HttpRequest Request { get { return context.Request; } }
+
         public bool CanHandleUrl(string url)
         {
             Current = pageService.GetPage(Root, url);
 
             if (Current.Path.ToLower().EndsWith(url.ToLower()))
+            {
+                SetCulture();
                 return true;
-
+            }
             if (string.IsNullOrEmpty(Current.Route))
                 return false;
 
@@ -81,7 +86,7 @@ namespace Panther.CMS
         public string HostString
         {
             get
-            {
+            { 
                 return context.Request.Headers["Host"].ToString();
             }
         }

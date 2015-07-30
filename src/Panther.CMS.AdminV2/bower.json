@@ -1,22 +1,16 @@
 {
-    "name": "Panther.CMS.AdminV2",
-    "version": "1.0.0",
-    "authors": [
-        "Patrick Evers <pmdevers@gmail.com>"
-    ],
-    "license": "MIT",
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
-    "dependencies": {
-        "bootstrap-sass-official": "~3.3.5",
-        "angular": "~1.4.2",
-        "jquery": "~2.1.4",
-        "enquire": "~2.1.2",
-        "jquery-ui": "~1.11.4"
-    }
+  "name": "PantherCMS",
+  "version": "0.1.0",
+  "devDependencies": {
+    "angular": "~1.4.3",
+    "angular-mocks": "~1.2",
+    "bootstrap-sass-official": "~3.3.5",
+    "angular-bootstrap": "~0.13.1",
+    "angular-ui-router": "~0.2",
+    "font-awsome": "^4.3.0"
+  },
+  "dependencies": {},
+  "resolutions": {
+    "angular": ">=1.3.0"
+  }
 }

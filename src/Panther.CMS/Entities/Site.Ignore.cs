@@ -12,6 +12,9 @@ namespace Panther.CMS.Entities
         public Site()
         {
             Contents = new List<Content>();
+            Properties = new Dictionary<string, string>();
+            Stylesheets = new List<string>();
+            Scripts = new List<string>();
         }
 
         [JsonIgnore]

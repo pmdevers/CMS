@@ -1,1 +1,57 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><title></title></head><body></body></html>
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>Panther CMS Admin</title>
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+    <!-- compiled CSS -->
+    <link rel="stylesheet" type="text/css" href="vendor/font-awsome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/angular-hotkeys/build/hotkeys.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/PantherAdmin-0.1.0.css" />
+
+</head>
+<body ng-app="ngBoilerplate" id="app">
+    <!--[if lt IE 9]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <ng-Include src="'navbar/navbar.tpl.html'"></ng-Include>
+
+
+    <div id="main">
+        <ng-Include src="'sidebar/sidebar.tpl.html'"></ng-Include>
+    </div>
+
+    <input type="text" class="form-control"
+           tooltip="<h2>Enter something in this input field to disable this tooltip</h2><br /> test"
+           tooltip-placement="bottom"
+           tooltip-trigger="mouseenter"
+     />
+    
+
+
+<!-- compiled JavaScript -->
+    <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="vendor/angular/angular.js"></script>
+    <script type="text/javascript" src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script type="text/javascript" src="vendor/angular-hotkeys/build/hotkeys.min.js"></script>
+    <script type="text/javascript" src="src/app/app.js"></script>
+    <script type="text/javascript" src="src/app/home/home.js"></script>
+    <script type="text/javascript" src="src/app/layout/nav.js"></script>
+    <script type="text/javascript" src="src/app/navbar/navbar.js"></script>
+    <script type="text/javascript" src="src/app/sidebar/sidebar.js"></script>
+    <script type="text/javascript" src="src/common/iframe/iframe.js"></script>
+    <script type="text/javascript" src="src/common/plusOne/plusOne.js"></script>
+    <script type="text/javascript" src="templates-common.js"></script>
+    <script type="text/javascript" src="templates-app.js"></script>
+
+    <!-- it's stupid to have to load it here, but this is for the +1 button -->
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js">
+        { "parsetags": "explicit" }
+    </script>
+</body>
+</html>

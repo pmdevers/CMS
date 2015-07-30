@@ -16,6 +16,8 @@ namespace Panther.CMS.Entities
 
         public string Name { get; set; }
 
+        public string Layout { get; set; }
+
         public List<ContentItem> Items { get; set; }
     }
 }

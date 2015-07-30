@@ -42,7 +42,7 @@ namespace Panther.CMS.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, false, shouldLockout: false);
+                var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, false, false);
                 return RedirectToLocal(returnUrl);
             }
 

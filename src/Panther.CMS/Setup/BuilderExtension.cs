@@ -86,7 +86,7 @@ namespace Microsoft.Framework.DependencyInjection
             });
 
             
-            Initializer.Initialize(app.ApplicationServices).Wait();
+            //Initializer.Initialize(app.ApplicationServices).Wait();
 
             return app;
         }

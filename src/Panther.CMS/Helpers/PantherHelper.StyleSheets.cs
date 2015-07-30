@@ -7,24 +7,12 @@ namespace Microsoft.AspNet.Mvc.Rendering
 {
     public static partial class PantherHelper
     {
-        //public static HtmlString RenderRegisteredStylesheets<TModel>(this IHtmlHelper<TModel> htmlHelper)
-        //{
-        //    var ctx = htmlHelper.ViewContext.HttpContext;
-        //    var registeredStylesheets = ctx.Items["_stylesheets_"] as Stack<string>;
-        //    if (registeredStylesheets == null || registeredStylesheets.Count < 1)
-        //    {
-        //        return null;
-        //    }
-        //    var sb = new StringBuilder();
-        //    foreach (var script in registeredStylesheets)
-        //    {
-        //        var scriptBuilder = new TagBuilder("link");
-        //        scriptBuilder.Attributes["rel"] = "stylesheet";
-        //        scriptBuilder.Attributes["href"] = script;
-        //        sb.AppendLine(scriptBuilder.ToString(TagRenderMode.StartTag));
-        //    }
-        //    return new HtmlString(sb.ToString());
-        //}
+        public static HtmlString StyleSheets(this IHtmlHelper htmlHelper)
+        {
+            var stylesheets = htmlHelper.Panther().Site.Stylesheets;
+            stylesheets.ForEach(htmlHelper.RegisterStylesheet);
+            return htmlHelper.RenderRegisteredStylesheets();
+        }
 
         public static HtmlString RenderRegisteredStylesheets(this IHtmlHelper htmlHelper)
         {

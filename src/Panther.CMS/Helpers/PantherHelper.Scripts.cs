@@ -7,6 +7,13 @@ namespace Microsoft.AspNet.Mvc.Rendering
 {
     public static partial class PantherHelper
     {
+        public static HtmlString Scripts(this IHtmlHelper htmlHelper)
+        {
+            var scripts = htmlHelper.Panther().Site.Scripts;
+            scripts.ForEach(htmlHelper.RegisterScript);
+            return htmlHelper.RenderRegisteredScripts();
+        }
+
         public static HtmlString RenderRegisteredScripts(this IHtmlHelper htmlHelper)
         {
             var ctx = htmlHelper.ViewContext.HttpContext;

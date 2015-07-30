@@ -1,9 +1,4 @@
-﻿using System.Linq;
-
-using Microsoft.AspNet.Authorization;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Mvc.Razor.OptionDescriptors;
-using Microsoft.Framework.DependencyInjection;
+﻿using Microsoft.Framework.DependencyInjection;
 
 using Panther.CMS;
 using Panther.CMS.Entities;
@@ -27,7 +22,7 @@ namespace Microsoft.Framework.DependencyInjection
             });
             services.ConfigureRazorViewEngine(razor =>
             {
-                razor.ViewLocationExpanders.Add(new ViewLocationExpanderDescriptor(typeof(PantherViewLocationExpander)));
+                razor.ViewLocationExpanders.Add(new PantherViewLocationExpander());
             });
             PantherServices.GetDefaultServices(services);
             return services;

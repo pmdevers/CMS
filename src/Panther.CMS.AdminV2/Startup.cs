@@ -4,9 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
+using Microsoft.AspNet.StaticFiles;
 using Microsoft.Framework.DependencyInjection;
 
-namespace Panther.CMS.AdminV2
+namespace WebApplication1
 {
     public class Startup
     {
@@ -17,10 +18,11 @@ namespace Panther.CMS.AdminV2
 
         public void Configure(IApplicationBuilder app)
         {
-            app.Run(async (context) =>
+            var option = new StaticFileOptions
             {
-                await context.Response.WriteAsync("Hello World!");
-            });
+                ServeUnknownFileTypes = true
+            };
+            app.UseStaticFiles(option);
         }
     }
 }

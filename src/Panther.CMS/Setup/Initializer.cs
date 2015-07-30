@@ -19,7 +19,7 @@ namespace Panther.CMS.Setup
         public static async Task Initialize(IServiceProvider serviceProvider)
         {
             var configuration = new Configuration()
-                        .AddJsonFile("config.json")
+                        .AddJsonFile("config.json", true)
                         .AddEnvironmentVariables();
 
             var userManager = serviceProvider.GetService<UserManager<User>>();

@@ -6,15 +6,19 @@
     "Name": "Home",
     "Url": "",
     "Template": "Index",
+    "Culture":  "nl-NL",
     "Controller": null,
     "Action": null,
     "Route": null,
     "AllowAnonymous": true,
     "RequiredRoles": null,
+    "Canonicals": ["1dbe1fd3-5b39-457f-9bde-4a350c9cd163"],
     "Properties": {
-      "GoogleSitemapProperties.ChangeFrequency": "weekly",
-      "GoogleSitemapProperties.Priority": "0.1",
-      "GoogleSitemapProperties.LastModified": "2014-07-10T10:00:00"
+        "GoogleSitemap.ChangeFrequency": "weekly",
+        "GoogleSitemap.Priority": "0.1",
+        "GoogleSitemap.LastModified": "2014-07-10T10:00:00",
+        "MetaTags.Description": "PantherCMS Content Site DEMO",
+        "MetaTags.Robots": "noindex,nofollow"
     }
   },
   {
@@ -24,15 +28,16 @@
     "Name": "Account",
     "Url": "login",
     "Template": "login",
+    "Culture":  "en-US",
     "Controller": "Account",
     "Action": "Index",
     "Route": null,
     "AllowAnonymous": true,
     "RequiredRoles": null,
     "Properties": {
-      "GoogleSitemapProperties.ChangeFrequency": "weekly",
-      "GoogleSitemapProperties.Priority": "0.1",
-      "GoogleSitemapProperties.LastModified": "2014-07-10T10:00:00"
+      "GoogleSitemap.ChangeFrequency": "weekly",
+      "GoogleSitemap.Priority": "0.1",
+      "GoogleSitemap.LastModified": "2014-07-10T10:00:00"
     }
   },
   {
@@ -42,6 +47,7 @@
     "Name": "Securred",
     "Url": "sec",
     "Template": "Index",
+    "Culture":  "nl-NL",
     "Controller": null,
     "Action": null,
     "Route": null,
@@ -51,23 +57,9 @@
       "Test"
     ],
     "Properties": {
-      "GoogleSitemapProperties.ChangeFrequency": "Monthly",
-      "GoogleSitemapProperties.Priority": "0.1",
-      "GoogleSitemapProperties.LastModified": "2014-07-10T10:00:00"
+      "GoogleSitemap.ChangeFrequency": "Monthly",
+      "GoogleSitemap.Priority": "0.1",
+      "GoogleSitemap.LastModified": "2014-07-10T10:00:00"
     }
-  },
-  {
-    "Id": "9befe7ae-7b12-4998-ad18-bc40f99d3d91",
-    "ParentId": null,
-    "SiteId": "0f226f72-5ad9-4755-aa2a-acc511826f84",
-    "Name": "Home",
-    "Url": "",
-    "Template": "Index",
-    "Controller": null,
-    "Action": null,
-    "Route": null,
-    "AllowAnonymous": true,
-    "RequiredRoles": null,
-    "Properties": {}
   }
 ]

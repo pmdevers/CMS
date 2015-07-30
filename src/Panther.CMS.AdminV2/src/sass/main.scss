@@ -1,0 +1,29 @@
+/*!
+ * Panther CMS Admin Stylesheet
+ */
+
+@import 'variables';
+@import '../../vendor/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss';
+
+body {
+  /*color: #353c4d;
+  font-weight: 300;*/    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    min-width: 1000px;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(255,255,255,0.2);
+}
+
+@import "../app/navbar/navbar.scss";
+@import "../app/sidebar/sidebar.scss";

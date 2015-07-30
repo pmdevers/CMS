@@ -1,0 +1,167 @@
+﻿<nav ng-Controller="NavbarCtrl" class="navbar navbar-panther" role="navigation">
+
+    <div id="navbar-main-area">
+        <ul class="nav navbar-nav">
+            <li>
+                <div class="btn-group">
+                    <button ng-repeat="button in items" id="mbcode_size_{{button.name}}" type="button" class="btn btn-default" tooltip-placement="bottom" tooltip-append-to-body="true" tooltip-trigger="mouseenter" tooltip-html-unsafe="{{button.tooltip}}<br /><small>(shortcut {{button.shortcut}})"><i class="fa fa-{{button.icon}}"></i></button>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+        <ul class="nav navbar-nav">
+            <li>
+                <div class="btn-group">
+                    <button id="mbcode_id_select" type="button" class="btn btn-default mbcode_toolbar_button active" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-container="body" data-tool_name="mbcode_id_select" data-original-title="Select tool"><i class="fa fa-location-arrow l90"></i></button>
+                    <button id="mbcode_id_text_1" type="button" class="btn btn-default mbcode_toolbar_button" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-container="body" data-tool_name="mbcode_id_text_1" data-original-title="Text mode"><i class="fa fa-text-width"></i></button>
+                </div>
+            </li>
+
+            <li id="mbcode_topmenu_texttools" style="display: block;">
+                <div class="btn-group">
+
+                    <button id="mbcode_id_text_bold" type="button" class="btn btn-default mbcode_toolbar_button" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Bold<br/><small>(shortcut cmd + b)</small>"><i class="fa fa-bold"></i></button>
+                    <button id="mbcode_id_text_italic" type="button" class="btn btn-default mbcode_toolbar_button" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Italic<br/><small>(shortcut cmd + i)</small>"><i class="fa fa-italic"></i></button>
+                    <button id="mbcode_id_text_underline" type="button" class="btn btn-default mbcode_toolbar_button" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Underline<br/><small>(shortcut cmd + u)</small>"><i class="fa fa-underline"></i></button>
+
+                </div>
+            </li>
+            
+            <li>
+                <div class="btn-group">
+                    <button id="mbcode_s1_outline" type="button" class="btn btn-default" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Outline mode<br/><small>(shortcut ctrl + o)</small>"><i class="fa fa-minus-square-o"></i></button>
+
+                    <button id="mbcode_s1_showhidden" type="button" class="btn btn-default" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Show hidden<br/><small>(shortcut ctrl + h)</small>"><i class="fa fa-plus-circle"></i></button>
+
+                    <button id="mbcode_s1_dynoutline" type="button" class="btn btn-default hide" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Handle<br/><small>(shortcut ctrl + h)</small>"><i class="fa fa-minus-square"></i></button>
+                    <button id="mbcode_s1_prevent" type="button" class="btn btn-default hide" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Prevent mode<br/><small>(shortcut ctrl + p)</small>"><i class="fa fa-times-circle-o"></i></button>
+                </div>
+            </li>
+
+            <li>
+                <div class="btn-group">
+                    <button id="mbcode_s1_comments" type="button" class="btn btn-default" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Show comments<br/><small></small>"><i class="fa fa-comment"></i></button>
+                </div>
+            </li>
+
+            <li>
+                <div class="btn-group">
+                    <button id="mbcode_s1_zoom" type="button" class="btn btn-default" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Zoom mode<br/><small></small>"><i class="fa fa-search-minus"></i></button>
+                </div>
+            </li>
+
+            <li>
+                <div class="btn-group">
+                    <button id="mbcode_id_undo" type="button" class="btn btn-default" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Undo<br/><small>(shortcut cmd + z)</small>"><i class="fa fa-undo"></i></button>
+                    <button id="mbcode_id_redo" type="button" class="btn btn-default" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Redo<br/><small>(shortcut cmd + shift + z)</small>"><i class="fa fa-repeat"></i></button>
+                </div>
+            </li>
+
+        </ul>
+
+        <a id="mbcode_s1_colog" href="#self" style="display: none;">{c}</a>
+
+        <ul class="nav navbar-nav navbar-right">
+
+            <li class="hide" id="mbcode_sec_takeownership">
+                <div class="btn-group">
+                    <button id="mbcode_takeownership" type="button" class="btn btn-default" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Take ownership<br/><small></small>">Register <b>FREE</b></button>
+                </div>
+            </li>
+            <!--
+            <li>
+                <div class="btn-group">
+                    <button id="mbcode_rate" type="button" class="btn btn-default" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Rate app<br/><small></small>" data-container="body"><i class="fa fa-star-o"></i></button>
+                </div>
+            </li>
+            -->
+            <li><button id="mbcode_s1_test" type="button" class="btn btn-success">Live Test</button></li>
+
+            <li>
+
+                <div class="btn-group">
+
+                    <button id="mbcode_archive" type="button" class="btn btn-default" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Download project<br/><small>(shortcut ctrl + d)</small>"><i class="fa fa-cloud-download"></i></button>
+
+                    <a href="#self" id="header-avatar" class="dropdown-toggle btn btn-default" data-toggle="dropdown" rel="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Share this project"><i class="fa fa-share"></i></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="mbcode_preview_link">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" id="mbcode_share_copy" type="button"><i class="fa fa-copy"></i></button>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a id="mbcode_share_facebook" href="#self"><i class="fa fa-facebook"></i> Share on Facebook</a></li>
+                        <li><a id="mbcode_share_twitter" href="#self"><i class="fa fa-twitter"></i> Share on Twitter</a></li>
+                        <li><a id="mbcode_share_linkedin" href="#self"><i class="fa fa-linkedin"></i> Share on LinkedIn</a></li>
+                        <!--
+                         <li><a href="index.html#"><i class="fa fa-envelope-o"></i> Send to e-mail</a></li>
+                         -->
+                    </ul>
+
+                </div>
+
+            </li>
+
+            <!--
+            <li>
+                <div class="btn-group">
+                    <button id="mbcode_s1_save" type="button" class="btn btn-default" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Save file<br/><small>(shortcut cmd + s)</small>" data-container="body"><i class="fa fa-floppy-o"></i></button>
+                    <button id="mbcode_archive" type="button" class="btn btn-default" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Download project<br/><small>(shortcut ctrl + d)</small>" data-container="body"><i class="fa fa-cloud-download"></i></button>
+                    <button type="button" class="btn btn-default" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Create iteration<br/><small>(shortcut cmd + alt + i)</small>" data-container="body"><i class="fa fa-archive"></i></button>
+                </div>
+            </li>
+            -->
+            <!--
+             <li class="dropdown">
+             <a href="index.html#" id="header-avatar" class="dropdown-toggle btn btn-default" data-toggle="dropdown"  rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Contributors/<br/>Commentators" data-container="body"><i class="fa fa-users"></i></a>
+             <ul class="dropdown-menu">
+             <li class="title">Contributors</li>
+             <li><a href="index.html#"><img src="assets/img/avatar.jpg"> Lukasz Holeczek</a></li>
+             <li><a href="index.html#"><img src="assets/img/avatar.jpg"> Lukasz Holeczek</a></li>
+             <li class="divider"></li>
+             <li><a href="index.html#"><i class="fa fa-plus"></i> Add a contributor</a></li>
+             <li class="title">Commentators</li>
+             <li><a href="index.html#"><img src="assets/img/avatar.jpg"> Lukasz Holeczek</a></li>
+             <li><a href="index.html#"><img src="assets/img/avatar.jpg"> Lukasz Holeczek</a></li>
+             <li><a href="index.html#"><img src="assets/img/avatar.jpg"> Lukasz Holeczek</a></li>
+             <li class="divider"></li>
+             <li><a href="index.html#"><i class="fa fa-plus"></i> Add a commentator</a></li>
+             </ul>
+             </li>
+             -->
+
+            <li>
+                <div class="btn-group">
+                    <button id="mbcode_fullscreen" type="button" class="btn btn-default" data-toggle="dropdown" rel="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Toggle Fullscreen"><i class="fa fa-arrows-alt"></i></button>
+                    <button id="mbcode_settings" type="button" class="btn btn-default" data-toggle="dropdown" rel="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Settings"><i class="fa fa-cog"></i></button>
+
+                    <!--<a href="https://www.youtube.com/watch?v=xmlSXeQIlQA" target="_blank" class="btn btn-default" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Help Video" data-container="body"><i class="fa fa-youtube-play"></i></a>-->
+                    <button id="mbcode_help" type="button" class="btn btn-default" data-toggle="dropdown" rel="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Help"><i class="fa fa-question"></i></button>
+                </div>
+            </li>
+
+            <!--<li class="dropdown">
+                <a href="#self" id="header-avatar" class="dropdown-toggle btn btn-default user" data-toggle="dropdown" rel="tooltip" data-placement="bottom" title="" data-container="body" data-original-title="Account"><img id="mbcode_user_avatar" src="/assets/logo.png"></a>
+                <ul class="dropdown-menu">
+                    <li><a id="mbcode_myprojects" href="#self">My Account</a></li>
+                    <li class="divider"></li>
+                    <li><a id="mbcode_logout" href="#self">Logout</a></li>
+                </ul>
+            </li>-->
+
+        </ul>
+
+
+    </div><!-- /.navbar-collapse -->
+
+
+
+</nav>
