@@ -11,6 +11,9 @@ using Panther.CMS.Services.Page;
 using Panther.CMS.Services.Site;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Loader.IIS;
+using Microsoft.Framework.Runtime;
+
+using Panther.CMS.SiteProperties;
 
 namespace Panther.CMS
 {
@@ -34,8 +37,9 @@ namespace Panther.CMS
 
         public IPantherRouter Router { get; private set; }
 
-        public PantherContext(IServiceProvider services, IPantherRouter router, IPantherFileSystem fileSystem)
+        public PantherContext(IServiceProvider services, IPantherRouter router, IPantherFileSystem fileSystem, IApplicationEnvironment appEnv)
         {
+            this.appEnv = appEnv;
             Services = services;
             FileSystem = fileSystem;
             Router = router;
@@ -50,7 +54,12 @@ namespace Panther.CMS
             Site = siteService.GetSite();
             Root = pageService.GetRoot();
             Refferral = pageService.GetPage(Root, RefferralString);
-            //SetCulture();
+
+            var responseHeader = Site.GetProperties<ResponseHeader>();
+            var response = context.Response;
+            response.Headers["x-" + Site.Name.ToLower() + "-description"] = responseHeader.Description;
+            response.Headers["x-software"] = "Panther Content Management System.";
+            response.Headers["x-version"] = appEnv.Version;
         }
 
         private void SetCulture()
@@ -66,10 +75,11 @@ namespace Panther.CMS
 #endif
         }
 
-        public HttpRequest Request { get { return context.Request; } }
+        public HttpRequest Request => context.Request;
 
         public bool CanHandleUrl(string url)
         {
+            //url = url.TrimEnd('/');
             Current = pageService.GetPage(Root, url);
 
             if (Current.Path.ToLower().EndsWith(url.ToLower()))
@@ -128,6 +138,7 @@ namespace Panther.CMS
         }
 
         private bool _disposed = false;
+        private IApplicationEnvironment appEnv;
 
         private void Dispose(bool disposing)
         {

@@ -28,6 +28,11 @@ namespace Panther.CMS.Storage.User
             
         }
 
+        public override Guid GenerateKey()
+        {
+            return Guid.NewGuid();
+        }
+
         public Task<string> GetUserIdAsync(Entities.User user, CancellationToken cancellationToken)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -96,11 +101,6 @@ namespace Panther.CMS.Storage.User
             
             Add(user);
             return Task.FromResult(IdentityResult.Success);
-        }
-
-        public override Guid GenerateKey()
-        {
-            return Guid.NewGuid();
         }
 
         public Task<IdentityResult> UpdateAsync(Entities.User user, CancellationToken cancellationToken)

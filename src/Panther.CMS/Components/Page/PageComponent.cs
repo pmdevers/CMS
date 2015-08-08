@@ -26,10 +26,7 @@ namespace Panther.CMS.Components.Page
 
         public IEnumerable<Entities.Page> GetAll()
         {
-            
-            //var siteStore = new SiteStore(Context.FileSystem);
             var pageStore = new PageStore(Context.FileSystem);
-            //var site = siteStore.GetSite(Context.HostString);
             var pages = pageStore.GetForSite(Context.Site);
 
             if (!pages.Any())
@@ -47,10 +44,8 @@ namespace Panther.CMS.Components.Page
         {
             var pageDefinitionStore = new PageDefinitionStore(Context.FileSystem);
             var contentComponent = new ContentComponent(Context);
-            var definition = pageDefinitionStore.FindAll(x => x.Name == page.Template).FirstOrDefault();
-
-            if (definition == null)
-                definition = CreateDefinition(pageDefinitionStore, page.Template);
+            var definition = pageDefinitionStore.FindAll(x => x.Name == page.Template).FirstOrDefault() ??
+                             CreateDefinition(pageDefinitionStore, page.Template);
 
             foreach (var content in definition.Items)
             {
@@ -75,35 +70,6 @@ namespace Panther.CMS.Components.Page
             pageDefinitionStore.Add(def);
 
             return def;
-        }
-
-        public Entities.Page GetPage(Entities.Page root, string url)
-        {
-            //if (Context.FileSystem.FileExists(url)) return null;
-
-            if (string.IsNullOrEmpty(url))
-                url = string.Empty;
-
-            var urls = url.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-            var depth = 0;
-            var current = root;
-            while (current.Children.Any())
-            {
-                if (depth >= urls.Length)
-                    break;
-
-                foreach (var child in current.Children)
-                {
-                    if (child.Url.ToLower() == urls[depth].ToLower())
-                    {
-                        current = child;
-                        depth++;
-                        break;
-                    }
-                }
-                depth++;
-            }
-            return current;
         }
 
         public void Add(Entities.Page page)

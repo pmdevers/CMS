@@ -6,8 +6,8 @@
     .controller("SidebarCtrl", function SidebarController($scope, hotkeys) {
 
         $scope.sideBarItems = [
-            { 'name': "newPage", 'tooltip': "Create a new Page", 'shortcut': "alt+n", 'icon': "square-o", 'option': "star" },
-            { 'name': "site", 'tooltip': "change page", 'shortcut': "alt+s", 'icon': "square-o", 'option':"" }
+            { 'name': "site", 'tooltip': "change page", 'shortcut': "alt+s", 'icon': "globe", 'option':"star" },
+            { 'name': "newPage", 'tooltip': "Create a new Page", 'shortcut': "alt+n", 'icon': "file-o", 'option': "" }
         ];
 
         angular.forEach($scope.items, function (value) {

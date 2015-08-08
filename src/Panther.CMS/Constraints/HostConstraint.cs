@@ -18,16 +18,8 @@ namespace Panther.CMS.Constraints
         public bool Match(HttpContext httpContext, IRouter route, string routeKey, IDictionary<string, object> values, RouteDirection routeDirection)
         {
             var context = httpContext.ApplicationServices.GetService<IPantherContext>();
-            var url = "/";
-
-
             if (context == null)
                 return false;
-
-            //if (values.ContainsKey("culture") && !CheckCulture(values["culture"].ToString()))
-            //    return false;
-           if(values.ContainsKey("url") && values["url"] != null)
-                url = values["url"].ToString();
 
             var canHandle = context.CanHandleUrl(context.Path);
 
@@ -46,19 +38,6 @@ namespace Panther.CMS.Constraints
             values["context"] = context;
 
             return context.Current != null;
-        }
-
-        private bool CheckCulture(string culture)
-        {
-            try
-            {
-
-            }
-            catch
-            {
-                return false;
-            }
-            return true;
         }
     }
 }

@@ -23,7 +23,6 @@ namespace Panther.CMS.Filters
 
             if (HasSecurity(page))
             {
-                
                 var user = context.HttpContext.User;
 
                 var userIsAnonymous =

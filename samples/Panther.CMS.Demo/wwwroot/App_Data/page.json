@@ -1,65 +1,147 @@
-[
-  {
-    "Id": "ba32151c-261c-4ef0-87bc-b0452863ec60",
-    "ParentId": null,
-    "SiteId": "0f226f72-5ad9-4755-aa2a-acc511826f83",
-    "Name": "Home",
-    "Url": "",
-    "Template": "Index",
-    "Culture":  "nl-NL",
-    "Controller": null,
-    "Action": null,
-    "Route": null,
-    "AllowAnonymous": true,
-    "RequiredRoles": null,
-    "Canonicals": ["1dbe1fd3-5b39-457f-9bde-4a350c9cd163"],
-    "Properties": {
-        "GoogleSitemap.ChangeFrequency": "weekly",
-        "GoogleSitemap.Priority": "0.1",
-        "GoogleSitemap.LastModified": "2014-07-10T10:00:00",
-        "MetaTags.Description": "PantherCMS Content Site DEMO",
-        "MetaTags.Robots": "noindex,nofollow"
-    }
-  },
-  {
-    "Id": "1dbe1fd3-5b39-457f-9bde-4a350c9cd163",
-    "ParentId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
-    "SiteId": "0f226f72-5ad9-4755-aa2a-acc511826f83",
-    "Name": "Account",
-    "Url": "login",
-    "Template": "login",
-    "Culture":  "en-US",
-    "Controller": "Account",
-    "Action": "Index",
-    "Route": null,
-    "AllowAnonymous": true,
-    "RequiredRoles": null,
-    "Properties": {
-      "GoogleSitemap.ChangeFrequency": "weekly",
-      "GoogleSitemap.Priority": "0.1",
-      "GoogleSitemap.LastModified": "2014-07-10T10:00:00"
-    }
-  },
-  {
-    "Id": "1dbe1fd3-5b39-457f-9bde-4a350c9cd164",
-    "ParentId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
-    "SiteId": "0f226f72-5ad9-4755-aa2a-acc511826f83",
-    "Name": "Securred",
-    "Url": "sec",
-    "Template": "Index",
-    "Culture":  "nl-NL",
-    "Controller": null,
-    "Action": null,
-    "Route": null,
-    "AllowAnonymous": false,
-    "RequiredRoles": [
-      "Admin",
-      "Test"
-    ],
-    "Properties": {
-      "GoogleSitemap.ChangeFrequency": "Monthly",
-      "GoogleSitemap.Priority": "0.1",
-      "GoogleSitemap.LastModified": "2014-07-10T10:00:00"
-    }
-  }
-]
+[{
+	"Id": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+	"ParentId": null,
+	"SiteId": "0f226f72-5ad9-4755-aa2a-acc511826f83",
+	"Name": "Home",
+	"Url": "",
+	"Template": "Index",
+	"Culture": "en-US",
+	"Controller": null,
+	"Action": null,
+	"Route": null,
+	"AllowAnonymous": true,
+	"RequiredRoles": [],
+	"Translations": ["1dbe1fd3-5b39-457f-9bde-4a350c9cd168",
+	"2dbe1fd3-5b39-457f-9bde-4a350c9cd168"],
+	"Properties": {
+		"GoogleSitemap.ChangeFrequency": "weekly",
+		"GoogleSitemap.Priority": "0.1",
+		"GoogleSitemap.LastModified": "2014-07-10T10:00:00",
+		"MetaTags.Description": "PantherCMS Content Site DEMO",
+		"MetaTags.Robots": "noindex,nofollow"
+	}
+},
+{
+	"Id": "1dbe1fd3-5b39-457f-9bde-4a350c9cd163",
+	"ParentId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+	"SiteId": "0f226f72-5ad9-4755-aa2a-acc511826f83",
+	"Name": "Account",
+	"Url": "login",
+	"Template": "login",
+	"Culture": "en-US",
+	"Controller": "Account",
+	"Action": "Index",
+	"Route": null,
+	"AllowAnonymous": true,
+	"RequiredRoles": [],
+	"Properties": {
+		"GoogleSitemap.ChangeFrequency": "weekly",
+		"GoogleSitemap.Priority": "0.1",
+		"GoogleSitemap.LastModified": "2014-07-10T10:00:00"
+	}
+},
+{
+	"Id": "1dbe1fd3-5b39-457f-9bde-4a350c9cd164",
+	"ParentId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+	"SiteId": "0f226f72-5ad9-4755-aa2a-acc511826f83",
+	"Name": "About Us",
+	"Url": "about-us",
+	"Template": "Index",
+	"Culture": "en-US",
+	"Controller": null,
+	"Action": null,
+	"Route": null,
+	"AllowAnonymous": true,
+	"Translations": ["1dbe1fd3-5b39-457f-9bde-4a350c9cd169",
+	"2dbe1fd3-5b39-457f-9bde-4a350c9cd169"],
+	"RequiredRoles": [],
+	"Properties": {
+		"GoogleSitemap.ChangeFrequency": "Monthly",
+		"GoogleSitemap.Priority": "0.1",
+		"GoogleSitemap.LastModified": "2014-07-10T10:00:00"
+	}
+},
+{
+	"Id": "1dbe1fd3-5b39-457f-9bde-4a350c9cd168",
+	"ParentId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+	"SiteId": "0f226f72-5ad9-4755-aa2a-acc511826f83",
+	"Name": "nl Home",
+	"Url": "nl",
+	"Template": "index",
+	"Culture": "nl-NL",
+	"Controller": null,
+	"Action": null,
+	"Route": null,
+	"AllowAnonymous": true,
+	"Translations": ["ba32151c-261c-4ef0-87bc-b0452863ec60",
+	"2dbe1fd3-5b39-457f-9bde-4a350c9cd168"],
+	"RequiredRoles": [],
+	"Properties": {
+		"GoogleSitemap.ChangeFrequency": "weekly",
+		"GoogleSitemap.Priority": "0.1",
+		"GoogleSitemap.LastModified": "2014-07-10T10:00:00"
+	}
+},
+{
+	"Id": "1dbe1fd3-5b39-457f-9bde-4a350c9cd169",
+	"ParentId": "1dbe1fd3-5b39-457f-9bde-4a350c9cd168",
+	"SiteId": "0f226f72-5ad9-4755-aa2a-acc511826f83",
+	"Name": "Over Ons",
+	"Url": "over-ons",
+	"Template": "index",
+	"Culture": "nl-NL",
+	"Controller": null,
+	"Action": null,
+	"Route": null,
+	"AllowAnonymous": true,
+	"Translations": ["1dbe1fd3-5b39-457f-9bde-4a350c9cd164",
+	"2dbe1fd3-5b39-457f-9bde-4a350c9cd169"],
+	"RequiredRoles": [],
+	"Properties": {
+		"GoogleSitemap.ChangeFrequency": "weekly",
+		"GoogleSitemap.Priority": "0.1",
+		"GoogleSitemap.LastModified": "2014-07-10T10:00:00"
+	}
+},
+{
+	"Id": "2dbe1fd3-5b39-457f-9bde-4a350c9cd168",
+	"ParentId": "ba32151c-261c-4ef0-87bc-b0452863ec60",
+	"SiteId": "0f226f72-5ad9-4755-aa2a-acc511826f83",
+	"Name": "Start",
+	"Url": "fr",
+	"Template": "index",
+	"Culture": "fr-FR",
+	"Controller": null,
+	"Action": null,
+	"Route": null,
+	"AllowAnonymous": true,
+	"Translations": ["ba32151c-261c-4ef0-87bc-b0452863ec60",
+	"1dbe1fd3-5b39-457f-9bde-4a350c9cd168"],
+	"RequiredRoles": [],
+	"Properties": {
+		"GoogleSitemap.ChangeFrequency": "weekly",
+		"GoogleSitemap.Priority": "0.1",
+		"GoogleSitemap.LastModified": "2014-07-10T10:00:00"
+	}
+},
+{
+	"Id": "2dbe1fd3-5b39-457f-9bde-4a350c9cd169",
+	"ParentId": "2dbe1fd3-5b39-457f-9bde-4a350c9cd168",
+	"SiteId": "0f226f72-5ad9-4755-aa2a-acc511826f83",
+	"Name": "Over Ons",
+	"Url": "over-ons",
+	"Template": "index",
+	"Culture": "fr-FR",
+	"Controller": null,
+	"Action": null,
+	"Route": null,
+	"AllowAnonymous": true,
+	"Translations": ["1dbe1fd3-5b39-457f-9bde-4a350c9cd164",
+	"1dbe1fd3-5b39-457f-9bde-4a350c9cd169"],
+	"RequiredRoles": [],
+	"Properties": {
+		"GoogleSitemap.ChangeFrequency": "weekly",
+		"GoogleSitemap.Priority": "0.1",
+		"GoogleSitemap.LastModified": "2014-07-10T10:00:00"
+	}
+}]

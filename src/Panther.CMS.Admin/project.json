@@ -1,9 +1,9 @@
 ﻿{
   "webroot": "wwwroot",
-  "version": "1.0.0-beta5",
+  "version": "1.0.0-beta6",
 
   "dependencies": {
-    "Microsoft.AspNet.Server.IIS": "1.0.0-*",
+          "Microsoft.AspNet.Server.IIS": "1.0.0-*",
     "Microsoft.AspNet.Server.WebListener": "1.0.0-*",
     "Microsoft.AspNet.StaticFiles": "1.0.0-*"
   },
@@ -13,7 +13,7 @@
   },
 
   "frameworks": {
-    "dnx451": { },
+    "dnx46": { },
     "dnxcore50": { }
   },
 

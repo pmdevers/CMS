@@ -253,7 +253,7 @@ angular.module("sidebar/sidebar.tpl.html", []).run(["$templateCache", function($
     "                </a>\n" +
     "            </li>\n" +
     "            <li ng-Repeat=\"item in sideBarItems\" >\n" +
-    "                <a href=\"\" ng-Click=\"showSubMenu(item)\" target=\"#favourite-bricks\" tooltip-placement=\"right\" tooltip-append-to-body=\"true\" tooltip-html=\"'{{item.tooltip}}<br /><small>(shortcut {{item.shortcut}})'\" original-title=\"\">\n" +
+    "                <a href=\"\" ng-Click=\"showSubMenu(item)\" target=\"#favourite-bricks\" tooltip-placement=\"right\" tooltip-append-to-body=\"true\" tooltip-html-unsafe=\"{{item.tooltip}}<br /><small>(shortcut {{item.shortcut}})\" original-title=\"\">\n" +
     "                    <i class=\"fa fa-{{item.icon}}\"></i>\n" +
     "                    <i class=\"fa fa-{{item.option}} option\" ng-Show=\"'hasOption(item)'\"></i>\n" +
     "                </a>\n" +
@@ -263,7 +263,7 @@ angular.module("sidebar/sidebar.tpl.html", []).run(["$templateCache", function($
     "    </div>\n" +
     "\n" +
     "    <div id=\"submenu\">\n" +
-    "        <div id=\"newPage\">\n" +
+    "        <div id=\"newPage\" style=\"display: none\" class=\"blocks\">\n" +
     "            <div class=\"form-group\">\n" +
     "                <input type=\"text\" class=\"form-control\" placeholder=\"type to search element\"/>\n" +
     "                <i class=\"fa fa-times cancel\"></i>\n" +
@@ -407,7 +407,7 @@ angular.module("sidebar/sidebar.tpl.html", []).run(["$templateCache", function($
     "                </li>\n" +
     "            </ul>\n" +
     "        </div>\n" +
-    "        <div id=\"site\">\n" +
+    "        <div id=\"site\" style=\"display: none;\" class=\"formmenu\">\n" +
     "            <ul class=\"tools\">\n" +
     "                <li class=\"title\">\n" +
     "                    <ul></ul>\n" +
@@ -433,6 +433,27 @@ angular.module("sidebar/sidebar.tpl.html", []).run(["$templateCache", function($
     "                </div>\n" +
     "                <div class=\"form-group\">\n" +
     "                    <div class=\"divider\"></div>\n" +
+    "                </div>\n" +
+    "                <div>\n" +
+    "                    <div class=\"form-group\">\n" +
+    "                        <label for=\"element\">Checkbox</label>\n" +
+    "                        <div class=\"input-group\">\n" +
+    "                            <input type=\"text\" class=\"form-control\"/>\n" +
+    "                            <span class=\"input-group-btn\">\n" +
+    "                                <button class=\"btn btn-default colorpicker-element\" type=\"button\">\n" +
+    "                                    <i class=\"fa fa-dot-circle-o\"></i>\n" +
+    "                                </button>\n" +
+    "                            </span>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                    <div class=\"form-group\">\n" +
+    "                        <label for=\"element\">Element</label>\n" +
+    "                        <select class=\"form-control\">\n" +
+    "                            <option>Italic</option>\n" +
+    "                            <option>Underlinde</option>\n" +
+    "                            <option>Bold</option>\n" +
+    "                        </select>\n" +
+    "                    </div>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +

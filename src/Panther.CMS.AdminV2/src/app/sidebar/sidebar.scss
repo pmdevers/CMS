@@ -73,7 +73,7 @@
         background: $sidemenu-background;
 
         
-        #newPage {
+        .blocks {
             display: none;
             width: 250px;
 
@@ -235,9 +235,12 @@
         } 
     }
 
-    #site  {
+    .formmenu  {
         width: 250px;
         padding: 15px;
+        ul.tools {
+          margin: -15px -15px 15px -15px !important;
+        }
         .form-group {
             margin: 7px 0;
             background: $sidemenu-background;
@@ -271,6 +274,26 @@
               padding-right: 8px;
             }
 
+            select {
+              background: #2b303e url("../assets/img/form-control-select-bg.png") no-repeat !important;
+              background-size: 24px 20px !important;
+              background-position: right center !important;
+              -webkit-border-radius: 0 2px 2px 2px;
+              -moz-border-radius: 0 2px 2px 2px;
+              border-radius: 0 2px 2px 2px;
+              border: 1px solid #40475c;
+              -webkit-box-shadow: none !important;
+              -moz-box-shadow: none !important;
+              box-shadow: none !important;
+              outline: none;
+              -webkit-appearance: none;
+              -moz-appearance: none;
+              -ms-appearance: none;
+              appearance: none;
+              cursor: pointer;
+              padding-top: 5px;
+            }
+
             .divider {
               border: 0;
               background: none;
@@ -285,6 +308,16 @@
               overflow: scroll;
               overflow-y: hidden;
               white-space: nowrap;
+            }
+
+            .btn-default {
+              height: 28px;
+              line-height: 28px;
+              padding: 0 10px;
+              background: #4a536b;
+              border: 1px solid #4a536b;
+              color: white;
+              margin-top: -5px;
             }
         }
         ul.tools {

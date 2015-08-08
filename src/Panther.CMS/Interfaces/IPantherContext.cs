@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Http;
+using Microsoft.AspNet.Loader.IIS;
 
 using Panther.CMS.Entities;
 
@@ -24,7 +25,7 @@ namespace Panther.CMS.Interfaces
 
         Site Site { get; }
         string Url { get; }
-
+        HttpRequest Request { get; }
         void Initialize(HttpContext context);
         bool CanHandleUrl(string url);
     }

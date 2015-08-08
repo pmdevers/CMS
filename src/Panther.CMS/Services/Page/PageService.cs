@@ -16,9 +16,9 @@ namespace Panther.CMS.Services.Page
 
         public Entities.Page GetPage(Entities.Page root, string value)
         {
-            var component = new PageComponent(Context);
+            //var component = new PageComponent(Context);
             var content = new ContentComponent(Context);
-            var page = component.GetPage(root, value);
+            var page = root.GetByUrl(value) ?? root;
             page.Contents = content.GetPageContent(page);
 
             return page;

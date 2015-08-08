@@ -195,15 +195,16 @@ namespace Panther.CMS
         {
             FileProvider = GetFileSystem(services);
             var path = NormalizePath(filename);
-            IFileInfo fileInfo = FileProvider.GetFileInfo(path);
-            var content = fileInfo.CreateReadStream();
-            var reader = new StreamReader(content);
-            var fileContent = reader.ReadToEnd();
-
-            return fileContent;
+            var fileInfo = FileProvider.GetFileInfo(path);
+            using (var content = fileInfo.CreateReadStream())
+            using (var reader = new StreamReader(content))
+            {
+                var fileContent = reader.ReadToEnd();
+                return fileContent;
+            }
         }
 
-        private static object locker = new object();
+        private static readonly object locker = new object();
 
         public void WriteToFile(string filename, string content)
         {

@@ -68,11 +68,13 @@ module.exports = {
             'vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min.js',
             'vendor/angular-ui-router/release/angular-ui-router.js',
             'vendor/angular-ui-utils/modules/route/route.js',
-            'vendor/angular-hotkeys/build/hotkeys.min.js'
+            'vendor/angular-hotkeys/build/hotkeys.min.js',
+            'vendor/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js'
         ],
         css : [
             'vendor/font-awsome/css/font-awesome.min.css',
-            'vendor/angular-hotkeys/build/hotkeys.min.css'
+            'vendor/angular-hotkeys/build/hotkeys.min.css',
+            'vendor/angular-bootstrap-colorpicker/css/colorpicker.css'
     ],
     assets: [
     ],

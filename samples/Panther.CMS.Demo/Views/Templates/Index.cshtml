@@ -1,5 +1,34 @@
 ﻿@{
     Layout = "layout";
 }
+<div>
+    <ul>
+        <li>
+           <a href="@Html.TranslationRoot().Path">@Html.TranslationRoot().Name</a>  
+        </li>
+        @foreach (var page in Html.TranslationRoot().Children)
+        {
+            if (page.ShowInMenu)
+            {
+                <li>
+                    <a href="@page.Path">@page.Name</a>
+                </li>
+            }
+        }
+    </ul>
+</div>
+
+<div>
+    <ul>
+        @foreach (var url in Html.TranslationUrls())
+        {
+            <li>
+                <a href="@url.Value"><span>@url.Key</span></a>
+            </li>
+        }
+    </ul>
+</div>
+
+
 
 @Html.Render("container")

@@ -22,20 +22,15 @@ namespace Panther.CMS
 {
     public class PantherSiteMapMiddleware
     {
-        private readonly IServiceProvider serviceProvider;
         private readonly RequestDelegate next;
-        private readonly IPageService pageService;
         private readonly IPantherContext context;
         
         public PantherSiteMapMiddleware(RequestDelegate next,
             IServiceProvider serviceProvider,
-            IPantherContext context,
-            IPageService pageService
+            IPantherContext context
             )
         {
             this.next = next;
-            this.serviceProvider = serviceProvider;
-            this.pageService = pageService;
             this.context = context;
         }
 
@@ -43,53 +38,68 @@ namespace Panther.CMS
         {
             if (httpContext.Request.Path.Value.Contains("sitemap.xml"))
             {
-                var pages = pageService.Get().MakeTree();
+                var pages = context.Root;
                 var sitemap = new GoogleSiteMap();
 
                 BuildSitemap(sitemap, pages);
                 httpContext.Response.ContentType = "text/xml";
                 await httpContext.Response.WriteAsync(sitemap.GetXMLString(), Encoding.UTF8);
-
-                //return Content(sitemap.GetXMLString(), "text/xml", Encoding.UTF8);
                 return;
             }
 
             await next.Invoke(httpContext);
         }
 
-        private void BuildSitemap(GoogleSiteMap sitemap, IEnumerable<Entities.Page> pages)
+        private void BuildSitemap(GoogleSiteMap sitemap, Page page)
         {
-            foreach (var page in pages)
-            {
-                AddPage(sitemap, page);
-                if (page.Children.Any())
-                    BuildSitemap(sitemap, page.Children);
-            }
+            AddPage(sitemap, page);
+            if (page.Children.Any())
+                    page.Children.ToList().ForEach(x=> BuildSitemap(sitemap, x)); 
+            
         }
 
-        private void AddPage(GoogleSiteMap sitemap, Entities.Page page)
+        private void AddPage(GoogleSiteMap sitemap, Page page)
         {
-            var url =  (context.Site.Url + "/" + page.Url).TrimEnd(new[] { '/' });
+            var url = CreateUrl(page);
             var properties = page.GetProperties<GoogleSitemapProperties>();
             var links = GetLnks(page);
             sitemap.Create(url, properties.LastModified, properties.Priority, properties.ChangeFrequency, links);
         }
 
+        private string CreateUrl(Page page)
+        {
+            var protocol = context.Request.IsHttps ? "https://" : "http://";
+            var url = string.Concat(protocol, context.Site.Url, page.Path).TrimEnd(new[] { '/' });
+            return url;
+        }
+
         private IEnumerable<GoogleSiteMap.MapNodeLink> GetLnks(Page page)
         {
             var links = new List<GoogleSiteMap.MapNodeLink>();
-            foreach (var pageId in page.Canonicals)
+            if (!page.Translations.Any())
+                return links;
+            
+            var thisLink = MapNodeLink(page);
+            links.Add(thisLink);
+
+            foreach (var pageId in page.Translations)
             {
-                var linkedPage = pageService.Get(pageId);
-                var nodeLink = new GoogleSiteMap.MapNodeLink
-                {
-                    Href = (context.Site.Url + "/" + linkedPage.Url).TrimEnd(new[] { '/' }),
-                    HrefLang = linkedPage.Culture,
-                    Rel = "alternate"
-                };
+                var linkedPage = context.Root.GetById(pageId);
+                var nodeLink = MapNodeLink(linkedPage);
                 links.Add(nodeLink);
             }
             return links;
+        }
+
+        private GoogleSiteMap.MapNodeLink MapNodeLink(Page page)
+        {
+            var nodeLink = new GoogleSiteMap.MapNodeLink
+            {
+                Href = CreateUrl(page),
+                HrefLang = page.Culture,
+                Rel = "alternate"
+            };
+            return nodeLink;
         }
     }
 }

@@ -49,9 +49,9 @@ namespace Panther.CMS.Controllers
             return CurrentPage(model);
         }
 
-        public IActionResult Logoff(string returnUrl)
+        public async Task<IActionResult> Logoff(string returnUrl)
         {
-            SignInManager.SignOut();
+            await SignInManager.SignOutAsync();
             return RedirectToLocal(returnUrl);
         }
 

@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-using Microsoft.AspNet.Razor.Generator.Compiler.CSharp;
-
 namespace Panther.CMS.Extensions
 {
     public static class DictionaryExtensions

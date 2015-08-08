@@ -34,7 +34,7 @@ namespace Panther.CMS.Entities
 
         public Dictionary<string, string> Properties { get; set; }
         public string Culture { get; set; }
-        public List<Guid> Canonicals { get; set; }
+        public List<Guid> Translations { get; set; }
         public T GetProperties<T>() where T : IPageProperty
         {
             return ObjectHydrator.Build<T>(Properties, "Properties");

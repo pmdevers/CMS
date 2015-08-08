@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using Microsoft.AspNet.Mvc.Rendering;
+using Microsoft.AspNet.Html.Abstractions;
 using Microsoft.Framework.DependencyInjection;
+using Microsoft.AspNet.Mvc.Abstractions;
 
 using Panther.CMS.Entities;
 using Panther.CMS.Interfaces;
@@ -31,30 +32,27 @@ namespace Microsoft.AspNet.Mvc.Rendering
             return RenderContent(helper, contentName).ToString().Equals(value);
         }
 
-        public static HtmlString Render(this IHtmlHelper helper, string contentName)
+        public static IHtmlContent Render(this IHtmlHelper helper, string contentName)
         {
             return RenderContent(helper, contentName);
         }
 
-        public static HtmlString Render<TModel>(this IHtmlHelper<TModel> helper, string contentName)
+        public static IHtmlContent Render<TModel>(this IHtmlHelper<TModel> helper, string contentName)
         {
             return RenderContent(helper, contentName);
         }
 
-        public static HtmlString IsCurrentPage(this IHtmlHelper helper, Page page, string returnValue)
+        public static IHtmlContent IsCurrentPage(this IHtmlHelper helper, Page page, string returnValue)
         {
-            if (helper.ViewContext.HttpContext.Request.Path.Value == page.Path)
-            {
-                return new HtmlString(returnValue);
-            }
-
-            return new HtmlString(string.Empty);
+            return helper.ViewContext.HttpContext.Request.Path.Value == page.Path 
+                ? new HtmlString(returnValue) 
+                : new HtmlString(string.Empty);
         }
 
-        private static HtmlString RenderContent(IHtmlHelper helper, string contentName)
+        private static IHtmlContent RenderContent(IHtmlHelper helper, string contentName)
         {
             var content = helper.ViewData.Model as Content;
-            HtmlString result = null;
+            IHtmlContent result = null;
 
             // Find in current Content
             if (content != null)
@@ -65,43 +63,32 @@ namespace Microsoft.AspNet.Mvc.Rendering
                 result = GetContent(helper, contentName);
             }
 
-            if (result == null)
-            {
-                result = new HtmlString(string.Empty);
-            }
-
-            return result;
+            return result ?? new HtmlString(string.Empty);
         }
 
-        private static HtmlString GetContent(IHtmlHelper helper, string contentName)
+        private static IHtmlContent GetContent(IHtmlHelper helper, string contentName)
         {
-            HtmlString result = null;
+            IHtmlContent result = null;
             var context = Panther(helper);
             if (context != null)
             {
                 //Find Page Content
-                result = FindContent(helper, context.Current.Contents, contentName);
-
-                if (result == null)
-                {
-                    //Find Site Content
-                    result = FindContent(helper, context.Site.Contents, contentName);
-                }
+                result = FindContent(helper, context.Current.Contents, contentName) ??
+                         FindContent(helper, context.Site.Contents, contentName);
             }
 
             return result;
         }
 
-        private static HtmlString FindContent(IHtmlHelper helper, IList<Content> children, string contentName)
+        private static IHtmlContent FindContent(IHtmlHelper helper, IList<Content> children, string contentName)
         {
             var child = children.FirstOrDefault(x => x.Name.ToLower() == contentName.ToLower());
             if (child == null)
                 return null;
 
-            if (!child.Children.Any())
-                return new HtmlString(child.Data);
-
-            return helper.PartialAsync(child.Type, child).Result;
+            return !child.Children.Any() 
+                ? new HtmlString(child.Data) 
+                : helper.PartialAsync(child.Type, child).Result;
         }
     }
 }

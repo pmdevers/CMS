@@ -9,54 +9,57 @@ using Panther.CMS.Interfaces;
 namespace Panther.CMS.Storage
 {
     public class Store<T, TKey>
-        : IStore<T, TKey> where T : IEntity<TKey>
+        : IStore<T, TKey>, IDisposable where T : IEntity<TKey>
     {
         private bool _disposed;
-        private string _filename;
-        private string _content;
+        private readonly string filename;
 
-        private static object objLock = new object();
+        private static readonly object objLock = new object();
 
-        protected IPantherFileSystem FileSystem;
-        protected List<T> Items;
+        private readonly IPantherFileSystem fileSystem;
+        private List<T> items;
 
         public Store(IPantherFileSystem fileSystem)
         {
             lock (objLock)
             {
-                FileSystem = fileSystem;
-                _filename = FileSystem.CreateFilename(typeof(T));
-                _content = string.Empty;
-
-                //if (!FileSystem.FileExists(_filename))
-                //{
-                //    FileSystem.CreateFile(_filename);
-                //}
-
-                try
-                {
-                    Items = FileSystem.ReadFile<List<T>>(_filename);
-                }
-                catch {
-                    Items = new List<T>();
-                    Save();
-                }
+                this.fileSystem = fileSystem;
+                filename = CreateFilename();
+                ReloadFile();
             }
+        }
+
+        public void ReloadFile()
+        {
+            try
+            {
+                items = this.fileSystem.ReadFile<List<T>>(filename) ?? new List<T>();
+            }
+            catch
+            {
+                items = new List<T>();
+                Save();
+            }
+        }
+
+        public virtual string CreateFilename()
+        {
+            return fileSystem.CreateFilename(typeof(T));
         }
 
         public T GetByKey(TKey key)
         {
-            return Items.FirstOrDefault(x => x.Id.Equals(key));
+            return items.FirstOrDefault(x => x.Id.Equals(key));
         }
 
         public void Add(T entity)
         {
             if (Contains(entity.Id))
                 return;
+            if(entity.Id.Equals(default(TKey)))
+                entity.Id = GenerateKey();
 
-            entity.Id = GenerateKey();
-
-            Items.Add(entity);
+            items.Add(entity);
             Save();
         }
 
@@ -71,8 +74,8 @@ namespace Panther.CMS.Storage
                 return;
 
             var item = GetByKey(entity.Id);
-            var index = Items.IndexOf(item);
-            Items[index] = entity;
+            var index = items.IndexOf(item);
+            items[index] = entity;
 
             Save();
         }
@@ -83,33 +86,33 @@ namespace Panther.CMS.Storage
                 return;
 
             var item = GetByKey(entity.Id);
-            Items.Remove(item);
+            items.Remove(item);
 
             Save();
         }
 
         public bool Contains(TKey key)
         {
-            return Items.Any(x => x.Id.Equals(key));
+            return items.Any(x => x.Id.Equals(key));
         }
 
         public void Save()
         {
-            FileSystem.WriteToFile(_filename, Items);
+            fileSystem.WriteToFile(filename, items);
         }
 
         public IEnumerable<T> FindAll(Expression<Func<T, bool>> selector)
         {
-            return Items.Where(selector.Compile());
+            return items.Where(selector.Compile());
         }
 
         public void Delete(Expression<Func<T, bool>> selector)
         {
-            var items = Items.Where(selector.Compile()).ToList();
+            var items = this.items.Where(selector.Compile()).ToList();
             items.ForEach(Delete);
         }
 
-        public virtual TKey ConvertIdFromString(string id)
+        public TKey ConvertIdFromString(string id)
         {
             if (id == null)
             {
@@ -118,7 +121,7 @@ namespace Panther.CMS.Storage
             return (TKey)TypeDescriptor.GetConverter(typeof(TKey)).ConvertFromInvariantString(id);
         }
 
-        public virtual string ConvertIdToString(TKey id)
+        public string ConvertIdToString(TKey id)
         {
             if (id.Equals(default(TKey)))
             {

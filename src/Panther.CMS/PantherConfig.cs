@@ -1,7 +1,7 @@
 ﻿using System;
 
 using Microsoft.AspNet.Routing;
-using Microsoft.Framework.ConfigurationModel;
+using Microsoft.Framework.Configuration;
 
 namespace Panther.CMS
 {

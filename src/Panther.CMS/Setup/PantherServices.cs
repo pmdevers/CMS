@@ -9,6 +9,7 @@ using Panther.CMS.Routing;
 using Panther.CMS.Services.Content;
 using Panther.CMS.Services.Page;
 using Panther.CMS.Services.Site;
+using Panther.CMS.Storage.Resource;
 using Panther.CMS.Storage.Role;
 using Panther.CMS.Storage.User;
 
@@ -31,6 +32,7 @@ namespace Panther.CMS.Setup
 
             collection.AddScoped<IUserStore<User>, UserStore>();
             collection.AddScoped<IRoleStore<Role>, RoleStore>();
+            collection.AddTransient<IResourceStore, ResourceStore>();
             //Storages
         }
     }

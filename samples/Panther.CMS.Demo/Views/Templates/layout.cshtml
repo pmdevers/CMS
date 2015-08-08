@@ -7,11 +7,13 @@
     <title>@Html.Panther().Current.Name</title>
 
     @Html.StyleSheets()
-    @Html.Canonicals()
+    @Html.Translations()
 </head>
 <body>
-    @RenderBody()
-    @Html.Scripts()
-    @Html.Analytics()
+
+@Html.Resource("test")
+@RenderBody()
+@Html.Scripts()
+@*@Html.Analytics()*@
 </body>
 </html>
