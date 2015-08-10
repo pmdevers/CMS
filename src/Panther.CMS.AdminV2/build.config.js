@@ -69,7 +69,15 @@ module.exports = {
             'vendor/angular-ui-router/release/angular-ui-router.js',
             'vendor/angular-ui-utils/modules/route/route.js',
             'vendor/angular-hotkeys/build/hotkeys.min.js',
-            'vendor/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js'
+            'vendor/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js',
+            'vendor/ace-builds/src-min-noconflict/ace.js',
+            'vendor/ace-builds/src-min-noconflict/theme-chrome.js',
+            'vendor/ace-builds/src-min-noconflict/mode-xml.js',
+            'vendor/ace-builds/src-min-noconflict/worker-xml.js',
+            'vendor/ace-builds/src-min-noconflict/mode-json.js',
+            'vendor/ace-builds/src-min-noconflict/mode-css.js',
+            'vendor/ace-builds/src-min-noconflict/worker-css.js',
+            'vendor/angular-ui-ace/ui-ace.js'
         ],
         css : [
             'vendor/font-awsome/css/font-awesome.min.css',

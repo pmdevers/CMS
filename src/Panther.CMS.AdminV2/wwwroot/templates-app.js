@@ -1,4 +1,24 @@
-angular.module('templates-app', ['home/home.tpl.html', 'layout/header.tpl.html', 'layout/nav.tpl.html', 'navbar/navbar.tpl.html', 'sidebar/sidebar.tpl.html']);
+angular.module('templates-app', ['builder/builder.tpl.html', 'home/home.tpl.html', 'layout/header.tpl.html', 'layout/nav.tpl.html', 'navbar/navbar.tpl.html', 'sidebar/sidebar.tpl.html']);
+
+angular.module("builder/builder.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("builder/builder.tpl.html",
+    "<div id=\"builder\" ng-controller=\"builderCtrl\">\n" +
+    "    <div id=\"tabs_container\">\n" +
+    "        <ul class=\"tabs\" id=\"mbcode_tabs\">\n" +
+    "            <li class=\"active mbcode_c_tab\" data-tab_i=\"0\" title=\"index.html\">index.html <span class=\"mbcode_c_tab_close\" href=\"#self\" ng-click=\"ToggleEditor\" data-tab_i=\"0\"><i class=\"fa fa-times\"></i></span></li></ul>\n" +
+    "    </div>\n" +
+    "    <div>\n" +
+    "        <a href=\"\">code</a>\n" +
+    "    </div>\n" +
+    "    <div ng-show=\"editorVisible\" ui-ace=\"{\n" +
+    "            useWrapMode : true,\n" +
+    "            showGutter: true,\n" +
+    "            theme:'chrome_razor',\n" +
+    "            mode: 'razor',\n" +
+    "            firstLineNumber: 1\n" +
+    "        }\"></div>\n" +
+    "</div>");
+}]);
 
 angular.module("home/home.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home/home.tpl.html",

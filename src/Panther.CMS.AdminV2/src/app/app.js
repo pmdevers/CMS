@@ -4,9 +4,11 @@ angular.module( 'ngBoilerplate', [
   'ngBoilerplate.home',
   'ngBoilerplate.navbar',
   'ngBoilerplate.sidebar',
+  'ngBoilerplate.builder',
   'ui.bootstrap',
   'ui.router',
-  'cfp.hotkeys'
+  'cfp.hotkeys',
+  'ui.ace'
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {

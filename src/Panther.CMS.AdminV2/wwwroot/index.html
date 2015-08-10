@@ -10,6 +10,7 @@
     <!-- compiled CSS -->
     <link rel="stylesheet" type="text/css" href="vendor/font-awsome/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="vendor/angular-hotkeys/build/hotkeys.min.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/angular-bootstrap-colorpicker/css/colorpicker.css" />
     <link rel="stylesheet" type="text/css" href="assets/PantherAdmin-0.1.0.css" />
 
 </head>
@@ -19,19 +20,11 @@
     <![endif]-->
 
     <ng-Include src="'navbar/navbar.tpl.html'"></ng-Include>
-
-
+    
     <div id="main">
         <ng-Include src="'sidebar/sidebar.tpl.html'"></ng-Include>
+        <ng-Include src="'builder/builder.tpl.html'"></ng-Include>
     </div>
-
-    <input type="text" class="form-control"
-           tooltip="<h2>Enter something in this input field to disable this tooltip</h2><br /> test"
-           tooltip-placement="bottom"
-           tooltip-trigger="mouseenter"
-     />
-    
-
 
 <!-- compiled JavaScript -->
     <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
@@ -39,7 +32,17 @@
     <script type="text/javascript" src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script type="text/javascript" src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
     <script type="text/javascript" src="vendor/angular-hotkeys/build/hotkeys.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js"></script>
+    <script type="text/javascript" src="vendor/ace-builds/src-min-noconflict/ace.js"></script>
+    <script type="text/javascript" src="vendor/ace-builds/src-min-noconflict/theme-chrome.js"></script>
+    <script type="text/javascript" src="vendor/ace-builds/src-min-noconflict/mode-xml.js"></script>
+    <script type="text/javascript" src="vendor/ace-builds/src-min-noconflict/worker-xml.js"></script>
+    <script type="text/javascript" src="vendor/ace-builds/src-min-noconflict/mode-json.js"></script>
+    <script type="text/javascript" src="vendor/ace-builds/src-min-noconflict/mode-css.js"></script>
+    <script type="text/javascript" src="vendor/ace-builds/src-min-noconflict/worker-css.js"></script>
+    <script type="text/javascript" src="vendor/angular-ui-ace/ui-ace.js"></script>
     <script type="text/javascript" src="src/app/app.js"></script>
+    <script type="text/javascript" src="src/app/builder/builder.js"></script>
     <script type="text/javascript" src="src/app/home/home.js"></script>
     <script type="text/javascript" src="src/app/layout/nav.js"></script>
     <script type="text/javascript" src="src/app/navbar/navbar.js"></script>

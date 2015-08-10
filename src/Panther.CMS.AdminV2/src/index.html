@@ -17,19 +17,11 @@
     <![endif]-->
 
     <ng-Include src="'navbar/navbar.tpl.html'"></ng-Include>
-
-
+    
     <div id="main">
         <ng-Include src="'sidebar/sidebar.tpl.html'"></ng-Include>
+        <ng-Include src="'builder/builder.tpl.html'"></ng-Include>
     </div>
-
-    <input type="text" class="form-control"
-           tooltip="<h2>Enter something in this input field to disable this tooltip</h2><br /> test"
-           tooltip-placement="bottom"
-           tooltip-trigger="mouseenter"
-     />
-    
-
 
 <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
     <script type="text/javascript" src="<%= file %>"></script><% }); %>

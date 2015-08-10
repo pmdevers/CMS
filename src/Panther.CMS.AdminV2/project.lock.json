@@ -2,7 +2,7 @@
   "locked": false,
   "version": 1,
   "targets": {
-    "DNX,Version=v4.6": {
+    "DNX,Version=v4.5.1": {
       "Microsoft.AspNet.DataProtection.Abstractions/1.0.0-beta6": {
         "dependencies": {
           "Microsoft.Framework.Runtime.Abstractions": "1.0.0-beta6"
@@ -4063,7 +4063,7 @@
       "Microsoft.AspNet.Server.WebListener >= 1.0.0-*",
       "Microsoft.AspNet.StaticFiles >= 1.0.0-*"
     ],
-    "DNX,Version=v4.6": [],
+    "DNX,Version=v4.5.1": [],
     "DNXCore,Version=v5.0": []
   }
 }
