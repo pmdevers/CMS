@@ -1,0 +1,16 @@
+﻿<div id="builder" ng-controller="builderCtrl">
+    <div id="tabs_container">
+        <ul class="tabs" id="mbcode_tabs">
+            <li class="active mbcode_c_tab" data-tab_i="0" title="index.html">index.html <span class="mbcode_c_tab_close" href="#self" ng-click="ToggleEditor" data-tab_i="0"><i class="fa fa-times"></i></span></li></ul>
+    </div>
+    <div>
+        <a href="">code</a>
+    </div>
+    <div ng-show="editorVisible" ui-ace="{
+            useWrapMode : true,
+            showGutter: true,
+            theme:'chrome_razor',
+            mode: 'razor',
+            firstLineNumber: 1
+        }"></div>
+</div>
