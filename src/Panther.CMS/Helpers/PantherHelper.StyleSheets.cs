@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 using Microsoft.AspNet.Mvc.Rendering;
+
+using Panther.CMS.Helpers;
 
 namespace Microsoft.AspNet.Mvc.Rendering
 {
@@ -11,7 +15,15 @@ namespace Microsoft.AspNet.Mvc.Rendering
         {
             var stylesheets = htmlHelper.Panther().Site.Stylesheets;
             stylesheets.ForEach(htmlHelper.RegisterStylesheet);
-            return htmlHelper.RenderRegisteredStylesheets();
+
+            var sb = new StringBuilder();
+            sb.Append(htmlHelper.RenderRegisteredStylesheets());
+            sb.Append("<style type=\"text/css\">");
+            var css = DelayedBlock.GetBlock(htmlHelper, "style");
+            var minifiedCss = Minifier.RemoveWhiteSpaceFromStylesheets(css);
+            sb.Append(minifiedCss);
+            sb.Append("</style>");
+            return new HtmlString(sb.ToString());
         }
 
         public static HtmlString RenderRegisteredStylesheets(this IHtmlHelper htmlHelper)
@@ -50,5 +62,11 @@ namespace Microsoft.AspNet.Mvc.Rendering
                 registeredStylesheets.Push(src);
             }
         }
+
+        public static IDisposable RegisterStylesheet(this IHtmlHelper htmlHelper)
+        {
+             return new DelayedBlock(htmlHelper, "style");
+        }
+
     }
 }

@@ -5,40 +5,42 @@ using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 
 using Panther.CMS.Entities;
+using Panther.CMS.Interfaces;
 using Panther.CMS.Services.Page;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Panther.CMS.Controllers.Api
 {
-    public class PageController : BaseController
+    [Route("api/site/pages")]
+    public class PageController
     {
-        private readonly IPageService pageService;
+        private readonly IPantherContext context;
 
-        public PageController(IPageService pageService)
+        public PageController(IPantherContext context)
         {
-            this.pageService = pageService;
+            this.context = context;
         }
 
-        // GET: api/values
+        // GET: api/value       
         [HttpGet]
-        public IEnumerable<Page> Get()
+        public Page Get()
         {
-            return pageService.Get();
+            return context.Root;
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public Page Get(Guid id)
+        public IList<Page> Get(Guid id)
         {
-            return pageService.Get(id);
+            return context.Root.GetById(id).Children;
         }
 
         // POST api/values
         [HttpPost]
         public void Post([FromBody]Page page)
         {
-            pageService.Post(page);
+            //pageService.Post(page);
         }
 
         // PUT api/values/5

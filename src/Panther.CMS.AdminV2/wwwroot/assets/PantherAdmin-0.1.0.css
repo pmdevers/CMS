@@ -6461,7 +6461,7 @@ nav.navbar.navbar-panther {
   padding-left: 310px;
   padding-top: 60px;
   padding-right: 10px;
-  padding-bottom: 110px; }
+  padding-bottom: 60px; }
   #builder .tabs {
     list-style: none;
     padding: 0;
@@ -6493,6 +6493,12 @@ nav.navbar.navbar-panther {
     top: 30px;
     position: relative;
     display: block; }
+  #builder #preview {
+    height: 100%;
+    width: 100%;
+    top: 30px;
+    position: relative;
+    display: block; }
   #builder #tabs_container {
     position: absolute;
     left: 300px;
@@ -6502,5 +6508,8 @@ nav.navbar.navbar-panther {
     padding: 0 10px 0 10px;
     overflow-x: auto;
     white-space: nowrap; }
+  #builder #views {
+    top: 30px;
+    position: relative; }
 
 /*# sourceMappingURL=PantherAdmin-0.1.0.css.map */

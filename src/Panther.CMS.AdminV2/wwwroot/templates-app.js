@@ -7,17 +7,27 @@ angular.module("builder/builder.tpl.html", []).run(["$templateCache", function($
     "        <ul class=\"tabs\" id=\"mbcode_tabs\">\n" +
     "            <li class=\"active mbcode_c_tab\" data-tab_i=\"0\" title=\"index.html\">index.html <span class=\"mbcode_c_tab_close\" href=\"#self\" ng-click=\"ToggleEditor\" data-tab_i=\"0\"><i class=\"fa fa-times\"></i></span></li></ul>\n" +
     "    </div>\n" +
-    "    <div>\n" +
-    "        <a href=\"\">code</a>\n" +
+    "    <div id=\"views\">\n" +
+    "        <a href=\"\" ng-click=\"editorVisible = !editorVisible\">code</a>\n" +
     "    </div>\n" +
     "    <div ng-show=\"editorVisible\" ui-ace=\"{\n" +
+    "            require: ['ace/ext/language_tools'],\n" +
+    "            advanced: {\n" +
+    "                  enableSnippets: true,\n" +
+    "                  enableBasicAutocompletion: true,\n" +
+    "                  enableLiveAutocompletion: true\n" +
+    "              },\n" +
     "            useWrapMode : true,\n" +
     "            showGutter: true,\n" +
     "            theme:'chrome_razor',\n" +
     "            mode: 'razor',\n" +
     "            firstLineNumber: 1\n" +
     "        }\"></div>\n" +
-    "</div>");
+    "    <div id=\"preview\" ng-show=\"!editorVisible\">\n" +
+    "        <iframe src=\"http://beta.panthercms.nl\" width=\"100%\" height=\"100%\" border=\"0\"></iframe>\n" +
+    "    </div>\n" +
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("home/home.tpl.html", []).run(["$templateCache", function($templateCache) {

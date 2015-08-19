@@ -8,9 +8,9 @@ namespace Panther.CMS.Models
 {
     public class LoginModel
     {
-        [Required]
+        [Required(ErrorMessage = "Username invalid.")]
         public string Username { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Passowrd invalid.")]
         public string Password { get; set; }
         public bool RememberMe { get; set; }
     }

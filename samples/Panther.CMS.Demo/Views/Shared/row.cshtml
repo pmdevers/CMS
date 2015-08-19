@@ -5,3 +5,11 @@
         @Html.Render(column.Name)
     }
 </div>
+
+
+@using (Html.RegisterScript())
+{
+    <script type="text/javascript">
+        alert('alert');
+    </script>
+}

@@ -1,0 +1,23 @@
+﻿@using System.Globalization
+@model Panther.CMS.Models.LoginModel
+@{
+    Layout = null;
+}
+
+<div id="loginForm" class="login-card">
+    @using (Html.AjaxForm(new AjaxOptions { JQuerySelector = "#loginForm", Url = Url.Action("Login", "Account") }))
+    {
+        <h1>Log-in</h1><br>
+        @Html.AntiForgeryToken()
+        @Html.ValidationMessageFor(x=>x.Username)
+        @Html.TextBoxFor(x => x.Username, new { placeholder = "Username" })
+        @Html.ValidationMessageFor(x => x.Password)
+        @Html.PasswordFor(x => x.Password, new { placeholder = "Password" })
+        <input type="submit" name="login" class="login login-submit" value="login">
+        @Html.ValidationSummary()
+        <div class="login-help">
+            <a href="#">Register</a> • <a href="#">Forgot Password</a>
+        </div>
+
+    }
+</div>

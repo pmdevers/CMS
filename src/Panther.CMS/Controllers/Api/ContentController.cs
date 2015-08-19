@@ -11,8 +11,8 @@ using Panther.CMS.Services.Models;
 
 namespace Panther.CMS.Controllers.Api
 {
-    
-    public class ContentController : BaseController
+    [Route("api/content")]
+    public class ContentController
     {
         private readonly IContentService contentSerivce;
 

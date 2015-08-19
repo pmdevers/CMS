@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
-
+using Panther.CMS.Controllers.Api.Models;
 using Panther.CMS.Entities;
 using Panther.CMS.Services.Site;
 
@@ -8,7 +8,8 @@ using Panther.CMS.Services.Site;
 
 namespace Panther.CMS.Controllers.Api
 {
-    public class SiteController : BaseController
+    [Route("api/site")]
+    public class SiteController
     {
 
         private readonly ISiteService siteService;
@@ -19,9 +20,19 @@ namespace Panther.CMS.Controllers.Api
         }
         // GET: /<controller>/
         [HttpGet]
-        public Site Get()
+        public SiteRepresentation Get()
         {
-            return siteService.GetSite();
+            var site = siteService.GetSite();
+            
+            return new SiteRepresentation
+            {
+                SiteName = site.Name,
+                Culture = site.Culture,
+                Properties = site.Properties,
+                Scripts = site.Scripts,
+                StyleSheet = site.Stylesheets
+            };
+            
         }
     }
 }

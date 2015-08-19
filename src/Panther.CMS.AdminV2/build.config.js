@@ -77,6 +77,11 @@ module.exports = {
             'vendor/ace-builds/src-min-noconflict/mode-json.js',
             'vendor/ace-builds/src-min-noconflict/mode-css.js',
             'vendor/ace-builds/src-min-noconflict/worker-css.js',
+            'vendor/ace-builds/src-min-noconflict/ext-language_tools.js',
+            'vendor/ace-builds/src-min-noconflict/snippets/text.js',
+            'vendor/ace-builds/src-min-noconflict/snippets/razor.js',
+            'vendor/ace-builds/src-min-noconflict/snippets/css.js',
+            'vendor/ace-builds/src-min-noconflict/snippets/html.js',
             'vendor/angular-ui-ace/ui-ace.js'
         ],
         css : [

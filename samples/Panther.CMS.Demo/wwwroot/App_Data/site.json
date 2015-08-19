@@ -15,6 +15,6 @@
       "ResponseHeader.Description": "a Panther CMS sample site."
     },
     "Stylesheets": [ "/content/css/main.min.css", "/content/js/bootstrap/css/bootstrap.min.css" ],
-    "Scripts": [ "/content/js/bootstrap/js/bootstrap.js", "/content/js/jquery/js/jquery.js" ]
+    "Scripts": [ "/content/js/jquery.unobtrusive-ajax.js","/content/js/bootstrap/js/bootstrap.js","/content/js/jquery/js/jquery.js"]
   }
 ]

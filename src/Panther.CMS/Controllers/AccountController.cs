@@ -28,7 +28,7 @@ namespace Panther.CMS.Controllers
         public SignInManager<User> SignInManager { get; private set; }
 
         [AllowAnonymous]
-        public IActionResult Index(string returnUrl = null)
+        public IActionResult Login(string returnUrl = null)
         {
             ViewBag.ReturnUrl = returnUrl;
             ViewBag.LoginProvider = SignInManager.GetExternalAuthenticationSchemes().ToList();
@@ -38,15 +38,22 @@ namespace Panther.CMS.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(LoginModel model, string returnUrl)
+        public async Task<IActionResult> Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid)
-            {
-                var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, false, false);
-                return RedirectToLocal(returnUrl);
-            }
+            if (!ModelState.IsValid)
+                return PartialView(model);
 
-            return CurrentPage(model);
+            var result = await SignInManager.PasswordSignInAsync(model.Username, model.Password, false, false);
+            if(result.Succeeded)
+                return RedirectToLocal(returnUrl);
+            //if (result.RequiresTwoFactor)
+            //    RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+            if (result.IsLockedOut)
+                return PartialView("LockedOut");
+
+            ModelState.AddModelError("", "Invalid login attempt.");
+
+            return PartialView(model);
         }
 
         public async Task<IActionResult> Logoff(string returnUrl)

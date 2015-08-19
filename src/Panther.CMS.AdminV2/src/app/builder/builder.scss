@@ -7,7 +7,8 @@
     padding-left: 310px;
     padding-top: 60px;
     padding-right: 10px;
-    padding-bottom: 110px;
+    padding-bottom: 60px;
+
 
     .tabs{
         list-style: none;
@@ -49,6 +50,13 @@
         position: relative;
         display: block;
     }
+    #preview{
+        height: 100%;
+        width: 100%;
+        top:30px;
+        position:relative;
+        display: block;
+    }
     #tabs_container{
         position: absolute;
         left: 300px;
@@ -58,5 +66,9 @@
         padding: 0 10px 0 10px;
         overflow-x: auto;
         white-space: nowrap;
+    }
+    #views{
+        top: 30px;
+        position:relative;
     }
 }
