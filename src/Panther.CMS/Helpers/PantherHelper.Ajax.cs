@@ -14,7 +14,7 @@ namespace Microsoft.AspNet.Mvc.Rendering
     {
         public static MvcForm AjaxForm(this IHtmlHelper htmlHelper, AjaxOptions options)
         {
-            TagBuilder builder = new TagBuilder("form");
+            var builder = new TagBuilder("form");
             if(!string.IsNullOrEmpty(options.Url))
                 builder.MergeAttribute("data-ajax-url", options.Url);
 

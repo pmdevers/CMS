@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNet.Razor.Chunks
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    // ViewBag.Title = "Home Page";
+    var currentSurvey = Html.Survey("test");
+}
+
+@using (currentSurvey.BeginSurvey())
+{
+    <h1>@currentSurvey.GetValue("Firstname") @currentSurvey.GetValue("Lastname") bedankt voor je deelnamen.</h1>
+
+    <p>Je vondt het @currentSurvey.GetValue("QuestionType") om de survey te gebruiken.</p>
+
+    @currentSurvey.CheckBox("Checked")
+    <div class="form-group">
+        @currentSurvey.Button("Back", SurveyAction.Reset)    
+    </div>   
+}

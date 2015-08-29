@@ -180,6 +180,7 @@ colorpicker-preview {
   background-position: 0 100%;
 }
 
+.angular-ui-tree-empty{border:1px dashed #bbb;min-height:100px;background-color:#e5e5e5;background-image:-webkit-linear-gradient(45deg,#fff 25%,transparent 25%,transparent 75%,#fff 75%,#fff),-webkit-linear-gradient(45deg,#fff 25%,transparent 25%,transparent 75%,#fff 75%,#fff);background-image:-moz-linear-gradient(45deg,#fff 25%,transparent 25%,transparent 75%,#fff 75%,#fff),-moz-linear-gradient(45deg,#fff 25%,transparent 25%,transparent 75%,#fff 75%,#fff);background-image:linear-gradient(45deg,#fff 25%,transparent 25%,transparent 75%,#fff 75%,#fff),linear-gradient(45deg,#fff 25%,transparent 25%,transparent 75%,#fff 75%,#fff);background-size:60px 60px;background-position:0 0,30px 30px}.angular-ui-tree-nodes{display:block;position:relative;margin:0;padding:0;list-style:none}.angular-ui-tree-nodes .angular-ui-tree-nodes{padding-left:20px}.angular-ui-tree-node,.angular-ui-tree-placeholder{display:block;position:relative;margin:0;padding:0;min-height:20px;line-height:20px}.angular-ui-tree-hidden{display:none}.angular-ui-tree-placeholder{margin:5px 0;padding:0;min-height:30px}.angular-ui-tree-handle{cursor:move;text-decoration:none;font-weight:700;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;min-height:20px;line-height:20px}.angular-ui-tree-drag{position:absolute;pointer-events:none;z-index:999;opacity:.8}
 @charset "UTF-8";
 /*!
  * Panther CMS Admin Stylesheet
@@ -5991,6 +5992,23 @@ body {
   user-select: none;
   min-width: 1000px; }
 
+span.panther {
+  font-family: 'Lobster'; }
+
+h4.panther {
+  margin: 0 10px;
+  width: 30px;
+  position: absolute;
+  bottom: 15px;
+  font-family: 'Lobster';
+  font-size: 25px;
+  color: white;
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg); }
+
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px; }
@@ -6168,11 +6186,6 @@ nav.navbar.navbar-panther {
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
       border-radius: 2px; }
-    #sidebar #sidebar-menu #logo {
-      margin: 0 10px;
-      width: 30px;
-      position: absolute;
-      bottom: 15px; }
   #sidebar #submenu {
     width: 270px;
     position: absolute;
@@ -6378,6 +6391,8 @@ nav.navbar.navbar-panther {
         margin-top: -5px; }
     #sidebar .formmenu ul.tools {
       margin: -15px -15px 15px -15px; }
+  #sidebar #treeview {
+    padding: 1px; }
 
 /*@media (max-width: 1439px){
     #sidebar{
@@ -6511,5 +6526,19 @@ nav.navbar.navbar-panther {
   #builder #views {
     top: 30px;
     position: relative; }
+
+#dashboard {
+  position: absolute;
+  background: #f2f4f8;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  padding-left: 310px;
+  padding-top: 60px;
+  padding-right: 10px;
+  padding-bottom: 60px; }
+  #dashboard h1.panther {
+    font-family: 'Lobster';
+    font-size: 24px; }
 
 /*# sourceMappingURL=PantherAdmin-0.1.0.css.map */

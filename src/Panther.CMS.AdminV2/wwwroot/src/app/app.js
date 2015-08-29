@@ -7,12 +7,14 @@ angular.module( 'ngBoilerplate', [
   'ngBoilerplate.builder',
   'ui.bootstrap',
   'ui.router',
+  'ui.tree',
   'cfp.hotkeys',
   'ui.ace'
 ])
 
-.config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
-  $urlRouterProvider.otherwise( '/home' );
+.config(function myAppConfig($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/home');
 })
 
 .run( function run () {

@@ -3,11 +3,25 @@
         "ui.bootstrap",
         "cfp.hotkeys"
 ])
-    .controller("SidebarCtrl", function SidebarController($scope, hotkeys) {
 
+
+    .config(function config($stateProvider) {
+        $stateProvider.state('sidebar', {
+            views: {
+                '': {
+                    controller: 'HomeCtrl',
+                    templateUrl: 'home/home.tpl.html'
+                }
+            },
+            data: { pageTitle: 'Home' }
+        });
+    })
+    .controller("SidebarCtrl", function SidebarController($scope, hotkeys) {
+        
         $scope.sideBarItems = [
             { 'name': "site", 'tooltip': "change page", 'shortcut': "alt+s", 'icon': "globe", 'option':"star" },
-            { 'name': "newPage", 'tooltip': "Create a new Page", 'shortcut': "alt+n", 'icon': "file-o", 'option': "" }
+            { 'name': "newPage", 'tooltip': "Create a new Page", 'shortcut': "alt+n", 'icon': "file-o", 'option': "" },
+            { 'name': "treeView", 'tooltip': "Create a new Page", 'shortcut': "alt+n", 'icon': "file-o", 'option': "" }
         ];
 
         angular.forEach($scope.items, function (value) {

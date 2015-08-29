@@ -1,0 +1,24 @@
+﻿@using Panther.CMS.Helpers
+@{
+    Layout = null;
+    var currentSurvey = Html.Survey("test");
+}
+<div id="survey" class="container">
+    @using (currentSurvey.BeginSurvey())
+    {
+        @currentSurvey.Next("next")
+        
+        <div class="form-group">
+            <label for="Firstname">Firstname:</label>
+            @currentSurvey.TextBox("Firstname")
+        </div>
+        <div class="form-group">
+            <label for="pwd">Lastname:</label>
+            @currentSurvey.TextBox("Lastname")
+        </div>
+        <div class="checkbox">
+            <label>@currentSurvey.CheckBox("Checked") Agree with terms.</label>
+        </div>
+        @currentSurvey.Button("Next", SurveyAction.Next)
+    }
+</div>

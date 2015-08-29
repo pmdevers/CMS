@@ -82,12 +82,14 @@ module.exports = {
             'vendor/ace-builds/src-min-noconflict/snippets/razor.js',
             'vendor/ace-builds/src-min-noconflict/snippets/css.js',
             'vendor/ace-builds/src-min-noconflict/snippets/html.js',
-            'vendor/angular-ui-ace/ui-ace.js'
+            'vendor/angular-ui-ace/ui-ace.js',
+            'vendor/angular-ui-tree/dist/angular-ui-tree.js'
         ],
         css : [
             'vendor/font-awsome/css/font-awesome.min.css',
             'vendor/angular-hotkeys/build/hotkeys.min.css',
-            'vendor/angular-bootstrap-colorpicker/css/colorpicker.css'
+            'vendor/angular-bootstrap-colorpicker/css/colorpicker.css',
+            'vendor/angular-ui-tree/dist/angular-ui-tree.min.css'
     ],
     assets: [
     ],

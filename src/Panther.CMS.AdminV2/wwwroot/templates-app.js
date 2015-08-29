@@ -1,4 +1,4 @@
-angular.module('templates-app', ['builder/builder.tpl.html', 'home/home.tpl.html', 'layout/header.tpl.html', 'layout/nav.tpl.html', 'navbar/navbar.tpl.html', 'sidebar/sidebar.tpl.html']);
+angular.module('templates-app', ['builder/builder.tpl.html', 'home/home.tpl.html', 'layout/header.tpl.html', 'layout/nav.tpl.html', 'navbar/navbar.tpl.html', 'sidebar/sidebar.blocks.tpl.html', 'sidebar/sidebar.form.tpl.html', 'sidebar/sidebar.tpl.html', 'sidebar/sidebar.tree.tpl.html']);
 
 angular.module("builder/builder.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("builder/builder.tpl.html",
@@ -32,7 +32,142 @@ angular.module("builder/builder.tpl.html", []).run(["$templateCache", function($
 
 angular.module("home/home.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("home/home.tpl.html",
-    "<h1>Hello</h1>");
+    "<div id=\"dashboard\">\n" +
+    "\n" +
+    "    <h1>Welcome to <span class=\"panther\">PantherCMS</span>.\n" +
+    "    </h1>\n" +
+    "\n" +
+    "    <div class=\"row\">\n" +
+    "        <div class=\"col-lg-12\">\n" +
+    "            <p>\n" +
+    "                Here you will see an overview of the analytics of your page.\n" +
+    "            </p>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "\n" +
+    "    <div class=\"row\">\n" +
+    "        <div class=\"col-lg-12\">\n" +
+    "            <div id=\"embed-api-auth-container\"></div>\n" +
+    "            <div class=\"panel panel-default\">\n" +
+    "                <div class=\"panel-heading\">\n" +
+    "                    <h3 class=\"panel-title\">Visitors Last 30 Days </h3>\n" +
+    "                </div>\n" +
+    "                <div class=\"panel-body\">\n" +
+    "                    <div id=\"chart-2-container\"></div>\n" +
+    "                    <div id=\"view-selector-2-container\"></div>\n" +
+    "\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "    <div class=\"row\">\n" +
+    "        <div class=\"col-lg-6\">\n" +
+    "            <div class=\"panel panel-default\">\n" +
+    "                <div class=\"panel-heading\">\n" +
+    "                    <h3 class=\"panel-title\">Visitors From</h3>\n" +
+    "                </div>\n" +
+    "                <div class=\"panel-body\">\n" +
+    "                    <div id=\"chart-1-container\"></div>\n" +
+    "                    <div id=\"view-selector-1-container\"></div>\n" +
+    "                    \n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-lg-6\">\n" +
+    "            <div class=\"panel panel-default\">\n" +
+    "                <div class=\"panel-heading\">\n" +
+    "                    <h3 class=\"panel-title\">Most visit pages</h3>\n" +
+    "                </div>\n" +
+    "                <div class=\"panel-body\">\n" +
+    "                    <div id=\"chart-3-container\"></div>\n" +
+    "                    <div id=\"view-selector-3-container\"></div>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "    \n" +
+    "    <script>\n" +
+    "        (function (w, d, s, g, js, fs){\n" +
+    "            g = w.gapi || (w.gapi = {});\n" +
+    "            g.analytics = { q : [], ready : function (f){ this.q.push(f); } };\n" +
+    "            js = d.createElement(s);\n" +
+    "            fs = d.getElementsByTagName(s)[0];\n" +
+    "            js.src = 'https://apis.google.com/js/platform.js';\n" +
+    "            fs.parentNode.insertBefore(js, fs);\n" +
+    "            js.onload = function (){ g.load('analytics'); };\n" +
+    "        }(window, document, 'script'));\n" +
+    "    </script>\n" +
+    "    <script>\n" +
+    "        gapi.analytics.ready(function () {\n" +
+    "            gapi.analytics.auth.authorize({\n" +
+    "                container : 'embed-api-auth-container',\n" +
+    "                clientid: '588790878241-30q4bjpf88f48ep92qttig4bhjcc38cu.apps.googleusercontent.com'\n" +
+    "            });\n" +
+    "\n" +
+    "            var dataChart1 = new gapi.analytics.googleCharts.DataChart({\n" +
+    "                query: {\n" +
+    "                    'ids': 'ga:67851772',\n" +
+    "                    metrics : 'ga:sessions',\n" +
+    "                    dimensions : 'ga:country',\n" +
+    "                    'start-date' : '30daysAgo',\n" +
+    "                    'end-date' : 'yesterday',\n" +
+    "                    'max-results' : 6,\n" +
+    "                    sort : '-ga:sessions'\n" +
+    "                },\n" +
+    "                chart : {\n" +
+    "                    container : 'chart-1-container',\n" +
+    "                    type : 'PIE',\n" +
+    "                    options : {\n" +
+    "                        width : '100%',\n" +
+    "                        pieHole : 4 / 9\n" +
+    "                    }\n" +
+    "                }\n" +
+    "            });\n" +
+    "            dataChart1.execute();\n" +
+    "            var dataChart2 = new gapi.analytics.googleCharts.DataChart({\n" +
+    "                query: {\n" +
+    "                    'ids': 'ga:67851772', // The Demos & Tools website view.\n" +
+    "                    'start-date': '30daysAgo',\n" +
+    "                    'end-date': 'yesterday',\n" +
+    "                    'metrics': 'ga:sessions,ga:users',\n" +
+    "                    'dimensions': 'ga:date'\n" +
+    "                },\n" +
+    "                chart: {\n" +
+    "                    'container': 'chart-2-container',\n" +
+    "                    'type': 'LINE',\n" +
+    "                    'options': {\n" +
+    "                        'width': '100%'\n" +
+    "                    }\n" +
+    "                }\n" +
+    "            });\n" +
+    "            dataChart2.execute();\n" +
+    "\n" +
+    "\n" +
+    "            var dataChart3 = new gapi.analytics.googleCharts.DataChart({\n" +
+    "                query: {\n" +
+    "                    'ids': 'ga:67851772', // The Demos & Tools website view.\n" +
+    "                    'start-date': '30daysAgo',\n" +
+    "                    'end-date': 'yesterday',\n" +
+    "                    'metrics': 'ga:pageviews',\n" +
+    "                    'dimensions': 'ga:pagePathLevel1',\n" +
+    "                    'sort': '-ga:pageviews',\n" +
+    "                    'filters': 'ga:pagePathLevel1!=/',\n" +
+    "                    'max-results': 7\n" +
+    "                },\n" +
+    "                chart: {\n" +
+    "                    'container': 'chart-3-container',\n" +
+    "                    'type': 'PIE',\n" +
+    "                    'options': {\n" +
+    "                        'width': '100%',\n" +
+    "                        'pieHole': 4 / 9\n" +
+    "                    }\n" +
+    "                }\n" +
+    "            });\n" +
+    "            dataChart3.execute();\n" +
+    "        });\n" +
+    "    </script>\n" +
+    "</div>\n" +
+    "");
 }]);
 
 angular.module("layout/header.tpl.html", []).run(["$templateCache", function($templateCache) {
@@ -272,6 +407,208 @@ angular.module("navbar/navbar.tpl.html", []).run(["$templateCache", function($te
     "</nav>");
 }]);
 
+angular.module("sidebar/sidebar.blocks.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("sidebar/sidebar.blocks.tpl.html",
+    "<div id=\"site\" style=\"display: none;\" class=\"formmenu\">\n" +
+    "    <ul class=\"tools\">\n" +
+    "        <li class=\"title\">\n" +
+    "            <ul></ul>\n" +
+    "        </li>\n" +
+    "    </ul>\n" +
+    "    <button type=\"button\" class=\"btn btn-success\">Add Page</button>\n" +
+    "    <div class=\"form-group\">\n" +
+    "        <label for=\"element\">Element</label>\n" +
+    "        <input type=\"text\" class=\"form-control\" />\n" +
+    "    </div>\n" +
+    "    <div id=\"content\">\n" +
+    "        <div class=\"form-group\">\n" +
+    "            <label for=\"element\">Element</label>\n" +
+    "            <input type=\"text\" class=\"form-control\" />\n" +
+    "        </div>\n" +
+    "        <div class=\"form-group\">\n" +
+    "            <label for=\"element\">Element</label>\n" +
+    "            <input type=\"text\" class=\"form-control\" />\n" +
+    "        </div>\n" +
+    "        <div class=\"form-group\">\n" +
+    "            <label for=\"element\">Element</label>\n" +
+    "            <input type=\"text\" class=\"form-control\" />\n" +
+    "        </div>\n" +
+    "        <div class=\"form-group\">\n" +
+    "            <div class=\"divider\"></div>\n" +
+    "        </div>\n" +
+    "        <div>\n" +
+    "            <div class=\"form-group\">\n" +
+    "                <label for=\"element\">Checkbox</label>\n" +
+    "                <div class=\"input-group\">\n" +
+    "                    <input type=\"text\" class=\"form-control\" />\n" +
+    "                    <span class=\"input-group-btn\">\n" +
+    "                        <button class=\"btn btn-default colorpicker-element\" type=\"button\">\n" +
+    "                            <i class=\"fa fa-dot-circle-o\"></i>\n" +
+    "                        </button>\n" +
+    "                    </span>\n" +
+    "                </div>\n" +
+    "            </div>\n" +
+    "            <div class=\"form-group\">\n" +
+    "                <label for=\"element\">Element</label>\n" +
+    "                <select class=\"form-control\">\n" +
+    "                    <option>Italic</option>\n" +
+    "                    <option>Underlinde</option>\n" +
+    "                    <option>Bold</option>\n" +
+    "                </select>\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</div>");
+}]);
+
+angular.module("sidebar/sidebar.form.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("sidebar/sidebar.form.tpl.html",
+    "<div id=\"newPage\" style=\"display: none\" class=\"blocks\">\n" +
+    "    <div class=\"form-group\">\n" +
+    "        <input type=\"text\" class=\"form-control\" placeholder=\"type to search element\" />\n" +
+    "        <i class=\"fa fa-times cancel\"></i>\n" +
+    "    </div>\n" +
+    "    <ul class=\"tools\" id=\"tools_fav\">\n" +
+    "        <li class=\"title\">\n" +
+    "            <div class=\"tools-category\">\n" +
+    "                favourites\n" +
+    "                <i class=\"fa fa-angle-down\"></i>\n" +
+    "            </div>\n" +
+    "            <ul style=\"display: block\">\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "                <li class=\"toolbar_button\">\n" +
+    "                    <div class=\"toolbar\">\n" +
+    "                        <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
+    "                        <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
+    "                    </div>\n" +
+    "                    <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\" />\n" +
+    "                    <span>container</span>\n" +
+    "                </li>\n" +
+    "            </ul>\n" +
+    "        </li>\n" +
+    "    </ul>\n" +
+    "</div>");
+}]);
+
 angular.module("sidebar/sidebar.tpl.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("sidebar/sidebar.tpl.html",
     "<div id=\"sidebar\" ng-controller=\"SidebarCtrl\">\n" +
@@ -289,204 +626,37 @@ angular.module("sidebar/sidebar.tpl.html", []).run(["$templateCache", function($
     "                </a>\n" +
     "            </li>\n" +
     "        </ul>\n" +
-    "        <img id=\"logo\" src=\"assets/logo.png\" title=\"\">\n" +
+    "        <h4 class=\"panther\">PantherCMS</h4>\n" +
     "    </div>\n" +
     "\n" +
     "    <div id=\"submenu\">\n" +
-    "        <div id=\"newPage\" style=\"display: none\" class=\"blocks\">\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <input type=\"text\" class=\"form-control\" placeholder=\"type to search element\"/>\n" +
-    "                <i class=\"fa fa-times cancel\"></i>\n" +
-    "            </div>\n" +
-    "            <ul class=\"tools\" id=\"tools_fav\">\n" +
-    "                <li class=\"title\">\n" +
-    "                    <div class=\"tools-category\">\n" +
-    "                        favourites\n" +
-    "                        <i class=\"fa fa-angle-down\"></i>\n" +
-    "                    </div>\n" +
-    "                    <ul style=\"display: block\">\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                        <li class=\"toolbar_button\">\n" +
-    "                            <div class=\"toolbar\">\n" +
-    "                                <i class=\"fa fa-star\" title=\"add/remove from favourites\"></i>\n" +
-    "                                <i class=\"fa fa-gear\" title=\"brick properties\"></i>\n" +
-    "                            </div>\n" +
-    "                            <img class=\"img-responsive\" src=\"/assets/tools/container.png\" draggable=\"true\"/>\n" +
-    "                            <span>container</span>\n" +
-    "                        </li>\n" +
-    "                    </ul>\n" +
-    "                </li>\n" +
-    "            </ul>\n" +
-    "        </div>\n" +
-    "        <div id=\"site\" style=\"display: none;\" class=\"formmenu\">\n" +
-    "            <ul class=\"tools\">\n" +
-    "                <li class=\"title\">\n" +
-    "                    <ul></ul>\n" +
-    "                </li>\n" +
-    "            </ul>\n" +
-    "            <button type=\"button\" class=\"btn btn-success\">Add Page</button>\n" +
-    "            <div class=\"form-group\">\n" +
-    "                <label for=\"element\">Element</label>\n" +
-    "                <input type=\"text\" class=\"form-control\"/>\n" +
-    "            </div>\n" +
-    "            <div id=\"content\">\n" +
-    "                <div class=\"form-group\">\n" +
-    "                    <label for=\"element\">Element</label>\n" +
-    "                    <input type=\"text\" class=\"form-control\"/>\n" +
-    "                </div>\n" +
-    "                <div class=\"form-group\">\n" +
-    "                    <label for=\"element\">Element</label>\n" +
-    "                    <input type=\"text\" class=\"form-control\"/>\n" +
-    "                </div>\n" +
-    "                <div class=\"form-group\">\n" +
-    "                    <label for=\"element\">Element</label>\n" +
-    "                    <input type=\"text\" class=\"form-control\"/>\n" +
-    "                </div>\n" +
-    "                <div class=\"form-group\">\n" +
-    "                    <div class=\"divider\"></div>\n" +
-    "                </div>\n" +
-    "                <div>\n" +
-    "                    <div class=\"form-group\">\n" +
-    "                        <label for=\"element\">Checkbox</label>\n" +
-    "                        <div class=\"input-group\">\n" +
-    "                            <input type=\"text\" class=\"form-control\"/>\n" +
-    "                            <span class=\"input-group-btn\">\n" +
-    "                                <button class=\"btn btn-default colorpicker-element\" type=\"button\">\n" +
-    "                                    <i class=\"fa fa-dot-circle-o\"></i>\n" +
-    "                                </button>\n" +
-    "                            </span>\n" +
-    "                        </div>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"form-group\">\n" +
-    "                        <label for=\"element\">Element</label>\n" +
-    "                        <select class=\"form-control\">\n" +
-    "                            <option>Italic</option>\n" +
-    "                            <option>Underlinde</option>\n" +
-    "                            <option>Bold</option>\n" +
-    "                        </select>\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "        </div>\n" +
+    "        <ng-include src=\"'sidebar/sidebar.tree.tpl.html'\">></ng-include>\n" +
+    "        <ng-include src=\"'sidebar/sidebar.blocks.tpl.html'\">></ng-include>\n" +
+    "        <ng-include src=\"'sidebar/sidebar.form.tpl.html'\">></ng-include>\n" +
     "    </div>\n" +
     "</div>");
+}]);
+
+angular.module("sidebar/sidebar.tree.tpl.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("sidebar/sidebar.tree.tpl.html",
+    "<div id=\"treeView\" class=\"treeview\">\n" +
+    "    <ul class=\"tools\">\n" +
+    "        <li class=\"title\">\n" +
+    "            <ul></ul>\n" +
+    "        </li>\n" +
+    "    </ul>\n" +
+    "    <div id=\"content\">\n" +
+    "        <ul id=\"tree\">\n" +
+    "            <li>Home\n" +
+    "                <ul>\n" +
+    "                    <li>About Us</li>\n" +
+    "                    <li>Change Me</li>\n" +
+    "                </ul>\n" +
+    "            </li>\n" +
+    "        </ul>\n" +
+    "    </div>\n" +
+    "</div>\n" +
+    "<script>\n" +
+    "    $('#tree').treed({ openedClass: 'folder-open-o', closedClass: 'folder-o' });\n" +
+    "</script>");
 }]);

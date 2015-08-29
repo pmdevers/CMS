@@ -2,23 +2,6 @@
     Layout = "layout";
 }
 
-@using (Html.RegisterStylesheet())
-{
-    <style type="text/css">
-        .translations {
-            list-style: none;
-        }
-    </style>
-}
-
-
-@using (Html.RegisterScript())
-{
-    <script type="text/javascript">
-        alert('Alert 1');
-    </script>
-}
-
 <div>
     <ul class="translations">
         <li>
@@ -47,20 +30,4 @@
     </ul>
 </div>
 @Html.Render("container")
-@using (Html.RegisterScript())
-{
-    <script type="text/javascript">
-        alert('Alert');
-    </script>
-}
-@using (Html.RegisterStylesheet())
-{
-    <style type="text/css">
-        .translations2  {
-            list-style: none;
-        }
-        .translations li {
-            background-color: #32cd32;
-        }
-    </style>
-}
+@Html.Survey("test").SurveyStart()

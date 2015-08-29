@@ -23,6 +23,8 @@ namespace Panther.CMS.Helpers
         public static string GetBlock(IHtmlHelper htmlHelper, string blockName)
         {
             var blocks = htmlHelper.ViewContext.HttpContext.Items[blockName] as List<string>;
+            if(blocks == null)
+                return string.Empty;
             var sb = new StringBuilder();
             foreach (var block in blocks)
             {

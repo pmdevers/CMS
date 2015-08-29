@@ -7,10 +7,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <title>Panther CMS Admin</title>
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css"/>
     <!-- compiled CSS -->
     <link rel="stylesheet" type="text/css" href="vendor/font-awsome/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="vendor/angular-hotkeys/build/hotkeys.min.css" />
     <link rel="stylesheet" type="text/css" href="vendor/angular-bootstrap-colorpicker/css/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="vendor/angular-ui-tree/dist/angular-ui-tree.min.css" />
     <link rel="stylesheet" type="text/css" href="assets/PantherAdmin-0.1.0.css" />
 
 </head>
@@ -20,11 +22,15 @@
     <![endif]-->
 
     <ng-Include src="'navbar/navbar.tpl.html'"></ng-Include>
-    
-    <div id="main">
-        <ng-Include src="'sidebar/sidebar.tpl.html'"></ng-Include>
-        <ng-Include src="'builder/builder.tpl.html'"></ng-Include>
-    </div>
+
+<div id="main">
+    <ng-Include src="'sidebar/sidebar.tpl.html'"></ng-Include>
+    <div ui-view class="main-content"></div>
+    <!--
+
+    <ng-Include src="'builder/builder.tpl.html'"></ng-Include>
+    -->
+</div>
 
 <!-- compiled JavaScript -->
     <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
@@ -42,10 +48,10 @@
     <script type="text/javascript" src="vendor/ace-builds/src-min-noconflict/worker-css.js"></script>
     <script type="text/javascript" src="vendor/ace-builds/src-min-noconflict/ext-language_tools.js"></script>
     <script type="text/javascript" src="vendor/ace-builds/src-min-noconflict/snippets/text.js"></script>
-    <script type="text/javascript" src="vendor/ace-builds/src-min-noconflict/snippets/razor.js"></script>
     <script type="text/javascript" src="vendor/ace-builds/src-min-noconflict/snippets/css.js"></script>
     <script type="text/javascript" src="vendor/ace-builds/src-min-noconflict/snippets/html.js"></script>
     <script type="text/javascript" src="vendor/angular-ui-ace/ui-ace.js"></script>
+    <script type="text/javascript" src="vendor/angular-ui-tree/dist/angular-ui-tree.js"></script>
     <script type="text/javascript" src="src/app/app.js"></script>
     <script type="text/javascript" src="src/app/builder/builder.js"></script>
     <script type="text/javascript" src="src/app/home/home.js"></script>
@@ -54,6 +60,7 @@
     <script type="text/javascript" src="src/app/sidebar/sidebar.js"></script>
     <script type="text/javascript" src="src/common/iframe/iframe.js"></script>
     <script type="text/javascript" src="src/common/plusOne/plusOne.js"></script>
+    <script type="text/javascript" src="src/common/tree/tree.js"></script>
     <script type="text/javascript" src="templates-common.js"></script>
     <script type="text/javascript" src="templates-app.js"></script>
 

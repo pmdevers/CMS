@@ -52,13 +52,6 @@
             -moz-border-radius: 2px;
             border-radius: 2px;
         }
-
-        #logo {
-            margin: 0 10px;
-            width: 30px;
-            position: absolute;
-            bottom: 15px;
-        }
     }
 
     #submenu {
@@ -72,7 +65,7 @@
         color: $sidemenu-color;
         background: $sidemenu-background;
 
-        
+
         .blocks {
             display: none;
             width: 250px;
@@ -88,14 +81,15 @@
                 left: 50px;
                 width: 250px;
                 z-index: 5;
-             
-                .cancel{
+
+                .cancel {
                     position: absolute;
                     right: 15px;
                     top: 17px;
                     color: $sidemenu-cancel-color;
                     cursor: pointer;
                 }
+
                 .form-control {
                     -moz-border-radius: 2px;
                     -webkit-border-radius: 2px;
@@ -109,23 +103,23 @@
                 }
 
                 ::-webkit-input-placeholder {
-                   color:  $sidemenu-cancel-color;
+                    color: $sidemenu-cancel-color;
                 }
 
                 :-moz-placeholder { /* Firefox 18- */
-                   color:  $sidemenu-cancel-color;  
+                    color: $sidemenu-cancel-color;
                 }
 
-                ::-moz-placeholder {  /* Firefox 19+ */
-                   color:  $sidemenu-cancel-color;  
+                ::-moz-placeholder { /* Firefox 19+ */
+                    color: $sidemenu-cancel-color;
                 }
 
-                :-ms-input-placeholder {  
-                   color:  $sidemenu-cancel-color;  
+                :-ms-input-placeholder {
+                    color: $sidemenu-cancel-color;
                 }
             }
         }
-                
+
         ul.tools {
             list-style: none;
             margin: 50px 0 0 0;
@@ -151,12 +145,12 @@
                         background: $sidemenu-title-background;
                         border-left: 1px solid $sidemenu-border-bottom;
                         position: absolute;
-                        top:0;
-                        right:0;
-                        cursor:pointer;
-                        line-height:29px;
-                        height:29px;
-                        width:29px;
+                        top: 0;
+                        right: 0;
+                        cursor: pointer;
+                        line-height: 29px;
+                        height: 29px;
+                        width: 29px;
                     }
                 }
 
@@ -168,46 +162,47 @@
                     text-overflow: ellipsis;
                 }
 
-                ul{
+                ul {
                     list-style: none;
-                    margin:0;
-                    padding:0;
+                    margin: 0;
+                    padding: 0;
 
                     li {
                         width: 83px;
                         padding: 20px 5px 0 5px;
                         border-bottom: 1px solid $sidemenu-border-bottom;
                         border-right: 1px solid $sidemenu-border-bottom;
-                        float:left;
+                        float: left;
                         height: 100px;
                         color: white;
                         text-align: center;
                         position: relative;
                         font-size: 12px;
                         cursor: pointer;
-                        display:block;
+                        display: block;
 
-                        .toolbar{
+                        .toolbar {
                             position: absolute;
-                            top:0px;
+                            top: 0px;
                             right: 2px;
                             //display:none;
                         }
 
-                        img{
-                            margin-top: -5px;;
+                        img {
+                            margin-top: -5px;
+                            ;
                             opacity: .75;
                         }
 
-                        span{
-                            position:absolute;
-                            bottom:5px;
-                            left:0;
+                        span {
+                            position: absolute;
+                            bottom: 5px;
+                            left: 0;
                             width: 100%;
                             opacity: .3;
                             font-size: 11px;
-                            font-weight:500;
-                            -webkit-font-smoothing:antialiased;
+                            font-weight: 500;
+                            -webkit-font-smoothing: antialiased;
                         }
                     }
                 }
@@ -225,22 +220,24 @@
         }
 
         .btn.btn-success {
-          -webkit-border-radius: 2px;
-          -moz-border-radius: 2px;
-          border-radius: 2px;
-          background: #68d770;
-          border: 1px solid #40cc4a;
-          text-shadow: 0px 1px 0px #40cc4a;
-          width: 100%;
-        } 
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            background: #68d770;
+            border: 1px solid #40cc4a;
+            text-shadow: 0px 1px 0px #40cc4a;
+            width: 100%;
+        }
     }
 
-    .formmenu  {
+    .formmenu {
         width: 250px;
         padding: 15px;
+
         ul.tools {
-          margin: -15px -15px 15px -15px !important;
+            margin: -15px -15px 15px -15px !important;
         }
+
         .form-group {
             margin: 7px 0;
             background: $sidemenu-background;
@@ -248,82 +245,90 @@
             margin-bottom: 0px;
 
             label {
-              font-size: 8px;
-              padding: 2px 5px;
-              font-weight: 400;
-              background: #4a536b;
-              -webkit-border-radius: 2px 2px 0 0;
-              -moz-border-radius: 2px 2px 0 0;
-              border-radius: 2px 2px 0 0;
+                font-size: 8px;
+                padding: 2px 5px;
+                font-weight: 400;
+                background: #4a536b;
+                -webkit-border-radius: 2px 2px 0 0;
+                -moz-border-radius: 2px 2px 0 0;
+                border-radius: 2px 2px 0 0;
             }
-            .form-control
-             {
-              -webkit-border-radius: 0 2px 2px 2px;
-              -moz-border-radius: 0 2px 2px 2px;
-              border-radius: 0 2px 2px 2px;
-              border: 1px solid #4a536b;
-              color: rgba(255, 255, 255, 0.9);
-              background: #2b303e;
-              -webkit-box-shadow: none;
-              -moz-box-shadow: none;
-              box-shadow: none;
-              font-size: 12px;
-              margin-top: -5px;
-              height: 28px;
-              padding-left: 8px;
-              padding-right: 8px;
+
+            .form-control {
+                -webkit-border-radius: 0 2px 2px 2px;
+                -moz-border-radius: 0 2px 2px 2px;
+                border-radius: 0 2px 2px 2px;
+                border: 1px solid #4a536b;
+                color: rgba(255, 255, 255, 0.9);
+                background: #2b303e;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+                font-size: 12px;
+                margin-top: -5px;
+                height: 28px;
+                padding-left: 8px;
+                padding-right: 8px;
             }
 
             select {
-              background: #2b303e url("../assets/img/form-control-select-bg.png") no-repeat !important;
-              background-size: 24px 20px !important;
-              background-position: right center !important;
-              -webkit-border-radius: 0 2px 2px 2px;
-              -moz-border-radius: 0 2px 2px 2px;
-              border-radius: 0 2px 2px 2px;
-              border: 1px solid #40475c;
-              -webkit-box-shadow: none !important;
-              -moz-box-shadow: none !important;
-              box-shadow: none !important;
-              outline: none;
-              -webkit-appearance: none;
-              -moz-appearance: none;
-              -ms-appearance: none;
-              appearance: none;
-              cursor: pointer;
-              padding-top: 5px;
+                background: #2b303e url("../assets/img/form-control-select-bg.png") no-repeat !important;
+                background-size: 24px 20px !important;
+                background-position: right center !important;
+                -webkit-border-radius: 0 2px 2px 2px;
+                -moz-border-radius: 0 2px 2px 2px;
+                border-radius: 0 2px 2px 2px;
+                border: 1px solid #40475c;
+                -webkit-box-shadow: none !important;
+                -moz-box-shadow: none !important;
+                box-shadow: none !important;
+                outline: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                -ms-appearance: none;
+                appearance: none;
+                cursor: pointer;
+                padding-top: 5px;
             }
 
             .divider {
-              border: 0;
-              background: none;
-              min-width: 166px;
-              height: 43px;
-              color: #606060;
-              border-radius: 0;
-              -background-color: #e7e7e7;
-              border-radius: 2px;
-              line-height: 23px;
-              padding: 0px 3px 0px 3px;
-              overflow: scroll;
-              overflow-y: hidden;
-              white-space: nowrap;
+                border: 0;
+                background: none;
+                min-width: 166px;
+                height: 43px;
+                color: #606060;
+                border-radius: 0;
+                -background-color: #e7e7e7;
+                border-radius: 2px;
+                line-height: 23px;
+                padding: 0px 3px 0px 3px;
+                overflow: scroll;
+                overflow-y: hidden;
+                white-space: nowrap;
             }
 
             .btn-default {
-              height: 28px;
-              line-height: 28px;
-              padding: 0 10px;
-              background: #4a536b;
-              border: 1px solid #4a536b;
-              color: white;
-              margin-top: -5px;
+                height: 28px;
+                line-height: 28px;
+                padding: 0 10px;
+                background: #4a536b;
+                border: 1px solid #4a536b;
+                color: white;
+                margin-top: -5px;
             }
         }
+
         ul.tools {
             margin: -15px -15px 15px -15px;
         }
     }
+
+    #treeview{
+        padding: 1px;
+
+    }
+
+   
 }
 
 /*@media (max-width: 1439px){

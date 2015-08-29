@@ -24,7 +24,7 @@ namespace Panther.CMS.Controllers.Api
         {
             var site = siteService.GetSite();
             
-            return new SiteRepresentation
+            var model = new SiteRepresentation
             {
                 SiteName = site.Name,
                 Culture = site.Culture,
@@ -33,6 +33,10 @@ namespace Panther.CMS.Controllers.Api
                 StyleSheet = site.Stylesheets
             };
             
+
+            model.Links.Add(LinkTemplates.GetPages());
+
+            return model;
         }
     }
 }

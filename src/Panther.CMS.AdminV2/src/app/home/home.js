@@ -24,10 +24,10 @@ angular.module( 'ngBoilerplate.home', [
  * this way makes each module more "self-contained".
  */
 .config(function config( $stateProvider ) {
-  $stateProvider.state( 'home', {
+  $stateProvider.state('home', {
     url: '/home',
     views: {
-      "main": {
+      '': {
         controller: 'HomeCtrl',
         templateUrl: 'home/home.tpl.html'
       }
@@ -40,7 +40,4 @@ angular.module( 'ngBoilerplate.home', [
  * And of course we define a controller for our route.
  */
 .controller( 'HomeCtrl', function HomeController( $scope ) {
-})
-
-;
-
+});

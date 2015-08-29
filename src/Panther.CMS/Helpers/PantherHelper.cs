@@ -6,6 +6,7 @@ using Microsoft.Framework.DependencyInjection;
 using Microsoft.AspNet.Mvc.Abstractions;
 
 using Panther.CMS.Entities;
+using Panther.CMS.Helpers;
 using Panther.CMS.Interfaces;
 
 namespace Microsoft.AspNet.Mvc.Rendering

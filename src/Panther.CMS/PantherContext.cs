@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 
@@ -11,8 +12,10 @@ using Panther.CMS.Services.Page;
 using Panther.CMS.Services.Site;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Loader.IIS;
+using Microsoft.Framework.Caching.Memory;
 using Microsoft.Framework.Runtime;
 
+using Panther.CMS.Helpers;
 using Panther.CMS.SiteProperties;
 
 namespace Panther.CMS
@@ -22,7 +25,7 @@ namespace Panther.CMS
         private HttpContext context;
         private readonly ISiteService siteService;
         private readonly IPageService pageService;
-
+        private IMemoryCache cache;
         public Site Site { get; private set; }
 
         public Page Current { get; private set; }
@@ -37,12 +40,20 @@ namespace Panther.CMS
 
         public IPantherRouter Router { get; private set; }
 
+        public Cookie Cookie { get; private set; }
+
+        public CultureInfo Culture
+        {
+            get { return CultureInfo.CurrentUICulture; }
+        }
+
         public PantherContext(IServiceProvider services, IPantherRouter router, IPantherFileSystem fileSystem, IApplicationEnvironment appEnv)
         {
             this.appEnv = appEnv;
             Services = services;
             FileSystem = fileSystem;
             Router = router;
+            this.cache = new MemoryCache(new MemoryCacheOptions());
             this.siteService = new SiteService(this);
             this.pageService = new PageService(this);
         }
@@ -50,10 +61,10 @@ namespace Panther.CMS
         public void Initialize(HttpContext context)
         {
             this.context = context;
-
             Site = siteService.GetSite();
             Root = pageService.GetRoot();
             Refferral = pageService.GetPage(Root, RefferralString);
+            Cookie = new Cookie(this);
 
             var responseHeader = Site.GetProperties<ResponseHeader>();
             var response = context.Response;
@@ -76,6 +87,30 @@ namespace Panther.CMS
         }
 
         public HttpRequest Request => context.Request;
+        public HttpResponse Response => context.Response;
+
+        public T GetCached<T>(string key) where T : class
+        {
+            var survey = cache.Get(key) as T;
+            if (survey == null)
+            {
+                survey = Activator.CreateInstance<T>();
+                SetCached(key, survey);
+            }
+
+            return survey;
+        }
+
+        public void SetCached<T>(string key, T value) where T : class
+        {
+            if (value == null)
+            {
+                cache.Remove(key);
+                return;
+            }
+            
+            cache.Set(key, value);
+        }
 
         public bool CanHandleUrl(string url)
         {

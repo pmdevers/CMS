@@ -1,0 +1,38 @@
+﻿@using Panther.CMS.Helpers
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+// ViewBag.Title = "Home Page";
+
+    var currentSurvey = Html.Survey("test");
+}
+
+@using (currentSurvey.BeginSurvey())
+{
+    @currentSurvey.Previous("Start")
+
+    <h1>Hello @currentSurvey.GetValue("Firstname") @currentSurvey.GetValue("Lastname").</h1>
+
+    <div class="form-group">
+        <label for="Address">Address:</label>
+        @currentSurvey.TextBox("Address")
+    </div>
+    <div class="form-group">
+        <label for="PostalCode">PostalCode:</label>
+        @currentSurvey.TextBox("PostalCode")
+    </div>
+    <div class="form-group">
+        @currentSurvey.GetValue("Checked")
+    </div>
+    <div class="form-group">
+        <label for="QuestionType">Dificulty:</label>
+        @currentSurvey.Radio("QuestionType", "Easy") Easy
+        @currentSurvey.Radio("QuestionType", "Normal") Normal
+        @currentSurvey.Radio("QuestionType", "Hard") Hard
+    </div>
+    <div class="form">
+        @currentSurvey.Button("Previous", SurveyAction.Previous)
+        @currentSurvey.Button("Finish", SurveyAction.Mail)
+    </div>   
+}

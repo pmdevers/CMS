@@ -17,6 +17,25 @@ body {
     min-width: 1000px;
 }
 
+span.panther{
+    font-family: 'Lobster';
+}
+
+h4.panther {
+    margin: 0 10px;
+    width: 30px;
+    position: absolute;
+    bottom: 15px;
+    font-family: 'Lobster';
+    font-size: 25px;
+    color: white;
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;
@@ -24,7 +43,7 @@ body {
 ::-webkit-scrollbar-track {
   background-color: rgba(255,255,255,0.2);
 }
-
 @import "../app/navbar/navbar.scss";
 @import "../app/sidebar/sidebar.scss";
 @import "../app/builder/builder.scss";
+@import "../app/home/home.scss";

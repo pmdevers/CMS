@@ -1,23 +1,16 @@
 ﻿@using System.Globalization
 <!DOCTYPE html>
 <html>
-<head lang="@CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToLower()">
+<head lang="@Html.Panther().Culture.TwoLetterISOLanguageName.ToLower()">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     @Html.MetaInformation()
     <title>@Html.Panther().Current.Name</title>
-
     @Html.StyleSheets()
     @Html.Translations()
 </head>
 <body>
-
-@Html.Resource("test")
 @RenderBody()
-
-<!-- Scripts-->
 @Html.Scripts()
-<!-- /Scripts-->
-
-@*@Html.Analytics()*@
+@Html.Analytics()
 </body>
 </html>

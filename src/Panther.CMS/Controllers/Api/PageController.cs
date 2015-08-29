@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 
+using Panther.CMS.Controllers.Api.Models;
 using Panther.CMS.Entities;
 using Panther.CMS.Interfaces;
 using Panther.CMS.Services.Page;
@@ -24,9 +25,19 @@ namespace Panther.CMS.Controllers.Api
 
         // GET: api/value       
         [HttpGet]
-        public Page Get()
+        public PageRepresentation Get()
         {
-            return context.Root;
+            var root = context.Root;
+
+            var model = new PageRepresentation
+            {
+                Name = root.Name,
+                Id = root.Id
+            };
+            model.Links.Add(LinkTemplates.GetSite());
+            model.Links.Add(LinkTemplates.GetPages());
+
+            return model;
         }
 
         // GET api/values/5

@@ -1,1 +1,135 @@
-<h1>Hello</h1>
+<div id="dashboard">
+
+    <h1>Welcome to <span class="panther">PantherCMS</span>.
+    </h1>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <p>
+                Here you will see an overview of the analytics of your page.
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="embed-api-auth-container"></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Visitors Last 30 Days </h3>
+                </div>
+                <div class="panel-body">
+                    <div id="chart-2-container"></div>
+                    <div id="view-selector-2-container"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Visitors From</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="chart-1-container"></div>
+                    <div id="view-selector-1-container"></div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Most visit pages</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="chart-3-container"></div>
+                    <div id="view-selector-3-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        (function (w, d, s, g, js, fs){
+            g = w.gapi || (w.gapi = {});
+            g.analytics = { q : [], ready : function (f){ this.q.push(f); } };
+            js = d.createElement(s);
+            fs = d.getElementsByTagName(s)[0];
+            js.src = 'https://apis.google.com/js/platform.js';
+            fs.parentNode.insertBefore(js, fs);
+            js.onload = function (){ g.load('analytics'); };
+        }(window, document, 'script'));
+    </script>
+    <script>
+        gapi.analytics.ready(function () {
+            gapi.analytics.auth.authorize({
+                container : 'embed-api-auth-container',
+                clientid: '588790878241-30q4bjpf88f48ep92qttig4bhjcc38cu.apps.googleusercontent.com'
+            });
+
+            var dataChart1 = new gapi.analytics.googleCharts.DataChart({
+                query: {
+                    'ids': 'ga:67851772',
+                    metrics : 'ga:sessions',
+                    dimensions : 'ga:country',
+                    'start-date' : '30daysAgo',
+                    'end-date' : 'yesterday',
+                    'max-results' : 6,
+                    sort : '-ga:sessions'
+                },
+                chart : {
+                    container : 'chart-1-container',
+                    type : 'PIE',
+                    options : {
+                        width : '100%',
+                        pieHole : 4 / 9
+                    }
+                }
+            });
+            dataChart1.execute();
+            var dataChart2 = new gapi.analytics.googleCharts.DataChart({
+                query: {
+                    'ids': 'ga:67851772', // The Demos & Tools website view.
+                    'start-date': '30daysAgo',
+                    'end-date': 'yesterday',
+                    'metrics': 'ga:sessions,ga:users',
+                    'dimensions': 'ga:date'
+                },
+                chart: {
+                    'container': 'chart-2-container',
+                    'type': 'LINE',
+                    'options': {
+                        'width': '100%'
+                    }
+                }
+            });
+            dataChart2.execute();
+
+
+            var dataChart3 = new gapi.analytics.googleCharts.DataChart({
+                query: {
+                    'ids': 'ga:67851772', // The Demos & Tools website view.
+                    'start-date': '30daysAgo',
+                    'end-date': 'yesterday',
+                    'metrics': 'ga:pageviews',
+                    'dimensions': 'ga:pagePathLevel1',
+                    'sort': '-ga:pageviews',
+                    'filters': 'ga:pagePathLevel1!=/',
+                    'max-results': 7
+                },
+                chart: {
+                    'container': 'chart-3-container',
+                    'type': 'PIE',
+                    'options': {
+                        'width': '100%',
+                        'pieHole': 4 / 9
+                    }
+                }
+            });
+            dataChart3.execute();
+        });
+    </script>
+</div>
