@@ -18,7 +18,7 @@ namespace Panther.CMS.Models
                 Loc = loc,
                 Priority = prioity,
                 ChangeFrequenty = changeFrequency.ToString().ToLowerInvariant(),
-                LastModified = lastModified.ToString("yyyy-MM-ddThh:mm:ssK"),
+                LastModified = lastModified.ToString("yyyy-MM-ddThh:mm:sszzz"),
                 Links = links?.ToList()
                 
             };

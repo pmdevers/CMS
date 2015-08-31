@@ -2,7 +2,7 @@
   "locked": false,
   "version": 1,
   "targets": {
-    "DNX,Version=v4.6": {
+    "DNX,Version=v4.5.1": {
       "Microsoft.AspNet.Antiforgery/1.0.0-beta6": {
         "dependencies": {
           "Microsoft.AspNet.DataProtection": "1.0.0-beta6",
@@ -1369,6 +1369,35 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
+      "Panther.CMS/1.3.2-beta6": {
+        "dependencies": {
+          "Microsoft.AspNet.Authentication.Cookies": "1.0.0-beta6",
+          "Microsoft.AspNet.Diagnostics": "1.0.0-beta6",
+          "Microsoft.AspNet.Identity": "3.0.0-beta6",
+          "Microsoft.AspNet.Localization": "1.0.0-beta6",
+          "Microsoft.AspNet.Mvc": "6.0.0-beta6",
+          "Microsoft.AspNet.Mvc.Xml": "6.0.0-beta5",
+          "Microsoft.AspNet.Server.IIS": "1.0.0-beta6",
+          "Microsoft.AspNet.Server.WebListener": "1.0.0-beta6",
+          "Microsoft.AspNet.StaticFiles": "1.0.0-beta6",
+          "Microsoft.Framework.Configuration.Json": "1.0.0-beta6",
+          "Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-beta6",
+          "Microsoft.Net.Http": "2.2.29",
+          "Panther.Hal": "1.0.1-Beta6"
+        },
+        "frameworkAssemblies": [
+          "Microsoft.CSharp",
+          "mscorlib",
+          "System",
+          "System.Core"
+        ],
+        "compile": {
+          "lib/dnx451/Panther.CMS.dll": {}
+        },
+        "runtime": {
+          "lib/dnx451/Panther.CMS.dll": {}
+        }
+      },
       "Panther.Hal/1.0.1-Beta6": {
         "dependencies": {
           "Microsoft.AspNet.Mvc": "6.0.0-beta6",
@@ -2696,6 +2725,29 @@
         },
         "runtime": {
           "lib/portable-net45+wp80+win8+wpa81+aspnetcore50/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Panther.CMS/1.3.2-beta6": {
+        "dependencies": {
+          "Microsoft.AspNet.Authentication.Cookies": "1.0.0-beta6",
+          "Microsoft.AspNet.Diagnostics": "1.0.0-beta6",
+          "Microsoft.AspNet.Identity": "3.0.0-beta6",
+          "Microsoft.AspNet.Localization": "1.0.0-beta6",
+          "Microsoft.AspNet.Mvc": "6.0.0-beta6",
+          "Microsoft.AspNet.Mvc.Xml": "6.0.0-beta5",
+          "Microsoft.AspNet.Server.IIS": "1.0.0-beta6",
+          "Microsoft.AspNet.Server.WebListener": "1.0.0-beta6",
+          "Microsoft.AspNet.StaticFiles": "1.0.0-beta6",
+          "Microsoft.Framework.Configuration.Json": "1.0.0-beta6",
+          "Microsoft.Framework.DependencyInjection.Abstractions": "1.0.0-beta6",
+          "Microsoft.Net.Http": "2.2.29",
+          "Panther.Hal": "1.0.1-Beta6"
+        },
+        "compile": {
+          "lib/dnxcore50/Panther.CMS.dll": {}
+        },
+        "runtime": {
+          "lib/dnxcore50/Panther.CMS.dll": {}
         }
       },
       "Panther.Hal/1.0.1-Beta6": {
@@ -5244,6 +5296,18 @@
         "tools/install.ps1"
       ]
     },
+    "Panther.CMS/1.3.2-beta6": {
+      "sha512": "mZTf6eZfT2RTKvX31I+5SPstJ6kAEGUI+juBFGdizsUbFqcwhEXf5QKT7TF5xcx6tY/VP9tB6aW0mFRNfoOqew==",
+      "files": [
+        "lib/dnx451/Panther.CMS.dll",
+        "lib/dnx451/Panther.CMS.xml",
+        "lib/dnxcore50/Panther.CMS.dll",
+        "lib/dnxcore50/Panther.CMS.xml",
+        "Panther.CMS.1.3.2-beta6.nupkg",
+        "Panther.CMS.1.3.2-beta6.nupkg.sha512",
+        "Panther.CMS.nuspec"
+      ]
+    },
     "Panther.Hal/1.0.1-Beta6": {
       "sha512": "QfY7dWzK7Dd2VcoeF02AYKWLhwjv5HAYv0fSC5svJZLgl4S9NJnWTDov9f3Gxt+VpUMJVs3weeuCZK2RMGNv1Q==",
       "files": [
@@ -7063,9 +7127,9 @@
     "": [
       "Microsoft.AspNet.Server.IIS >= 1.0.0-*",
       "Microsoft.AspNet.Server.WebListener >= 1.0.0-*",
-      "Panther.CMS >= 1.3.0-*"
+      "Panther.CMS >= 1.3.2-*"
     ],
-    "DNX,Version=v4.6": [],
+    "DNX,Version=v4.5.1": [],
     "DNXCore,Version=v5.0": []
   }
 }

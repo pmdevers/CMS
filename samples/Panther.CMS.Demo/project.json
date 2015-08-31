@@ -6,7 +6,7 @@
     "dependencies": {
         "Microsoft.AspNet.Server.IIS": "1.0.0-*",
         "Microsoft.AspNet.Server.WebListener": "1.0.0-*",
-        "Panther.CMS": "1.3.0-*"
+        "Panther.CMS": "1.3.2-*"
     },
 
     "commands": {
@@ -14,7 +14,7 @@
     },
 
     "frameworks": {
-        "dnx46": { },
+        "dnx451": { },
         "dnxcore50": { }
     },
 
