@@ -1,0 +1,18 @@
+[
+  {
+    "Id": "8476ffe8-ea37-452c-acae-305ed5c5b922",
+    "Name": "chair",
+    "Type": "image/png",
+    "Description": "A game chair",
+    "Path": "/media/IMG_22062015_112253.png",
+    "CacheControl" : "max-age=86400"
+  },
+  {
+    "Id": "eb3fbfb9-3e28-4f10-a6e7-ad9771f929cb",
+    "Name": "Plugin",
+    "Type": "application/octet-stream",
+    "Description": "A game chair",
+    "Path": "/media/Proxima.Package.WorldHotels.Search.rar",
+    "CacheControl" : "max-age=86400"
+  }
+]
