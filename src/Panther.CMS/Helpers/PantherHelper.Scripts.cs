@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
+using Microsoft.AspNet.Html.Abstractions;
 using Microsoft.AspNet.Mvc.Razor;
 using Microsoft.AspNet.Mvc.Rendering;
+using Microsoft.Framework.WebEncoders;
 
 using Panther.CMS.Helpers;
 
@@ -16,7 +18,8 @@ namespace Microsoft.AspNet.Mvc.Rendering
         private const string ScriptKey = "_scripts_";
         private const string ScriptBlockKey = "_scriptblocks_";
 
-        public static HtmlString Scripts(this IHtmlHelper htmlHelper)
+        public static IHtmlContent Scripts(this IHtmlHelper htmlHelper)
+
         {
             var scripts = htmlHelper.Panther().Site.Scripts;
             scripts.ForEach(htmlHelper.RegisterScript);
@@ -42,10 +45,7 @@ namespace Microsoft.AspNet.Mvc.Rendering
             var sb = new StringBuilder();
             foreach (var script in registeredScripts)
             {
-                var scriptBuilder = new TagBuilder("script");
-                scriptBuilder.Attributes["type"] = "text/javascript";
-                scriptBuilder.Attributes["src"] = script;
-                sb.AppendLine(scriptBuilder.ToString(TagRenderMode.Normal));
+                sb.AppendLine($"<script type=\"text/javascript\" src=\"{script}\" />");
             }
             return sb.ToString();
         }

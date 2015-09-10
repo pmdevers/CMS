@@ -10,10 +10,8 @@ using Panther.CMS.Filters;
 using Panther.CMS.Interfaces;
 using Panther.CMS.Services.Page;
 using Panther.CMS.Services.Site;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Loader.IIS;
+using Microsoft.Dnx.Runtime;
 using Microsoft.Framework.Caching.Memory;
-using Microsoft.Framework.Runtime;
 
 using Panther.CMS.Helpers;
 using Panther.CMS.SiteProperties;
@@ -70,7 +68,7 @@ namespace Panther.CMS
             var response = context.Response;
             response.Headers["x-" + Site.Name.ToLower() + "-description"] = responseHeader.Description;
             response.Headers["x-software"] = "Panther Content Management System.";
-            response.Headers["x-version"] = appEnv.Version;
+            response.Headers["x-version"] = appEnv.ApplicationVersion;
         }
 
         private void SetCulture()

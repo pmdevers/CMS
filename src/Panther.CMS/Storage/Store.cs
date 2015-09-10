@@ -13,9 +13,7 @@ namespace Panther.CMS.Storage
     {
         private bool _disposed;
         private readonly string filename;
-
         private static readonly object objLock = new object();
-
         private readonly IPantherFileSystem fileSystem;
         private List<T> items;
 

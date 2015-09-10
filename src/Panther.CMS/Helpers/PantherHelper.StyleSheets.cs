@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
+using Microsoft.AspNet.Html.Abstractions;
 using Microsoft.AspNet.Mvc.Rendering;
 
 using Panther.CMS.Helpers;
@@ -11,7 +12,7 @@ namespace Microsoft.AspNet.Mvc.Rendering
 {
     public static partial class PantherHelper
     {
-        public static HtmlString StyleSheets(this IHtmlHelper htmlHelper)
+        public static IHtmlContent StyleSheets(this IHtmlHelper htmlHelper)
         {
             var stylesheets = htmlHelper.Panther().Site.Stylesheets;
             stylesheets.ForEach(htmlHelper.RegisterStylesheet);
@@ -26,7 +27,7 @@ namespace Microsoft.AspNet.Mvc.Rendering
             return new HtmlString(sb.ToString());
         }
 
-        public static HtmlString RenderRegisteredStylesheets(this IHtmlHelper htmlHelper)
+        public static IHtmlContent RenderRegisteredStylesheets(this IHtmlHelper htmlHelper)
         {
             var ctx = htmlHelper.ViewContext.HttpContext;
             var registeredStylesheets = ctx.Items["_stylesheets_"] as Stack<string>;
@@ -37,10 +38,13 @@ namespace Microsoft.AspNet.Mvc.Rendering
             var sb = new StringBuilder();
             foreach (var script in registeredStylesheets)
             {
-                var scriptBuilder = new TagBuilder("link");
-                scriptBuilder.Attributes["rel"] = "stylesheet";
-                scriptBuilder.Attributes["href"] = script;
-                sb.AppendLine(scriptBuilder.ToString(TagRenderMode.StartTag));
+                //var scriptBuilder = new TagBuilder("link");
+                //scriptBuilder.Attributes["rel"] = "stylesheet";
+                //scriptBuilder.Attributes["href"] = script;
+                //scriptBuilder.TagRenderMode = TagRenderMode.StartTag;
+                //sb.AppendLine(scriptBuilder.ToString());
+
+                sb.AppendLine($"<link rel=\"stylesheet\" href=\"{script}\" >");
             }
             return new HtmlString(sb.ToString());
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Microsoft.AspNet.Html.Abstractions;
 using Microsoft.AspNet.Mvc.Rendering;
 
 using Panther.CMS.PageProperties;
@@ -11,7 +12,7 @@ namespace Microsoft.AspNet.Mvc.Rendering
 {
     public static partial class PantherHelper
     {
-        public static HtmlString Analytics(this IHtmlHelper htmlHelper)
+        public static IHtmlContent Analytics(this IHtmlHelper htmlHelper)
         {
             var context = htmlHelper.Panther();
             var siteProperty = context.Site.GetProperties<GoogleAnalyticsProperties>();

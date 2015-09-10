@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using Microsoft.AspNet.Html.Abstractions;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.AspNet.Razor.Runtime.TagHelpers;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.Framework.WebEncoders;
 
 using Panther.CMS.Entities;
 using Panther.CMS.Interfaces;
@@ -17,23 +20,24 @@ namespace Microsoft.AspNet.Mvc.Rendering
 {
     public static partial class PantherHelper
     {
-        public static HtmlString Translations(this IHtmlHelper htmlHelper)
+        public static IHtmlContent Translations(this IHtmlHelper htmlHelper)
         {
+            var htmlEncoder = htmlHelper.ViewContext.HttpContext.ApplicationServices.GetService<IHtmlEncoder>();
             var context = htmlHelper.Panther();
             var page = context.Current;
 
             var sb = new StringBuilder();
-
             sb.AppendLine(Translation(htmlHelper, page, context.Site).ToString());
             foreach (var pageId in page.Translations)
             {
-                sb.AppendLine(Translation(htmlHelper, pageId).ToString());
+                //sb.AppendLine(Translation(htmlHelper, pageId).ToString());
+                Translation(htmlHelper, pageId).WriteTo(htmlHelper.ViewContext.Writer, htmlEncoder);
             }
 
-            return new HtmlString(sb.ToString());
+           return new HtmlString(String.Empty);
         }
 
-        public static HtmlString Translation(this IHtmlHelper htmlHelper, Guid pageId)
+        public static IHtmlContent Translation(this IHtmlHelper htmlHelper, Guid pageId)
         {
             var context = htmlHelper.Panther();
             var page = context.Root.GetById(pageId);
@@ -52,15 +56,15 @@ namespace Microsoft.AspNet.Mvc.Rendering
             return dict;
         }
 
-        public static HtmlString Translation(this IHtmlHelper htmlHelper, Page page, Site site)
+        public static IHtmlContent Translation(this IHtmlHelper htmlHelper, Page page, Site site)
         {
             var builder = new TagBuilder("link");
             //<link rel="alternate" href="http://example.com/en-ie" hreflang="en-ie" />
             builder.Attributes.Add("rel", "alternate");
             builder.Attributes.Add("href", ("http://" + site.Url + page.Path).TrimEnd('/'));
             builder.Attributes.Add("hreflang", page.Culture.ToLowerInvariant());
-
-            return builder.ToHtmlString(TagRenderMode.SelfClosing);
+            builder.TagRenderMode = TagRenderMode.SelfClosing;
+            return builder;
         }
 
         public static Page TranslationRoot(this IHtmlHelper htmlHelper)

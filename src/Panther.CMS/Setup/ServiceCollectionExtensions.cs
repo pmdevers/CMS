@@ -1,4 +1,5 @@
 ﻿using Microsoft.Framework.DependencyInjection;
+using Microsoft.AspNet.Mvc.Razor;
 
 using Panther.CMS;
 using Panther.CMS.Entities;
@@ -15,16 +16,14 @@ namespace Microsoft.Framework.DependencyInjection
         public static IServiceCollection AddPanther(this IServiceCollection services)
         {
             services.AddIdentity<User, Role>().AddDefaultTokenProviders();
-            services.AddMvc();
-            services.ConfigureMvc(options =>
+            services.AddMvc(options =>
             {
                 //var halJsonFormatter = new HalJsonOutputFormatter();
                 //options.OutputFormatters.Add(halJsonFormatter);
                 options.Filters.Add(new SecurityFilterAttribute());
-            });
-            services.ConfigureRazorViewEngine(razor =>
+            }).AddRazorOptions(options =>
             {
-                razor.ViewLocationExpanders.Add(new PantherViewLocationExpander());
+                options.ViewLocationExpanders.Add(new PantherViewLocationExpander());
             });
             PantherServices.GetDefaultServices(services);
             return services;

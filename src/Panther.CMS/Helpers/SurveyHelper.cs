@@ -39,6 +39,11 @@ namespace Panther.CMS.Helpers
             return htmlHelper.TextBox(fieldName, GetValue(fieldName));
         }
 
+        public IHtmlContent MultiLine(string fieldName, int rows, int columns)
+        {
+            return htmlHelper.TextArea(fieldName, GetValue(fieldName).ToString(), rows, columns, null);
+        }
+
         public IHtmlContent Radio(string fieldName, string value)
         {
             var currentValue = GetValue(fieldName);
@@ -69,7 +74,7 @@ namespace Panther.CMS.Helpers
 
         public IHtmlContent SurveyStart()
         {
-            return htmlHelper.Partial("~/views/survey/" + surveyName + "/start");
+            return htmlHelper.Partial($"~/views/survey/{surveyName}/start");
         }
 
         public IDisposable BeginSurvey()
@@ -80,7 +85,7 @@ namespace Panther.CMS.Helpers
                     FormMethod = FormMethod.Post,
                     InsertionMode = InsertionMode.Replace,
                     JQuerySelector = "#survey",
-                    Url = "/survey/post?surveyName=" + surveyName
+                    Url = $"/survey/post?surveyName={surveyName}"
                 });
         }
 
@@ -115,15 +120,13 @@ namespace Panther.CMS.Helpers
             return context.Cookie.Get(surveyName);
         }
 
-        public IHtmlContent Next(string viewName)
+        public void Next(string viewName)
         {
             AddValues(SurveyAction.Next.ToString(), viewName);
-            return new HtmlString(string.Empty);
         }
-        public IHtmlContent Previous(string viewName)
+        public void Previous(string viewName)
         {
             AddValues(SurveyAction.Previous.ToString(), viewName);
-            return new HtmlString(string.Empty);
         }
     }
 }
