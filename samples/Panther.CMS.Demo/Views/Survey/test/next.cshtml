@@ -10,7 +10,7 @@
 
 @using (currentSurvey.BeginSurvey())
 {
-    @currentSurvey.Previous("Start")
+    currentSurvey.Previous("Start");
 
     <h1>Hello @currentSurvey.GetValue("Firstname") @currentSurvey.GetValue("Lastname").</h1>
 

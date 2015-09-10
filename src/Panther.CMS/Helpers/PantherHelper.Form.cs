@@ -2,6 +2,7 @@
 
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Framework.DependencyInjection;
+using Microsoft.Framework.WebEncoders;
 
 using Panther.CMS.Entities;
 using Panther.CMS.Interfaces;
@@ -24,13 +25,15 @@ namespace Microsoft.AspNet.Mvc.Rendering
 
         public static MvcForm PantherForm(this IHtmlHelper htmlHelper, string Path, FormMethod method = FormMethod.Post, IDictionary<string, object> htmlAttributes = null)
         {
-            
+            var htmlEncoder = htmlHelper.ViewContext.HttpContext.ApplicationServices.GetService<IHtmlEncoder>();
             TagBuilder builder = new TagBuilder("form");
             builder.MergeAttributes(htmlAttributes);
             builder.MergeAttribute("action", Path);
             builder.MergeAttribute("method", HtmlHelper.GetFormMethodString(method), true);
+            builder.TagRenderMode = TagRenderMode.StartTag;
 
-            htmlHelper.ViewContext.Writer.Write(builder.ToString(TagRenderMode.StartTag));
+
+            builder.WriteTo(htmlHelper.ViewContext.Writer, htmlEncoder);
 
             return new MvcForm(htmlHelper.ViewContext);
         }

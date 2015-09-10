@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Identity;
+using Microsoft.Dnx.Runtime;
 using Microsoft.Framework.Configuration;
 using Microsoft.Framework.DependencyInjection;
-using Microsoft.Framework.Runtime;
 
 using Panther.CMS.Entities;
 
@@ -28,17 +28,17 @@ namespace Panther.CMS.Setup
 
             var userManager = app.ApplicationServices.GetService<UserManager<User>>();
             var roleManager = app.ApplicationServices.GetService<RoleManager<Role>>();
-            var defaultAdminRoleValue = configuration.Get(defaultAdminRole);
+            var defaultAdminRoleValue = configuration[defaultAdminRole];
             if (!await roleManager.RoleExistsAsync(defaultAdminRoleValue))
             {
                 await roleManager.CreateAsync(new Role {Name = defaultAdminRoleValue });
             }
 
-            var user = await userManager.FindByNameAsync(configuration.Get(defaultAdminUserName));
+            var user = await userManager.FindByNameAsync(configuration[defaultAdminUserName]);
             if (user == null)
             {
-                user = new User { Username = configuration.Get(defaultAdminUserName) };
-                await userManager.CreateAsync(user, configuration.Get(defaultAdminPassword));
+                user = new User { Username = configuration[defaultAdminUserName]};
+                await userManager.CreateAsync(user, configuration[defaultAdminPassword]);
                 await userManager.AddToRoleAsync(user, defaultAdminRoleValue);
                 await userManager.AddClaimAsync(user, new Claim("Administration", "Allowed"));
             }

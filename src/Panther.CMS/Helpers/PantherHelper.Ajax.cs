@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNet.Html.Abstractions;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.Framework.DependencyInjection;
+using Microsoft.Framework.WebEncoders;
 
 namespace Microsoft.AspNet.Mvc.Rendering
 {
@@ -14,6 +16,7 @@ namespace Microsoft.AspNet.Mvc.Rendering
     {
         public static MvcForm AjaxForm(this IHtmlHelper htmlHelper, AjaxOptions options)
         {
+            var htmlEncoder = htmlHelper.ViewContext.HttpContext.ApplicationServices.GetService<IHtmlEncoder>();
             var builder = new TagBuilder("form");
             if(!string.IsNullOrEmpty(options.Url))
                 builder.MergeAttribute("data-ajax-url", options.Url);
@@ -27,7 +30,11 @@ namespace Microsoft.AspNet.Mvc.Rendering
             if (!string.IsNullOrEmpty(options.JQuerySelector))
                 builder.MergeAttribute("data-ajax-update", options.JQuerySelector);
 
-            htmlHelper.ViewContext.Writer.Write(builder.ToString(TagRenderMode.StartTag));
+            builder.TagRenderMode = TagRenderMode.StartTag;
+
+            builder.WriteTo(htmlHelper.ViewContext.Writer, htmlEncoder);
+
+            //htmlHelper.ViewContext.Writer.Write(builder.ToString());
 
             return new MvcForm(htmlHelper.ViewContext);
         }
