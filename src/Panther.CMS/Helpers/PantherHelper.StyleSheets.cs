@@ -19,11 +19,16 @@ namespace Microsoft.AspNet.Mvc.Rendering
 
             var sb = new StringBuilder();
             sb.Append(htmlHelper.RenderRegisteredStylesheets());
-            sb.Append("<style type=\"text/css\">");
+            
             var css = DelayedBlock.GetBlock(htmlHelper, "style");
             var minifiedCss = Minifier.RemoveWhiteSpaceFromStylesheets(css);
-            sb.Append(minifiedCss);
-            sb.Append("</style>");
+
+            if (!string.IsNullOrWhiteSpace(minifiedCss))
+            {
+                sb.Append("<style type=\"text/css\">");
+                sb.Append(minifiedCss);
+                sb.Append("</style>");
+            }
             return new HtmlString(sb.ToString());
         }
 

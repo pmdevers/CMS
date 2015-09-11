@@ -26,11 +26,16 @@ namespace Microsoft.AspNet.Mvc.Rendering
 
             var sb = new StringBuilder();
             sb.Append(htmlHelper.RenderRegisteredScripts());
-            sb.Append("<script type=\"text/javascript\">");
+            
             var script = DelayedBlock.GetBlock(htmlHelper, "script");
             var minScript = Minifier.MinifyJavascript(script);
-            sb.Append(minScript);
-            sb.Append("</script>");
+
+            if (!string.IsNullOrWhiteSpace(minScript))
+            {
+                sb.Append("<script type=\"text/javascript\">");
+                sb.Append(minScript);
+                sb.Append("</script>");
+            }
             return new HtmlString(sb.ToString().Replace("/n/r", ""));
         }
 
